@@ -16,14 +16,15 @@ Windows を使っている場合は WSL (Windows Subscription for Linux) を利�
 
 - Windows から BitLocker を無効にする (「解除中」ではまだ未完)
 - BIOS の設定画面から Secure Boot を無効にする
-- Ubuntu のインストール時に WiFi に接続し，`Install third-party`にチェックをつける
+- Ubuntu のインストール時に WiFi に接続し，Install third-party にチェックをつける
 
 ## PC への Tobas のインストール
 
 ---
 
-`tobas_x.x.x_amd64.deb`をダウンロードし，ダブルクリックすると Software Install が開きます．
-`Install`を押すとインストールが開始されます．
+tobas_x.x.x_amd64.deb をダウンロードし，ダブルクリックすると Software Install が開きます．
+Install を押すとインストールが開始されます．
+インストールが完了すると，Applications に Tobas が追加されます．
 
 ![software_install](resources/installation/software_install.png)
 
