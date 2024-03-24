@@ -209,16 +209,6 @@ tobas_kdl_msgs/Vector pos  # [m]
 float64 yaw                # [rad]
 ```
 
-#### command/velocity_yaw (tobas_msgs/VelocityYaw)
-
-```txt
-CommandLevel level
-FrameId frame_id
-tobas_kdl_msgs/Vector vel  # [m/s]
-float64 yaw                # [rad]
-
-```
-
 #### command/rpy_thrust (tobas_msgs/RollPitchYawThrust)
 
 ```txt
