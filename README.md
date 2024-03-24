@@ -1,4 +1,4 @@
-# tobas_wiki
+# tobas_wiki_ja
 
 ## セットアップ
 
@@ -11,7 +11,7 @@ $ pip install -r requirements.txt
 1. MkDocs のサーバを起動
 
 ```bash
-$ cd tobas_wiki/
+$ cd tobas_wiki_ja/
 $ mkdocs serve  # If this command fails, add prefix "python -m"
 ```
 
