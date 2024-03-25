@@ -49,4 +49,5 @@ TODO: tobas-x.x.x がインストールされた Raspbian イメージをマイ�
 
 ![tobas_gcs](resources/installation/tobas_gcs.png)
 
-`raspberry_wifi`に接続しなくても Tobas は起動しますが，一部の機能が制限されます．
+- **注意:** Tobas の起動前にラズパイのアクセスポイントに接続する必要があります．
+- **注意:** ラズパイに接続しなくても Tobas は起動しますが，一部の機能が制限されます．
