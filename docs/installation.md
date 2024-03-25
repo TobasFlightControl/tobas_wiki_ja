@@ -47,6 +47,7 @@ Windows を使っている場合は WSL (Windows Subscription for Linux) を利�
 1. ラズパイのアクセスポイントに接続してください．SSID は`raspberry_wifi`，パスワードは`raspberry`です．
 1. Applications 内の Tobas をクリックすると GUI が起動します．
 
+![wifi](resources/gazebo_simulation/wifi.png)
 ![tobas_gcs](resources/installation/tobas_gcs.png)
 
 - **注意:** Tobas の起動前にラズパイのアクセスポイントに接続する必要があります．

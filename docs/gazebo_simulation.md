@@ -7,23 +7,15 @@ Tobas パッケージの作成とハードウェアセットアップは既に�
 
 ---
 
-ラズパイのアクセスポイントに接続します．
-SSID は`raspberry_wifi`，パスワードは`raspberry`です．
-
-![wifi](resources/gazebo_simulation/wifi.png)
-
-Applications から Tobas を起動し，左上の選択リストから`Simulation`を選択します．
+1. ラズパイのアクセスポイントに接続します．SSID は`raspberry_wifi`，パスワードは`raspberry`です．
+2. Applications から Tobas を起動します．
+3. 左上の選択リストから`Hardware Setup`を選択します．
+4. 右上の`Load`ボタンを押し，Setup Assistant で作成した`tobas_f450_config`を選択します．すると，`Start`ボタンが有効になります．
+5. ラズパイへの書き込みが済んでいなければ，`Send`ボタンを押して設定をラズパイに書き込みます．これには数分かかります．
 
 ![simulation_page](resources/gazebo_simulation/simulation_page.png)
 
-右上の`Load`ボタンを押し，Setup Assistant で作成した`tobas_f450_config`を選択します．
-すると，`Start`ボタンが有効になります．
-ハードウェアへの書き込みが済んでいなければ，`Send`ボタンを押して書き込みます．
-
-![simulation_page_load](resources/gazebo_simulation/simulation_page_load.png)
-
-`Start`ボタンを押すと Gazebo が起動し，ドローンが原点位置に配置されます．
-これには数十秒かかります．
+`Start`ボタンを押すと Gazebo が起動し，ドローンが原点位置に配置されます．これには数十秒かかります．
 
 ![gazebo](resources/gazebo_simulation/gazebo.png)
 
@@ -35,6 +27,8 @@ Applications から Tobas を起動し，左上の選択リストから`Simulati
 1. スロットルレバーを一番下まで下げます．
 1. `E-Stop`トグルを一度オンにしてからオフにすると，数秒後にモータがアームします．
 1. プロペラが回転し始めたら各レバーで操縦することができます．
+
+<span style="color: red;"><strong>警告: アーム後に E_STOP をオンにすると，全てのモータが緊急停止します．</strong></span>
 
 <!-- TODO -->
 <!-- ## ROS API で操作

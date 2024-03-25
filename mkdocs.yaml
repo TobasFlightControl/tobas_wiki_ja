@@ -9,7 +9,6 @@ nav:
       - Setup Assistant: setup_assistant.md
       - Hardware Setup: hardware_setup.md
       - Gazebo Simulation: gazebo_simulation.md
-      - Hardware in the Loop: hil.md
       - Flight Test: flight_test.md
   - For Developers:
       - ROS API: ros_api.md
