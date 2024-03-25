@@ -22,8 +22,8 @@ Windows を使っている場合は WSL (Windows Subscription for Linux) を利�
 
 ---
 
-1. tobas_x.x.x_amd64.deb をダウンロードしてください．
-1. Files から tobas_x.x.x_amd64.deb をダブルクリックすると，Software Install が起動します．
+1. `tobas_x.x.x_amd64.deb`をダウンロードしてください．
+1. Files から `tobas_x.x.x_amd64.deb`をダブルクリックすると，Software Install が起動します．
 1. Install を押すとインストールが開始されます．
 
 ![software_install](resources/installation/software_install.png)
@@ -32,12 +32,18 @@ Windows を使っている場合は WSL (Windows Subscription for Linux) を利�
 
 ---
 
-以下のハードウェアでフライトコントローラを構成します．
+### 必要なもの
 
 - <a href=https://www.raspberrypi.com/products/raspberry-pi-4-model-b/ target="_blank">Raspberry Pi Model 4B</a>
 - <a href=https://navio2.hipi.io/ target="_blank">Navio2</a>
+- 32GB 以上マイクロ SD カード (例: <a href=https://www.amazon.co.jp/gp/product/B0B21BXZ6V/ref=sw_img_1?smid=AN1VRQENFRJN5&th=1 target="\_blank">SanDisk Extreme 32GB</a>)
 
-<!-- TODO: tobas-x.x.x がインストールされた Raspbian イメージをマイクロ SD に書き込む -->
+### 手順
+
+1. `tobas_x.x.x_armhf.img`をダウンロードしてください．
+1. <a href=https://etcher.balena.io target="_blank">balenaEtcher</a>や
+   <a href=https://www.raspberrypi.com/software target="_blank">Raspberry Pi Imager</a>を用いて
+   `tobas_x.x.x_armhf.img`を書き込んでください．
 
 ## Tobas の起動
 
