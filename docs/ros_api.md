@@ -5,6 +5,9 @@
 
 ## トピック
 
+<!-- tobas_tools/constant.hppの内容 -->
+<!-- tobas_gazebo_plugins/common.hppの内容 -->
+
 ---
 
 ### センサデータ
@@ -144,7 +147,7 @@ float64[] effort    # [N or Nm]
 ```txt
 std_msgs/Header header
 
-Pose pose
+tobas_kdl_msgs/Frame frame
 tobas_kdl_msgs/Twist twist
 tobas_kdl_msgs/Accel accel
 
@@ -178,6 +181,15 @@ std_msgs/Header header
 float64[] data  # [0, 1]
 ```
 
+#### command/rotor_speeds (tobas_msgs/RotorSpeeds)
+
+各モータの回転数 (非負)．
+
+```txt
+std_msgs/Header header
+float64[] speeds  # [rad/s]
+```
+
 #### command/deflections (tobas_msgs/ControlSurfaceDeflections)
 
 固定翼の舵角．
@@ -190,21 +202,18 @@ float64[] deflections  # [deg]
 #### command/pos_vel_acc_yaw (tobas_msgs/PosVelAccYaw)
 
 ```txt
-CommandLevel level
-
-FrameId vel_frame
-FrameId acc_frame
-
-tobas_kdl_msgs/Vector pos  # [m]
-tobas_kdl_msgs/Vector vel  # [m/s]
-tobas_kdl_msgs/Vector acc  # [m/s^2]
-float64 yaw                # [rad]
+tobas_msgs/CommandLevel level
+tobas_msgs/FrameId frame_id  # The frame in whch velocity and acceleration are expressed
+tobas_kdl_msgs/Vector pos    # [m]
+tobas_kdl_msgs/Vector vel    # [m/s]
+tobas_kdl_msgs/Vector acc    # [m/s^2]
+float64 yaw                  # [rad]
 ```
 
 #### command/position_yaw (tobas_msgs/PositionYaw)
 
 ```txt
-CommandLevel level
+tobas_msgs/CommandLevel level
 tobas_kdl_msgs/Vector pos  # [m]
 float64 yaw                # [rad]
 ```
@@ -212,7 +221,7 @@ float64 yaw                # [rad]
 #### command/rpy_thrust (tobas_msgs/RollPitchYawThrust)
 
 ```txt
-CommandLevel level
+tobas_msgs/CommandLevel level
 tobas_kdl_msgs/Euler rpy  # [rad]
 float64 thrust            # [N]
 ```
@@ -220,15 +229,16 @@ float64 thrust            # [N]
 #### command/pose_twist_accel (tobas_msgs/PoseTwistAccelCommand)
 
 ```txt
-CommandLevel level
+tobas_msgs/CommandLevel level
+tobas_msgs/FrameId frame_id  # The frame in whch velocity and acceleration are expressed
 
-tobas_kdl_msgs/Vector pos    # Target global position [m]
-tobas_kdl_msgs/Vector vel    # Target global linear velocity [m/s]
-tobas_kdl_msgs/Vector acc    # Target global linear acceleration (feedforward) [m/s^2]
+tobas_kdl_msgs/Vector pos    # Target position [m]
+tobas_kdl_msgs/Vector vel    # Target linear velocity [m/s]
+tobas_kdl_msgs/Vector acc    # Target linear acceleration (feedforward) [m/s^2]
 
-tobas_kdl_msgs/Euler rpy     # Target global orientation [rad]
-tobas_kdl_msgs/Vector gyro   # Target local angular velocity [rad/s]
-tobas_kdl_msgs/Vector dgyro  # Target local angular acceleration (feedforward) [rad/s^2]
+tobas_kdl_msgs/Euler rpy     # Target orientation [rad]
+tobas_kdl_msgs/Vector gyro   # Target angular velocity wrt. the local coordinates [rad/s]
+tobas_kdl_msgs/Vector dgyro  # Target angular acceleration wrt. the local coordinates (feedforward) [rad/s^2]
 ```
 
 #### command/speed_roll_delta_pitch (tobas_msgs/SpeedRollDeltaPitch)
@@ -275,7 +285,7 @@ float64[] data  # [N or Nm]
 ```txt
 std_msgs/Header header
 
-Pose pose
+tobas_kdl_msgs/Frame frame
 tobas_kdl_msgs/Twist twist
 tobas_kdl_msgs/Accel accel
 
