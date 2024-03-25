@@ -3,34 +3,15 @@
 Tobas Setup Assistant は，Tobas を用いてドローンを飛ばすのに必要な設定ファイルを生成するための GUI です．
 前ページで作成した URDF を読み込み，プロペラの空気力学や制御器などの URDF には表現されていない項目の設定を行います．
 
-## catkin ワークスペースの作成
-
----
-
-Tobas Setup Assistant ではユーザの機体で Tobas を使用するのに必要な設定ファイルをまとめた ROS パッケージを作成します．
-それを使うためには catkin ワークスペースが必要であり，以下のコマンドで作成できます:
-
-```bash
-$ mkdir -p ~/catkin_ws/src
-$ cd ~/catkin_ws
-$ catkin init
-```
-
-`catkin_ws`を他の名前に置き換えることもできます．
-
 ## Setup Assistant の起動と URDF のロード
 
 ---
 
-ターミナルから Tobas Setup Assistant を起動します:
+Tobas を起動し，左上の選択リストから`Setup Assistant`を選択します．
 
-```bash
-$ roslaunch tobas_setup_assistant setup_assistant.launch
-```
+![start](resources/setup_assistant/start.png)
 
-![launch](resources/setup_assistant/launch.png)
-
-`Browse`ボタンを押して先程作成した URDF を選択し，`Load`ボタンを押すと，URDF がロードされます．
+`Load`ボタンを押して先程作成した URDF を選択すると，URDF がロードされます．
 画面左上の`Frames Tree`にはリンク名がツリー状に表示されており，リンク名をクリックすると中央のモデルビューで対応するリンクがハイライトされます．
 画面右上には全ての可動関節名が表示されており，バーを動かすと中央のモデルビューで対応する関節角が変化します．
 
@@ -69,7 +50,7 @@ $ roslaunch tobas_setup_assistant setup_assistant.launch
 ![propulsion_3](resources/setup_assistant/propulsion_3.png)
 
 `Motor Settings`ではモータのダイナミクスに関する設定を行います．
-複数の設定方法から選ぶことができ，`Set from experimental data`が望ましいのですが，
+複数の設定方法から選ぶことができ`Set from experimental data`が望ましいのですが，
 プロペラ込みのモータの実験データは持っていないため，今回は`Set from motor spec`を選択します．
 スペックシートを見ながら各項目に適切な値を入力します．
 
@@ -88,7 +69,7 @@ Static データをテーブルに転記してください．
 
 ![propulsion_5](resources/setup_assistant/propulsion_5.png)
 
-以下のような CSV ファイルを作成して`Load CSV`からロードすることもできます:
+以下のような CSV ファイルを作成して Load CSV からロードすることもできます:
 
 ```csv
 RPM,CT,CP
@@ -111,9 +92,9 @@ RPM,CT,CP
 ```
 
 他の 3 枚のプロペラについても設定を行う必要がありますが，回転方向以外は同じなのでコピーします．
-左のタブから順にタブ上部の`Copy from left tab`を押して左のタブの設定をコピーします．
+左のタブから順にタブ上部の `Copy from left tab` を押して左のタブの設定をコピーします．
 `propeller1`の設定が他のプロペラにも反映されていることを確認し，各プロペラの`Rotating Direction`を適切に設定します．
-リンク名と位置の対応がわからない場合は，`Frames Tree`のハイライト機能を用いて確認してください．
+リンク名と位置の対応がわからない場合は`Frames Tree`のハイライト機能を用いて確認してください．
 
 ## Fixed Wing
 
@@ -145,15 +126,6 @@ RPM,CT,CP
 カメラ，LiDAR，オドメトリを発行する機器の設定を行います．
 今回はいずれも搭載しないためパスします．
 
-## RC Transmitter
-
----
-
-プロポに関する設定を行います．
-`The number of flight modes`を 2 に設定します．
-
-![rc_transmitter](resources/setup_assistant/rc_transmitter.png)
-
 ## Controller
 
 ---
@@ -161,8 +133,6 @@ RPM,CT,CP
 制御器に関する設定を行います．
 コンボボックスを開くと使用可能な制御器が表示されます．
 今回は`Multirotor PID`を選択します．
-`Flight Modes`は`RC Transmitter`タブで設定した個数のフライトモードが表示されています．
-`Flight Mode 1`を`RollPitchYawThrust`に，`Flight Mode 2`を`PosVelAccYaw`に設定します．
 
 ![controller](resources/setup_assistant/controller.png)
 
@@ -198,17 +168,6 @@ Setup Assistant によって生成される Tobas パッケージの管理者の
 
 Tobas パッケージを生成するディレクトリとパッケージ名を設定します．
 `Parent Directory`を catkin ワークスペースの`src/`以下に設定し，`Package Name`に適当な名前を入力してください．
-`Generate`ボタンを押すと，指定したディレクトリに Tobas パッケージが生成され，Setup Assistant は自動的にシャットダウンします．
+`Generate`ボタンを押すと，指定したディレクトリに Tobas パッケージが生成されます．
 
 ![ros_package](resources/setup_assistant/ros_package.png)
-
-## Build
-
----
-
-catkin ワークスペース以下に移動し，生成した Tobas パッケージをビルドします:
-
-```bash
-$ cd ~/catkin_ws
-$ catkin build tobas_f450_config
-```
