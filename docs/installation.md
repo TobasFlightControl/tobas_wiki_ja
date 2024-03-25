@@ -37,7 +37,7 @@ Windows を使っている場合は WSL (Windows Subscription for Linux) を利�
 - <a href=https://www.raspberrypi.com/products/raspberry-pi-4-model-b/ target="_blank">Raspberry Pi Model 4B</a>
 - <a href=https://navio2.hipi.io/ target="_blank">Navio2</a>
 
-TODO: tobas-x.x.x がインストールされた Raspbian イメージをマイクロ SD に書き込む
+<!-- TODO: tobas-x.x.x がインストールされた Raspbian イメージをマイクロ SD に書き込む -->
 
 ## Tobas の起動
 
