@@ -1,86 +1,45 @@
 # Gazebo Simulation
 
-前ページで作成した Tobas パッケージを用いて，ドローンのシミュレーションを行います．
-
-## 前準備
-
----
-
-catkin ワークスペースの環境変数を現在のシェルに読み込ませます:
-
-```bash
-$ source ~/catkin_ws/devel/setup.bash
-```
-
-このコマンドは端末を開く (ターミナルのページを増やす) ごとに実行する必要がありますが，
-`~/.bashrc`に書き込むことで端末を開いた時に自動で実行されるようになり，手間が省けます:
-
-```bash
-$ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
-```
+ドローンの物理シミュレーションを行います．
+Tobas パッケージの作成とハードウェアセットアップは既に済んでいることを前提とします．
 
 ## Gazebo シミュレーションの起動
 
 ---
 
-以下のコマンドでシミュレーションを起動します:
+ラズパイのアクセスポイントに接続します．
+SSID は`raspberry_wifi`，パスワードは`raspberry`です．
 
-```bash
-$ roslaunch tobas_f450_config gazebo.launch
-```
+![wifi](resources/gazebo_simulation/wifi.png)
 
-モデリングしたドローンが原点位置に配置されています．
+Applications から Tobas を起動し，左上の選択リストから`Simulation`を選択します．
 
-![launch](resources/gazebo_simulation/launch.png)
+![simulation_page](resources/gazebo_simulation/simulation_page.png)
 
-## Tobas ソフトウェアの起動
+右上の`Load`ボタンを押し，Setup Assistant で作成した`tobas_f450_config`を選択します．
+すると，`Start`ボタンが有効になります．
+ハードウェアへの書き込みが済んでいなければ，`Send`ボタンを押して書き込みます．
 
----
+![simulation_page_load](resources/gazebo_simulation/simulation_page_load.png)
 
-以下のコマンドで，制御器や観測器などの主要なソフトウェアを起動します:
+`Start`ボタンを押すと Gazebo が起動し，ドローンが原点位置に配置されます．
+これには数十秒かかります．
 
-```bash
-$ roslaunch tobas_f450_config bringup.launch
-```
+![gazebo](resources/gazebo_simulation/gazebo.png)
 
-緑色で`[INFO] Controller is ready`と表示されたら，ドローンの飛行準備が整ったので，ROS API でドローンを操作することができます．
-
-![bringup](resources/gazebo_simulation/bringup.png)
-
-## ドローンの遠隔操作
+## プロポでの操縦
 
 ---
 
-### キーボードから操作
+1. プロポの電源を入れます．
+1. スロットルレバーを一番下まで下げます．
+1. `E-Stop`トグルを一度オンにしてからオフにすると，数秒後にモータがアームします．
+1. プロペラが回転し始めたら各レバーで操縦することができます．
 
-PC のキーボードからドローンを操作することができます．
-以下のコマンドを実行します:
+<!-- TODO -->
+<!-- ## ROS API で操作
 
-```bash
-$ roslaunch tobas_f450_config keyboard_teleop.launch
-```
-
-すると，Gazebo 上のドローンが離陸し，一定の高度でホバリングします．
-端末を見ると操作方法が表示されており，端末にフォーカスした状態でキーを押すことでドローンの位置を操作できます．
-
-![keyboard_teleop](resources/gazebo_simulation/keyboard_teleop.png)
-
-### GUI で操作
-
-GUI でドローンを操作することもできます．
-先程の keyboard_teleop.launch を Ctrl + C でシャットダウンし，以下のコマンドを実行します:
-
-```bash
-$ roslaunch tobas_f450_config gui_teleop.launch
-
-```
-
-バーを動かすことでドローンの位置を操作できます．
-今回は回転翼機なので操作できるのは`x`，`y`，`z`，`yaw`のみであり，`roll`，`pitch`を直接操作することはできません．
-
-![gui_teleop](resources/gazebo_simulation/gui_teleop.png)
-
-### ROS API で操作
+---
 
 ROS API 用いてドローンに指令を送ることもできます．
 ユーザのプログラムからドローンの情報にアクセスできるため，アプリケーションを作成する際に有用です．
@@ -207,4 +166,4 @@ $ rosrun rqt_reconfigure rqt_reconfigure
 
 オンラインで調整可能な全てのパラメータが表示され，水平バー，エディタ等で値を調整することができます．
 パラメータ名にカーソルを重ねると，パラメータの説明文が表示されます．
-詳しくは<a href=https://wiki.ros.org/rqt_reconfigure>rqt_reconfigure | ROS</a>をご覧ください．
+詳しくは<a href=https://wiki.ros.org/rqt_reconfigure>rqt_reconfigure | ROS</a>をご覧ください． -->
