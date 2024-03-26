@@ -42,9 +42,11 @@ Windows を使っている場合は WSL (Windows Subscription for Linux) を利�
 ### 手順
 
 1. `tobas_x.x.x_armhf.img`をダウンロードしてください．
-1. <a href=https://etcher.balena.io target="_blank">balenaEtcher</a>や
-   <a href=https://www.raspberrypi.com/software target="_blank">Raspberry Pi Imager</a>を用いて
-   `tobas_x.x.x_armhf.img`を書き込んでください．
+1. マイクロ SD カードを，適当な SD カードリーダーを介して PC に接続してください．
+1. Applications から balenaEtcher を起動してください．
+1. `Flash from file`から img ファイルを選択し，`Select target`からマイクロ SD カードを選択してください．
+1. `Flash!`を押すとマイクロ SD カードに Linux OS イメージが書き込まれます．これには数十分かかることがあります．
+1. マイクロ SD カードを PC から取り外し，ラズパイに挿入してください．
 
 ## Tobas の起動
 
