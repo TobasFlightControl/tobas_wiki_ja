@@ -81,34 +81,12 @@ DJI F450 のフレームキットを使用しています．
 <iframe width="474" height="843" src="https://www.youtube.com/embed/L7nRlG1OgyY" title="Tobas | The Drone That Stays Stable with a Swinging Arm (2024/02/15) #drone" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <br>
 
-## 前提知識
+## 動作環境
 
 ---
 
-### Linux
-
-Tobas は Linux ディストリビューションの 1 つである Ubuntu 20.04 LTS で動作します．
-コマンドラインについて最低限の知識をもっていることを想定しています．
-
-### ROS
-
-Tobas は内部通信や API に ROS (Robot Operating System)</a>を使用します．
-ROS の知識がなくてもドローンを飛ばすことはできますが，Tobas の機能を最大限利用するために ROS の知識を持っておくことを勧めます．
-以下が参考になります:
-
-- <a href=https://wiki.ros.org/ja target="_blank">ROS Wiki</a>
-- <a href=https://www.kohgakusha.co.jp/books/detail/978-4-7775-2168-5 target="_blank">ROS ではじめるロボットプログラミング</a>
-- <a href=https://www.oreilly.co.jp/books/9784873118093 target="_blank">プログラミング ROS</a>
-
-### 3D CAD
-
-Tobas を使用するためには，ドローンの 3D モデルを元に URDF を作成する必要があります．
-3D モデルがなくても URDF を作成することはできますが，パーツの位置関係や質量特性の計算の際に CAD が使えると便利です．
-例えば以下のようなものがあります:
-
-- <a href=https://www.autodesk.co.jp/products/fusion-360 target="_blank">Fusion 360</a>
-- <a href=https://www.autodesk.co.jp/products/inventor target="_blank">Inventor</a>
-- <a href=https://www.solidworks.com/ja target="_blank">SolidWorks</a>
+- Ubuntu 20.04 LTS
+- ROS Noetic
 
 ## 連絡先
 
