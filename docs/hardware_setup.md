@@ -52,10 +52,10 @@ T10J の場合はチャンネル 1 からチャンネル 4 までは上の表で
 ---
 
 1. ラズパイのアクセスポイントに接続します．SSID は`raspberry_wifi`，パスワードは`raspberry`です．
-2. Applications から Tobas を起動します．
-3. 左上の選択リストから`Hardware Setup`を選択します．
-4. 右上の`Load`ボタンを押し，Setup Assistant で作成した`tobas_f450_config`を選択します．
-5. `Send`ボタンを押して設定をラズパイに書き込みます．これには数分かかります．
+1. Applications から Tobas を起動します．
+1. 左上の選択リストから`Hardware Setup`を選択します．
+1. 右上の`Load`ボタンを押し，Setup Assistant で作成した`tobas_f450_config`を選択します．
+1. `Send`ボタンを押して設定をラズパイに書き込みます．これには数分かかります．
 
 ## 各種設定とキャリブレーション
 

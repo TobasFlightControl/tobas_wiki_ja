@@ -8,10 +8,10 @@ Tobas パッケージの作成とハードウェアセットアップは既に�
 ---
 
 1. ラズパイのアクセスポイントに接続します．SSID は`raspberry_wifi`，パスワードは`raspberry`です．
-2. Applications から Tobas を起動します．
-3. 左上の選択リストから`Hardware Setup`を選択します．
-4. 右上の`Load`ボタンを押し，Setup Assistant で作成した`tobas_f450_config`を選択します．すると，`Start`ボタンが有効になります．
-5. ラズパイへの書き込みが済んでいなければ，`Send`ボタンを押して設定をラズパイに書き込みます．これには数分かかります．
+1. Applications から Tobas を起動します．
+1. 左上の選択リストから`Simulation`を選択します．
+1. 右上の`Load`ボタンを押し，Setup Assistant で作成した`tobas_f450_config`を選択します．すると，`Start`ボタンが有効になります．
+1. ラズパイへの書き込みが済んでいなければ，`Send`ボタンを押して設定をラズパイに書き込みます．これには数分かかります．
 
 ![simulation_page](resources/gazebo_simulation/simulation_page.png)
 
