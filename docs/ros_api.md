@@ -168,6 +168,10 @@ float64[9] linear_velocity_covariance       # [m^2/s^2]
 float64[9] angular_velocity_covariance      # [rad^2/s^2]
 float64[9] linear_acceleration_covariance   # [m^2/s^2/4]
 float64[9] angular_acceleration_covariance  # [rad^2/s^4]
+
+int8 status
+int8 NO_ERROR = 0
+int8 POSITION_LOST = -1
 ```
 
 #### wind (tobas_msgs/Wind)
@@ -306,6 +310,10 @@ float64[9] linear_velocity_covariance       # [m^2/s^2]
 float64[9] angular_velocity_covariance      # [rad^2/s^2]
 float64[9] linear_acceleration_covariance   # [m^2/s^2/4]
 float64[9] angular_acceleration_covariance  # [rad^2/s^4]
+
+int8 status
+int8 NO_ERROR = 0
+int8 POSITION_LOST = -1
 ```
 
 #### ground_truth/wind (tobas_msgs/Wind)
@@ -320,6 +328,52 @@ tobas_kdl_msgs/Vector vel  # [m/s]
 ## サービス
 
 ---
+
+### Common
+
+#### get_arm (tobas_msgs/GetArm)
+
+モータのアーム状態を取得する．
+
+```txt
+---
+bool arming
+```
+
+#### set_arm (tobas_msgs/SetArm)
+
+モータのアーム状態を取得する．
+
+```txt
+bool arming
+bool ignore_pre_arm_check
+---
+bool success
+string message
+```
+
+#### pre_arm_check (std_srvs/Trigger)
+
+アーム可能かどうかの確認．
+
+```txt
+---
+bool success
+string message
+```
+
+### Navio2
+
+#### enable_pwm (tobas_msgs/EnablePwm)
+
+PWM を有効化する．
+
+```txt
+uint64 channel
+bool enable
+---
+bool success
+```
 
 ### Gazebo
 
