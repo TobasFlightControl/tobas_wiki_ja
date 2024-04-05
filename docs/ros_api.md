@@ -29,6 +29,7 @@ CPU の状態．
 ```txt
 std_msgs/Header header
 float64 temperature  # [celsius]
+uint64 frequency     # [Hz]
 ```
 
 #### rc_input (tobas_msgs/RCInput)
