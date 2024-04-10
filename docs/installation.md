@@ -17,6 +17,7 @@ Windows を使っている場合は WSL (Windows Subscription for Linux) を利�
 - Windows から BitLocker を無効にする (「解除中」ではまだ未完)
 - BIOS の設定画面から Secure Boot を無効にする
 - Ubuntu のインストール時に WiFi に接続し，Install third-party にチェックをつける
+- Ubuntu 22.04 LTS へのアップグレードは行わない
 
 ## PC への Tobas のインストール
 
