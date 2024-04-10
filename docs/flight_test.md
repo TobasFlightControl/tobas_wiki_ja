@@ -2,6 +2,9 @@
 
 シミュレーションが成功したことを確認し，実機での試験飛行を行います．
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EldjS8AnBjw?si=mdp2SFPWEta51UOP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<br>
+
 ## 開始の手順
 
 ---
@@ -20,6 +23,3 @@
 1. E_STOP (CH5) をオンにし，モータを停止します．
 1. `Control System`の`Poweroff`ボタンからラズパイと GUI をシャットダウンします．
 1. ラズパイとモータへの給電を切ります．
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EldjS8AnBjw?si=mdp2SFPWEta51UOP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<br>
