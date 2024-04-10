@@ -19,6 +19,16 @@ Tobas パッケージの作成とハードウェアセットアップは既に�
 
 ![gazebo](resources/gazebo_simulation/gazebo.png)
 
+## 管制システム
+
+---
+
+左上の選択リストから`Control System`を選択してください．
+管制システムでは，機体の状態監視とコマンド指令等を行うことができます．
+終了するときは，右上の`Shutdown`ボタンからラズパイと GUI をシャットダウンした後，ラズパイの電源を切ってください．
+
+![control_system](resources/gazebo_simulation/control_system.png)
+
 ## プロポでの操縦
 
 ---
