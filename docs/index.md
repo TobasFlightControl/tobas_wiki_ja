@@ -88,6 +88,12 @@ DJI F450 のフレームキットを使用しています．
 - Ubuntu 20.04 LTS
 - ROS Noetic
 
+## システム全体図
+
+---
+
+![system_overview](resources/installation/system_overview.png)
+
 ## 連絡先
 
 ---
