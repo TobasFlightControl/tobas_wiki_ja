@@ -442,7 +442,7 @@ int8 UNKNOWN_ERROR = -5
 # Feedback
 ```
 
-#### landing_action (tobas_msgs/Land)
+#### land_action (tobas_msgs/Land)
 
 着陸する．
 
