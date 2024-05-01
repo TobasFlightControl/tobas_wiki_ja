@@ -423,7 +423,7 @@ float64 gust_interval
 # Goal
 tobas_msgs/CommandLevel level
 float64 target_altitude  # [m]
-float64 target_duration  # [s]
+float64 duration         # [s]
 float64 timeout          # [s] By default, timeout is infinite.
 
 ---

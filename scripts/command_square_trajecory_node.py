@@ -23,7 +23,7 @@ if __name__ == "__main__":
     # アクションゴールを作成
     takeoff_goal = TakeoffGoal()
     takeoff_goal.target_altitude = ALTITUDE
-    takeoff_goal.target_duration = INTERVAL
+    takeoff_goal.duration = INTERVAL
 
     # アクションゴールを送信
     takeoff_client.send_goal_and_wait(takeoff_goal)
