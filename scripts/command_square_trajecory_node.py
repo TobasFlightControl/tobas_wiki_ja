@@ -29,8 +29,7 @@ if __name__ == "__main__":
     takeoff_client.send_goal_and_wait(takeoff_goal)
 
     # アクションの結果を取得
-    takeoff_result: TakeoffResult = takeoff_client.get_result()
-    if takeoff_result.error_code < 0:
+    if takeoff_client.get_state() != actionlib.GoalStatus.SUCCEEDED:
         rospy.logerr("Takeoff action failed.")
         rospy.signal_shutdown()
 
