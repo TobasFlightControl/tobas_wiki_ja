@@ -3,7 +3,7 @@
 import rospy
 import actionlib
 
-from tobas_msgs.msg import TakeoffAction, TakeoffGoal, TakeoffResult, PosVelAccYaw
+from tobas_msgs.msg import TakeoffAction, TakeoffGoal, PosVelAccYaw
 
 ALTITUDE = 3.0  # [m]
 SIDE_LENGTH = 5.0  # [m]
