@@ -27,7 +27,7 @@ Windows を使っている場合は WSL (Windows Subscription for Linux) を利�
 1. Files から `tobas_x.x.x_amd64.deb`をダブルクリックすると，Software Install が起動します．これには数分かかることがあります．
 1. Install を押すとインストールが開始され，Applications に Tobas と Tobas Install が追加されます．これには数分かかることがあります．
 1. Applications から Tobas Install を起動すると，ターミナルが開き追加のインストールが開始します．これには数十分かかることがあります．
-   ターミナルの最後に`Installation finished successfully.`と表示されればインストール成功です．ターミナルを閉じてください．
+   ターミナルの最後に`Installation finished successfully.`と表示されればインストール成功です．ターミナルを閉じて終了してください．
 
 ![software_install](resources/installation/software_install.png)
 

@@ -119,11 +119,18 @@ RPM,CT,CP
 
 ![gps](resources/setup_assistant/gps.png)
 
-## 追加センサ (Camera, LiDAR, Odometry)
+## オプションデバイス (Camera, LiDAR, Odometry, Tether Station)
 
 ---
 
-カメラ，LiDAR，オドメトリを発行する機器の設定を行います．
+オプションで搭載する機器の設定を行います．以下のような機器がサポートされています:
+
+- RGB カメラ (RGB Camera)
+- 深度カメラ (Depth Camera)
+- LiDAR (LiDAR)
+- カスタム位置発行機器 (Odometry)
+- ドローンスパイダー (Tether Station)
+
 今回はいずれも搭載しないためパスします．
 
 ## Controller
@@ -131,7 +138,7 @@ RPM,CT,CP
 ---
 
 制御器に関する設定を行います．
-コンボボックスを開くと使用可能な制御器が表示されます．
+選択リストをクリックすると使用可能な制御器が表示されます．
 今回は`Multirotor PID`を選択します．
 
 ![controller](resources/setup_assistant/controller.png)
