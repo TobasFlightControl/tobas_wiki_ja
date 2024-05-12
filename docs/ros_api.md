@@ -40,11 +40,15 @@ RC レシーバーから取得した RC 入力．
 std_msgs/Header header
 float64 roll    # CH1: [-1, 1]
 float64 pitch   # CH2: [-1, 1]
-float64 thrust  # CH3: [0, 1]
+float64 thrust  # CH3: [-1, 1]
 float64 yaw     # CH4: [-1, 1]
 uint8 mode      # CH5: Flight Mode
 bool e_stop     # CH7: Emergency Stop
 bool gpsw       # CH8: General Purpose Switch
+
+uint8 MODE_PROGRAM = 0
+uint8 MODE_STABILIZE = 1
+uint8 MODE_ACROBAT = 2
 ```
 
 #### imu (sensor_msgs/Imu)
@@ -106,6 +110,9 @@ float64[9] position_covariance   # [m^2]
 # Velocity
 tobas_kdl_msgs/Vector ground_speed  # [m/s]
 float64[9] velocity_covariance      # [m^2/s^2]
+
+# Delay
+duration delay  # The communication delay. It is only available when connected to the Internet.
 ```
 
 #### point_cloud (sensor_msgs/PointCloud)
@@ -175,6 +182,16 @@ int8 NO_ERROR = 0
 int8 POSITION_LOST = -1
 ```
 
+#### euler (tobas_kdl_msgs/Euler)
+
+推定された機体姿勢をオイラー角に変換したもの．
+
+```txt
+float64 roll   # [rad]
+float64 pitch  # [rad]
+float64 yaw    # [rad]
+```
+
 #### wind (tobas_msgs/Wind)
 
 推定された風速．
@@ -188,9 +205,18 @@ tobas_kdl_msgs/Vector vel  # [m/s]
 
 ユーザはこれらのトピックを発行することでドローンを操作することができます．
 
+#### command/pwm (tobas_msgs/PwmArray)
+
+各 ESC に指令される PWM のデューティサイクル (実機のみ)．
+
+```txt
+std_msgs/Header header
+tobas_msgs/Pwm[] pwm
+```
+
 #### command/throttles (tobas_msgs/Throttles)
 
-各 ESC に指令されるスロットル．
+各 ESC に指令されるスロットル (シミュレーションのみ)．
 
 ```txt
 std_msgs/Header header
@@ -463,4 +489,30 @@ int8 UNKNOWN_ERROR = -4
 ---
 
 # Feedback
+```
+
+#### move_action (tobas_msgs/Move)
+
+指定した位置に移動する．
+
+```txt
+# Goal
+tobas_msgs/CommandLevel level
+float64 target_latitude    # [m]
+float64 target_longitude   # [m]
+float64 target_altitude    # [m]
+float64 acceptance_radius  # [m]
+float64 duration           # [s]
+float64 timeout            # [s] Timeout after command duration. By default, timeout is infinite.
+
+---
+
+# Result
+
+---
+
+# Feedback
+tobas_kdl_msgs/Vector target_position   # [m]
+tobas_kdl_msgs/Vector current_position  # [m]
+tobas_kdl_msgs/Vector position_error    # [m]
 ```
