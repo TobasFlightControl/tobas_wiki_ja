@@ -1,4 +1,4 @@
-# Installation
+# インストール
 
 ## Ubuntu 20.04 LTS のデュアルブート
 

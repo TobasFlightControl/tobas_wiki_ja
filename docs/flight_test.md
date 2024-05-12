@@ -1,6 +1,6 @@
-# Flight Test
+# 飛行試験
 
-シミュレーションが成功したことを確認し，実機での試験飛行を行います．
+シミュレーションが成功したことを確認し，実機での飛行試験を行います．
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EldjS8AnBjw?si=mdp2SFPWEta51UOP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <br>
