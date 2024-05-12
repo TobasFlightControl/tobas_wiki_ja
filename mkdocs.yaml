@@ -12,5 +12,6 @@ nav:
       - Flight Test: flight_test.md
   - For Developers:
       - ROS API: ros_api.md
+      - User Code: user_code.md
   - Additional Information:
       - Trouble Shooting: trouble_shooting.md
