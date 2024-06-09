@@ -13,5 +13,6 @@ nav:
   - For Developers:
       - ROS API: ros_api.md
       - User Code: user_code.md
+      - Custom Controller/Observer: custom_controller_observer.md
   - Additional Information:
       - Trouble Shooting: trouble_shooting.md

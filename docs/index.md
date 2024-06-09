@@ -93,7 +93,7 @@ DJI F450 のフレームキットを使用しています．
 
 ---
 
-![system_overview](resources/installation/system_overview.png)
+![system_overview](resources/system_overview.png)
 
 ## 連絡先
 
