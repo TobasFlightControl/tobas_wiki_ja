@@ -8,7 +8,7 @@ Tobas は，近年のドローン市場の拡大に伴う機体の大型化と�
 
 ---
 
-- URDF を元に，機体の構造や質量特性を考慮
+- <a href=http://forestofazumino.web.fc2.com/ros/ros_urdf_xacro.html target="_blank">URDF</a> を元に，機体の構造や質量特性を考慮
 - 推進系や固定翼の空力特性を考慮
 - モータと推進系の連成による非線形ダイナミクスを考慮
 - 関節角の変化によるダイナミクスの変化を考慮
