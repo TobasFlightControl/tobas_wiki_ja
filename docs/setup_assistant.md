@@ -7,7 +7,7 @@ Tobas Setup Assistant は，Tobas を用いてドローンを飛ばすのに必�
 
 ---
 
-Tobas を起動し，左上の選択リストから`Setup Assistant`を選択します．
+Tobas を起動し，ヘッダー左の選択リストから`Setup Assistant`を選択します．
 
 ![start](resources/setup_assistant/start.png)
 
