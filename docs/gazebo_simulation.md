@@ -9,9 +9,9 @@ Tobas パッケージの作成とハードウェアセットアップは既に�
 
 1. ラズパイのアクセスポイントに接続します．SSID は`raspberry_wifi`，パスワードは`raspberry`です．
 1. Applications から Tobas を起動します．
-1. 左上の選択リストから`Simulation`を選択します．
-1. 右上の`Load`ボタンを押し，Setup Assistant で作成した`tobas_f450_config`を選択します．すると，`Start`ボタンが有効になります．
+1. ヘッダー中央の`Load`ボタンを押し，Setup Assistant で作成した`tobas_f450.TBS`を選択します．
 1. ラズパイへの書き込みが済んでいなければ，`Send`ボタンを押して設定をラズパイに書き込みます．これには数分かかります．
+1. ヘッダー左の選択リストから`Simulation`を選択します．`Start`ボタンが有効化されていることを確認します．
 
 ![simulation_page](resources/gazebo_simulation/simulation_page.png)
 
@@ -34,7 +34,7 @@ Tobas パッケージの作成とハードウェアセットアップは既に�
 
 ---
 
-左上の選択リストから`Control System`を選択してください．
+ヘッダー左の選択リストから`Control System`を選択してください．
 管制システムでは，機体に関する様々な状態をリアルタイムで監視することができます．
 
 <img src="../resources/gazebo_simulation/control_system_1.png" alt="control_system_1" width="49%"> <img src="../resources/gazebo_simulation/control_system_2.png" alt="control_system_2" width="49%">
