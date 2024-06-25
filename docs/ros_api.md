@@ -51,28 +51,26 @@ uint8 MODE_STABILIZE = 1
 uint8 MODE_ACROBAT = 2
 ```
 
-#### imu (sensor_msgs/Imu)
+#### imu (tobas_msgs/Imu)
 
 6 軸 IMU (ジャイロ + 加速度)．
 
 ```txt
 std_msgs/Header header
-geometry_msgs/Quaternion orientation
-float64[9] orientation_covariance          # [rad^2]
-geometry_msgs/Vector3 angular_velocity     # [rad/s]
-float64[9] angular_velocity_covariance     # [rad^2/s^2]
-geometry_msgs/Vector3 linear_acceleration  # [m/s^2]
-float64[9] linear_acceleration_covariance  # [m^2/s^4]
+tobas_kdl_msgs/Vector gyro                  # [rad/s]
+tobas_kdl_msgs/Vector accel                 # [m/s^2]
+tobas_eigen_msgs/Matrix3d gyro_covariance   # [rad^2/s^2]
+tobas_eigen_msgs/Matrix3d accel_covariance  # [m^2/s^4]
 ```
 
-#### magnetic_field (sensor_msgs/MagneticField)
+#### magnetic_field (tobas_msgs/MagneticField)
 
 3 軸の地磁気．
 
 ```txt
 std_msgs/Header header
-geometry_msgs/Vector3 magnetic_field
-float64[9] magnetic_field_covariance
+tobas_kdl_msgs/Vector magnetic_field  # [-]
+tobas_eigen_msgs/Matrix3d covariance  # [-]
 ```
 
 #### air_pressure (sensor_msgs/FluidPressure)
@@ -170,12 +168,12 @@ tobas_kdl_msgs/Frame frame
 tobas_kdl_msgs/Twist twist
 tobas_kdl_msgs/Accel accel
 
-float64[9] position_covariance              # [m^2]
-float64[9] orientation_covariance           # [rad^2]
-float64[9] linear_velocity_covariance       # [m^2/s^2]
-float64[9] angular_velocity_covariance      # [rad^2/s^2]
-float64[9] linear_acceleration_covariance   # [m^2/s^2/4]
-float64[9] angular_acceleration_covariance  # [rad^2/s^4]
+tobas_eigen_msgs/Matrix3d position_covariance              # [m^2]
+tobas_eigen_msgs/Matrix3d orientation_covariance           # [rad^2]
+tobas_eigen_msgs/Matrix3d linear_velocity_covariance       # [m^2/s^2]
+tobas_eigen_msgs/Matrix3d angular_velocity_covariance      # [rad^2/s^2]
+tobas_eigen_msgs/Matrix3d linear_acceleration_covariance   # [m^2/s^2/4]
+tobas_eigen_msgs/Matrix3d angular_acceleration_covariance  # [rad^2/s^4]
 
 int8 status
 int8 NO_ERROR = 0
@@ -331,12 +329,12 @@ tobas_kdl_msgs/Frame frame
 tobas_kdl_msgs/Twist twist
 tobas_kdl_msgs/Accel accel
 
-float64[9] position_covariance              # [m^2]
-float64[9] orientation_covariance           # [rad^2]
-float64[9] linear_velocity_covariance       # [m^2/s^2]
-float64[9] angular_velocity_covariance      # [rad^2/s^2]
-float64[9] linear_acceleration_covariance   # [m^2/s^2/4]
-float64[9] angular_acceleration_covariance  # [rad^2/s^4]
+tobas_eigen_msgs/Matrix3d position_covariance              # [m^2]
+tobas_eigen_msgs/Matrix3d orientation_covariance           # [rad^2]
+tobas_eigen_msgs/Matrix3d linear_velocity_covariance       # [m^2/s^2]
+tobas_eigen_msgs/Matrix3d angular_velocity_covariance      # [rad^2/s^2]
+tobas_eigen_msgs/Matrix3d linear_acceleration_covariance   # [m^2/s^2/4]
+tobas_eigen_msgs/Matrix3d angular_acceleration_covariance  # [rad^2/s^4]
 
 int8 status
 int8 NO_ERROR = 0
