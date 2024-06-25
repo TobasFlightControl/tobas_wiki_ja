@@ -11,6 +11,7 @@ Tobas を起動し，左上の選択リストから`Setup Assistant`を選択し
 
 ![start](resources/setup_assistant/start.png)
 
+`Create new Tobas configuration package`にチェックが入っていることを確認します．
 `Load`ボタンを押して先程作成した URDF を選択すると，URDF がロードされます．
 画面左上の`Frames Tree`にはリンク名がツリー状に表示されており，リンク名をクリックすると中央のモデルビューで対応するリンクがハイライトされます．
 画面右上には全ての可動関節名が表示されており，バーを動かすと中央のモデルビューで対応する関節角が変化します．
@@ -35,30 +36,33 @@ Tobas を起動し，左上の選択リストから`Setup Assistant`を選択し
 
 推進系 (プロペラ) の設定を行います．
 `Available Links`にプロペラとして利用可能なリンクが表示されています．
-表示されない場合は，URDF Builder でプロペラリンクのジョイントタイプが`Continuous`になっているかどうかを確認してください．
+表示されない場合は，URDF Builder でプロペラリンクのジョイントタイプが`Continuous`になっていることを確認してください．
 
-![propulsion_1](resources/setup_assistant/propulsion_1.png)
+![propulsion/available_links](resources/setup_assistant/propulsion/available_links.png)
 
 リンク名の右端の`Add`ボタンを押すと，モデルビューに推力方向が矢印で表示されると同時にそのプロペラの設定タブが追加されます．
 推力の向きが間違っている場合は，URDF Builder でジョイントの`Axis`を修正してください．
 
-![propulsion_2](resources/setup_assistant/propulsion_2.png)
+![propulsion/selected_links](resources/setup_assistant/propulsion/selected_links.png)
 
-`propeller1`の設定を行います．
-スペックシートを見ながら`ESC Settings`と`Blade Geometry`の各項目に適切な値を入力します．
+`propeller_0`リンクの設定を行います．
+各パーツのデータシートを見ながら，`ESC`，`Motor`，`Propeller`の各項目に適切な値を入力します．
 
-![propulsion_3](resources/setup_assistant/propulsion_3.png)
+![propulsion/esc](resources/setup_assistant/propulsion/esc.png)
+![propulsion/motor_1](resources/setup_assistant/propulsion/motor_1.png)
+![propulsion/motor_2](resources/setup_assistant/propulsion/motor_2.png)
+![propulsion/propeller](resources/setup_assistant/propulsion/propeller.png)
 
-`Motor Settings`ではモータのダイナミクスに関する設定を行います．
-複数の設定方法から選ぶことができ`Set from experimental data`が望ましいのですが，
-プロペラ込みのモータの実験データは持っていないため，今回は`Set from motor spec`を選択します．
-スペックシートを見ながら各項目に適切な値を入力します．
+`Electrodynamics`ではモータのダイナミクスに関する設定を行います．
+複数の設定方法から選ぶことができ`Estimate from Experimental Data`が望ましいのですが，
+プロペラ込みのモータの実験データは持っていないため，今回は`Estimate from Motor Spec`を選択します．
 
-![propulsion_4](resources/setup_assistant/propulsion_4.png)
+![propulsion/electrodynamics](resources/setup_assistant/propulsion/electrodynamics.png)
 
 `Aerodynamics`ではプロペラの空力特性の設定を行います．
-こちらも複数の設定方法から選ぶことができますが，精度の観点から`Set from blade geometry`は勧めません．
-今回は`Set from UIUC propeller data site`を選択します．
+こちらも複数の設定方法から選ぶことができ，
+精度の観点から`Estimate from Thrust Stand Data`または`Estimate from UIUC Propeller Data Site`が望ましいです．
+今回は`Estimate from UIUC Propeller Data Site`を選択します．
 <a href=https://m-selig.ae.illinois.edu/props/propDB.html target="_blank">UIUC Propeller Data Site</a>
 とは様々なプロペラの空力特性の実験データをまとめたサイトであり，
 例えば<a href=https://www.apcprop.com/ target="_blank">APC</a>のプロペラならば大抵のものはデータを得ることができます．
@@ -67,7 +71,7 @@ Tobas を起動し，左上の選択リストから`Setup Assistant`を選択し
 で代用します．
 Static データをテーブルに転記してください．
 
-![propulsion_5](resources/setup_assistant/propulsion_5.png)
+![propulsion/aerodynamics](resources/setup_assistant/propulsion/aerodynamics.png)
 
 以下のような CSV ファイルを作成して Load CSV からロードすることもできます:
 
@@ -93,7 +97,7 @@ RPM,CT,CP
 
 他の 3 枚のプロペラについても設定を行う必要がありますが，回転方向以外は同じなのでコピーします．
 左のタブから順にタブ上部の `Copy From Left` を押して左のタブの設定をコピーします．
-`propeller1`の設定が他のプロペラにも反映されていることを確認し，各プロペラの`Rotating Direction`を適切に設定します．
+`propeller_0`リンクの設定が他のプロペラリンクにも反映されていることを確認し，各プロペラの`Rotating Direction`を適切に設定します．
 リンク名と位置の対応がわからない場合は`Frames Tree`のハイライト機能を用いて確認してください．
 
 ## Fixed Wing
@@ -110,14 +114,14 @@ RPM,CT,CP
 推進系，固定翼駄面以外の関節の設定を行います．
 今回はプロペラ以外の可動関節は無いためパスします．
 
-## オンボードセンサ (IMU, Barometer, GPS)
+## オンボードセンサ (IMU, Barometer, GNSS)
 
 ---
 
 9 軸 IMU，気圧センサ，GPS はフライトコントローラに組み込まれています．
-基本的に設定はデフォルトで構いませんが，GNSS レシーバの位置がルートフレームから離れているため，今回 GPS のオフセットだけは修正します．
+基本的に設定はデフォルトで構いませんが，GNSS レシーバの位置がルートフレームから離れているため，今回は GNSS レシーバのオフセットのみ修正します．
 
-![gps](resources/setup_assistant/gps.png)
+![gnss](resources/setup_assistant/gnss.png)
 
 ## オプションデバイス (Camera, LiDAR, Odometry, Tether Station)
 
@@ -138,7 +142,9 @@ RPM,CT,CP
 ---
 
 制御器に関する設定を行います．
-選択リストをクリックすると使用可能な制御器が表示されます．
+選択リストを開くと制御器のリストが表示されます．
+URDF やこれまでの設定を元に使用可能な制御器が自動で判定されており，
+制御器名に`(Not Applicable)`と表示されていないもののみ使用することができます．
 今回は`Multirotor PID`を選択します．
 
 ![controller](resources/setup_assistant/controller.png)
@@ -158,6 +164,7 @@ Gazebo のシミュレーション環境の設定を行います．
 `Gravity`は標準重力加速度で固定されています．
 経緯度と海抜高度は，デフォルトでは日本経緯度原点と日本水準原点に設定されています．
 今回はさほど重要ではないためデフォルトのままとします．
+また，空力系のモデル化誤差の程度を設定でき，今回はこれもデフォルトのままとします．
 
 ![simulation](resources/setup_assistant/simulation.png)
 
@@ -175,6 +182,6 @@ Setup Assistant によって生成される Tobas パッケージの管理者の
 
 Tobas パッケージを生成するディレクトリとパッケージ名を設定します．
 `Parent Directory`を catkin ワークスペースの`src/`以下に設定し，`Package Name`に適当な名前を入力してください．
-`Generate`ボタンを押すと，指定したディレクトリに Tobas パッケージが生成されます．
+`Generate`ボタンを押すと，指定したディレクトリに Tobas パッケージ (\*.TBS) が生成されます．
 
 ![ros_package](resources/setup_assistant/ros_package.png)
