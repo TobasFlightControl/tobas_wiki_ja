@@ -203,15 +203,6 @@ tobas_kdl_msgs/Vector vel  # [m/s]
 
 ユーザはこれらのトピックを発行することでドローンを操作することができます．
 
-#### command/pwm (tobas_msgs/PwmArray)
-
-各 ESC に指令される PWM のデューティサイクル (実機のみ)．
-
-```txt
-std_msgs/Header header
-tobas_msgs/Pwm[] pwm
-```
-
 #### command/rotor_speeds (tobas_msgs/RotorSpeeds)
 
 各モータの回転数 (非負)．
