@@ -212,15 +212,6 @@ std_msgs/Header header
 tobas_msgs/Pwm[] pwm
 ```
 
-#### command/throttles (tobas_msgs/Throttles)
-
-各 ESC に指令されるスロットル (シミュレーションのみ)．
-
-```txt
-std_msgs/Header header
-float64[] data  # [0, 1]
-```
-
 #### command/rotor_speeds (tobas_msgs/RotorSpeeds)
 
 各モータの回転数 (非負)．
