@@ -369,19 +369,6 @@ bool success
 string message
 ```
 
-### Navio2
-
-#### enable_pwm (tobas_msgs/EnablePwm)
-
-PWM を有効化する．
-
-```txt
-uint64 channel
-bool enable
----
-bool success
-```
-
 ### Gazebo
 
 #### gazebo/charge_battery (std_srvs/Empty)
