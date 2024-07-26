@@ -82,7 +82,7 @@ DJI F450 のフレームキットを使用しています．
 <iframe width="474" height="843" src="https://www.youtube.com/embed/L7nRlG1OgyY" title="Tobas | The Drone That Stays Stable with a Swinging Arm (2024/02/15) #drone" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <br>
 
-## システム要件 <!-- cf. https://www.solidworks.com/ja/support/system-requirements -->
+## PC のシステム要件 <!-- cf. https://www.solidworks.com/ja/support/system-requirements -->
 
 ---
 
