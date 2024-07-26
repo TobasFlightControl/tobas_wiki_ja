@@ -82,18 +82,16 @@ DJI F450 のフレームキットを使用しています．
 <iframe width="474" height="843" src="https://www.youtube.com/embed/L7nRlG1OgyY" title="Tobas | The Drone That Stays Stable with a Swinging Arm (2024/02/15) #drone" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <br>
 
-## 動作環境
+## システム要件 <!-- cf. https://www.solidworks.com/ja/support/system-requirements -->
 
 ---
 
-- Ubuntu 20.04 LTS
-- ROS Noetic
-
-## システム全体図
-
----
-
-![system_overview](resources/system_overview.png)
+| 要件 | 必須                          | 推奨               |
+| :--- | :---------------------------- | ------------------ |
+| OS   | Ubuntu 20.04 LTS (ROS Noetic) |                    |
+| RAM  | 8GB                           | 16GB               |
+| CPU  | AMD64 (x86-64)                |                    |
+| GPU  |                               | NVIDIA GeForce RTX |
 
 ## 連絡先
 
