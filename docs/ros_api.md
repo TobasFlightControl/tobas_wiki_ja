@@ -379,7 +379,7 @@ string message
 ---
 ```
 
-#### gazebo/set_wind_parameters (tobas_gazebo_plugins/SetWindParameters)
+#### gazebo/set_wind_parameters (tobas_gazebo_plugins/SetWindParams)
 
 シミュレーション中の風を生成するパラメータを設定する．
 
