@@ -5,7 +5,7 @@
 
 ## トピック
 
-<!-- tobas_tools/constant.hppの内容 -->
+<!-- tobas_tools/constants.hppの内容 -->
 <!-- tobas_gazebo_plugins/common.hppの内容 -->
 
 ---
@@ -203,6 +203,15 @@ tobas_kdl_msgs/Vector vel  # [m/s]
 
 ユーザはこれらのトピックを発行することでドローンを操作することができます．
 
+#### command/throttles (tobas_msgs/ThrottleArray)
+
+各モータのスロットル (0 ~ 1)．
+
+```txt
+std_msgs/Header header
+tobas_msgs/Throttle[] throttles
+```
+
 #### command/rotor_speeds (tobas_msgs/RotorSpeeds)
 
 各モータの回転数 (非負)．
@@ -300,7 +309,7 @@ float64[] data  # [N or Nm]
 
 ### Gazebo
 
-#### ground_truth/odom (tobas_msgs/Odometry)
+#### gazebo/ground_truth/odom (tobas_msgs/Odometry)
 
 起動位置に対する位置，速度，加速度の真値．
 
@@ -323,7 +332,7 @@ int8 NO_ERROR = 0
 int8 POSITION_LOST = -1
 ```
 
-#### ground_truth/wind (tobas_msgs/Wind)
+#### gazebo/ground_truth/wind (tobas_msgs/Wind)
 
 グローバル座標系における風速の真値．
 
@@ -379,29 +388,44 @@ string message
 ---
 ```
 
-#### gazebo/set_wind_parameters (tobas_gazebo_plugins/SetWindParams)
+#### gazebo/get_wind_parameters (tobas_gazebo_msgs/GetWindParams)
+
+シミュレーション中の風を生成するパラメータを取得する．
+
+```txt
+---
+tobas_gazebo_msgs/WindParams params
+```
+
+#### gazebo/set_wind_parameters (tobas_gazebo_msgs/SetWindParams)
 
 シミュレーション中の風を生成するパラメータを設定する．
 
 ```txt
-# Request
-float64 mean_speed         # [m/s] 地面からの高度20ftで測った平均風速
-float64 direction          # [rad] 風向 (ヨー角)
-float64 gust_speed_factor  # [-] 定常風速に対する突風成分の風速の比率
-float64 gust_duration      # [s] 突風の発生時間
-float64 gust_interval      # [s] 突風が過ぎ去ってから次の突風が来るまでの時間
-
+tobas_gazebo_msgs/WindParams params
 ---
-
-# Response
 bool success
+tobas_gazebo_msgs/WindParams params
+```
 
-# 設定された値
-float64 mean_speed
-float64 direction
-float64 gust_speed_factor
-float64 gust_duration
-float64 gust_interval
+#### gazebo/get_tether_parameters (tobas_gazebo_msgs/GetTetherParams)
+
+テザーステーションに関するパラメータを取得する．
+
+```txt
+---
+tobas_gazebo_msgs/TetherParams params
+```
+
+#### gazebo/set_tether_parameters (tobas_gazebo_msgs/SetTetherParams)
+
+テザーステーションに関するパラメータを設定する．
+
+```txt
+tobas_gazebo_msgs/TetherParams params
+---
+bool success
+tobas_gazebo_msgs/TetherParams params
 ```
 
 ## アクション
