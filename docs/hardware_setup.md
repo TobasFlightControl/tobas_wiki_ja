@@ -1,26 +1,26 @@
 # ハードウェア設定
 
 フライトコントローラハードウェアの設定を行います．
-`Radio Calibration`以外はシミュレーションの後でも構いません．
 
 ## 実機の作成
 
 ---
 
-以下のサイトを参考に，実機を作成します．
+設計通りに実機を作成します．
+下の画像では GNSS アンテナとプロペラはついていません．
+また，フライトコントローラと地上基地局の通信は WiFi で行うため，テレメトリモジュールは不要です．
 
-- <a href=https://docs.emlid.com/navio2/hardware-setup target="_blank">Hardware setup | Navio2</a>
-- <a href=https://docs.emlid.com/navio2/ardupilot/typical-setup-schemes target="_blank">Typical setup schemes | Navio2</a>
+<!-- Navio2のような詳細な手順 -->
+<!-- cf. https://docs.emlid.com/navio2/hardware-setup/ -->
+<!-- cf. https://docs.emlid.com/navio2/ardupilot/typical-setup-schemes/ -->
 
 <img src="../resources/hardware_setup/f450_1.png" alt="F450_1" width="49%"> <img src="../resources/hardware_setup/f450_2.png" alt="F450_2" width="49%">
 
-その際に以下の点に注意してください:
+実機を組み立てる際は以下の点に注意してください:
 
 - モータの回転方向が Setup Assistant の設定と一致している
 - ESC のピン番号が Setup Assistant の設定と一致している
 - フライトコントローラに物理的な振動対策を施す
-
-また，フライトコントローラと地上基地局の通信は WiFi で行うため，テレメトリモジュールは不要です．
 
 ## プロポの設定
 
