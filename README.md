@@ -1,9 +1,9 @@
 # tobas_wiki_ja
 
-## セットアップ
+## セットアップ (Ubuntu 24.04 LTS)
 
 ```bash
-$ pip install -r requirements.txt
+$ sudo apt install mkdocs
 ```
 
 ## ローカルでの実行
@@ -12,7 +12,7 @@ $ pip install -r requirements.txt
 
 ```bash
 $ cd tobas_wiki_ja/
-$ mkdocs serve  # If this command fails, add prefix "python -m"
+$ mkdocs serve
 ```
 
 2. [ローカル上のウェブサービス](http://127.0.0.1:8000/)を開く
