@@ -1,12 +1,13 @@
 # ROS API
 
 全ての API を網羅してはおらず，主要なものについてのみ記載しています．
-詳しくは実行時に`$ rostopic list`等でご確認ください．
+詳しくは実行時に`$ ros2 topic list`等でご確認ください．
+`remote_interface`名前空間内の API を使うと，PC 内のノードから FC と通信することもできます．
 
 ## トピック
 
-<!-- tobas_tools/constants.hppの内容 -->
-<!-- tobas_gazebo_plugins/common.hppの内容 -->
+<!-- tobas_constants/constants.hppの内容 -->
+<!-- tobas_gazebo_plugins/common/constants.hppの内容 -->
 
 ---
 
@@ -30,6 +31,7 @@ CPU の状態．
 std_msgs/Header header
 float64 temperature  # [celsius]
 uint64 frequency     # [Hz]
+float64 load         # [-]
 ```
 
 #### rc_input (tobas_msgs/RCInput)
@@ -108,9 +110,6 @@ float64[9] position_covariance   # [m^2]
 # Velocity
 tobas_kdl_msgs/Vector ground_speed  # [m/s]
 float64[9] velocity_covariance      # [m^2/s^2]
-
-# Delay
-duration delay  # The communication delay. It is only available when connected to the Internet.
 ```
 
 #### point_cloud (sensor_msgs/PointCloud)
@@ -123,20 +122,9 @@ geometry_msgs/Point32[] points
 sensor_msgs/ChannelFloat32[] channels
 ```
 
-#### external_odometry (nav_msgs/Odometry)
-
-VIO (Visual Inertial Odometry) などの外部の位置推定機器から取得したオドメトリ．
-
-```txt
-std_msgs/Header header
-string child_frame_id
-geometry_msgs/PoseWithCovariance pose
-geometry_msgs/TwistWithCovariance twist
-```
-
 #### rotor_speeds (tobas_msgs/RotorSpeeds)
 
-各モータの回転数．
+各ロータの回転数．
 
 ```txt
 std_msgs/Header header
@@ -180,23 +168,21 @@ int8 NO_ERROR = 0
 int8 POSITION_LOST = -1
 ```
 
-#### euler (tobas_kdl_msgs/Euler)
+#### latency (tobas_msgs/Latency)
 
-推定された機体姿勢をオイラー角に変換したもの．
-
-```txt
-float64 roll   # [rad]
-float64 pitch  # [rad]
-float64 yaw    # [rad]
-```
-
-#### wind (tobas_msgs/Wind)
-
-推定された風速．
+IMU 取得からロータコマンドまでのレイテンシ．
 
 ```txt
 std_msgs/Header header
-tobas_kdl_msgs/Vector vel  # [m/s]
+builtin_interfaces/Duration data
+```
+
+#### arming (std_msgs/Bool)
+
+ロータのアーム状態．
+
+```
+bool data
 ```
 
 ### コマンド
@@ -205,7 +191,7 @@ tobas_kdl_msgs/Vector vel  # [m/s]
 
 #### command/throttles (tobas_msgs/ThrottleArray)
 
-各モータのスロットル (0 ~ 1)．
+各ロータのスロットル (0 ~ 1)．
 
 ```txt
 std_msgs/Header header
@@ -214,7 +200,7 @@ tobas_msgs/Throttle[] throttles
 
 #### command/rotor_speeds (tobas_msgs/RotorSpeeds)
 
-各モータの回転数 (非負)．
+各ロータの回転数 (非負)．
 
 ```txt
 std_msgs/Header header
@@ -241,20 +227,12 @@ tobas_kdl_msgs/Vector acc    # [m/s^2]
 float64 yaw                  # [rad]
 ```
 
-#### command/position_yaw (tobas_msgs/PositionYaw)
-
-```txt
-tobas_msgs/CommandLevel level
-tobas_kdl_msgs/Vector pos  # [m]
-float64 yaw                # [rad]
-```
-
-#### command/rpy_thrust (tobas_msgs/RollPitchYawThrust)
+#### command/rpy_throttle (tobas_msgs/RollPitchYawThrottle)
 
 ```txt
 tobas_msgs/CommandLevel level
 tobas_kdl_msgs/Euler rpy  # [rad]
-float64 thrust            # [N]
+float64 throttle          # [0, 1]
 ```
 
 #### command/pose_twist_accel (tobas_msgs/PoseTwistAccelCommand)
@@ -280,34 +258,44 @@ float64 roll         # [rad]
 float64 delta_pitch  # [rad]
 ```
 
-#### command/joint_positions (tobas_msgs/JointPositions)
+#### command/joint_positions (tobas_msgs/JointCommandArray)
 
 カスタムジョイントに対する位置指令．
 
 ```txt
-string[] name
-float64[] data  # [m or rad]
+std_msgs/Header header
+tobas_msgs/JointCommand[] commands
 ```
 
-#### command/joint_velocities (tobas_msgs/JointVelocities)
+#### command/joint_velocities (tobas_msgs/JointCommandArray)
 
 カスタムジョイントに対する速度指令．
 
 ```txt
-string[] name
-float64[] data  # [m/s or rad/s]
+std_msgs/Header header
+tobas_msgs/JointCommand[] commands
 ```
 
-#### command/joint_efforts (tobas_msgs/JointEfforts)
+#### command/joint_efforts (tobas_msgs/JointCommandArray)
 
 カスタムジョイントに対する力指令．
 
 ```txt
-string[] name
-float64[] data  # [N or Nm]
+std_msgs/Header header
+tobas_msgs/JointCommand[] commands
 ```
 
 ### Gazebo
+
+#### battery (tobas_msgs/Battery)
+
+バッテリーの状態の真値．
+
+```txt
+std_msgs/Header header
+float64 voltage  # [V]
+float64 current  # [A]
+```
 
 #### gazebo/ground_truth/odom (tobas_msgs/Odometry)
 
@@ -341,38 +329,28 @@ std_msgs/Header header
 tobas_kdl_msgs/Vector vel  # [m/s]
 ```
 
+#### gazebo/ground_truth/rotor_state (tobas_msgs/msg/RotorState)
+
+```txt
+std_msgs/Header header
+float64 speed    # [rad/s]
+float64 current  # [A]
+
+```
+
 ## サービス
 
 ---
 
 ### Common
 
-#### get_arm (tobas_msgs/GetArm)
-
-モータのアーム状態を取得する．
-
-```txt
----
-bool arming
-```
-
 #### set_arm (tobas_msgs/SetArm)
 
-モータのアーム状態を取得する．
+ロータのアーム状態を変更する．
 
 ```txt
 bool arming
 bool ignore_pre_arm_check
----
-bool success
-string message
-```
-
-#### pre_arm_check (std_srvs/Trigger)
-
-アーム可能かどうかの確認．
-
-```txt
 ---
 bool success
 string message
@@ -439,20 +417,15 @@ tobas_gazebo_msgs/TetherParams params
 ```txt
 # Goal
 tobas_msgs/CommandLevel level
-float64 target_altitude  # [m]
-float64 duration         # [s]
-float64 timeout          # [s] By default, timeout is infinite.
+float64 target_altitude     # [m]
+float64 altitude_tolerance  # [m]
+float64 duration            # [s]
+float64 timeout             # [s] Timeout after command duration. By default, timeout is infinite.
 
 ---
 
 # Result
-int8 error_code
-int8 NO_ERROR = 0
-int8 NOT_READY = -1
-int8 INVALID_GOAL = -2
-int8 PREEMPTED = -3
-int8 TIMEOUT = -4
-int8 UNKNOWN_ERROR = -5
+string message
 
 ---
 
@@ -470,12 +443,7 @@ tobas_msgs/CommandLevel level
 ---
 
 # Result
-int8 error_code
-int8 NO_ERROR = 0
-int8 NOT_READY = -1
-int8 INVALID_GOAL = -2
-int8 PREEMPTED = -3
-int8 UNKNOWN_ERROR = -4
+string message
 
 ---
 
@@ -499,11 +467,12 @@ float64 timeout            # [s] Timeout after command duration. By default, tim
 ---
 
 # Result
+string message
 
 ---
 
 # Feedback
-tobas_kdl_msgs/Vector target_position   # [m]
-tobas_kdl_msgs/Vector current_position  # [m]
-tobas_kdl_msgs/Vector position_error    # [m]
+geometry_msgs/Vector3 target_position   # [m]
+geometry_msgs/Vector3 current_position  # [m]
+geometry_msgs/Vector3 position_error    # [m]
 ```
