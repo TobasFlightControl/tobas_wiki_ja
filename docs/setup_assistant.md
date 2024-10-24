@@ -1,7 +1,7 @@
 # Tobas Setup Assistant
 
 Tobas Setup Assistant は，Tobas を用いてドローンを飛ばすのに必要な設定ファイルを生成するための GUI です．
-前ページで作成した URDF を読み込み，プロペラの空気力学や制御器などの URDF には表現されていない項目の設定を行います．
+前ページで作成した URDF を読み込み，プロペラの空気力学，モータの電気力学，センサノイズなどの URDF には表現されていない項目の設定を行います．
 
 ## Setup Assistant の起動と URDF のロード
 
@@ -49,20 +49,15 @@ Tobas を起動し，ヘッダー左の選択リストから`Setup Assistant`を
 各パーツのデータシートを見ながら，`ESC`，`Motor`，`Propeller`の各項目に適切な値を入力します．
 
 ![propulsion/esc](resources/setup_assistant/propulsion/esc.png)
-![propulsion/motor_1](resources/setup_assistant/propulsion/motor_1.png)
-![propulsion/motor_2](resources/setup_assistant/propulsion/motor_2.png)
+
+![propulsion/motor](resources/setup_assistant/propulsion/motor.png)
+
 ![propulsion/propeller](resources/setup_assistant/propulsion/propeller.png)
 
-`Electrodynamics`ではモータのダイナミクスに関する設定を行います．
-複数の設定方法から選ぶことができ`Estimate from Experimental Data`が望ましいのですが，
-プロペラ込みのモータの実験データは持っていないため，今回は`Estimate from Motor Spec`を選択します．
-
-![propulsion/electrodynamics](resources/setup_assistant/propulsion/electrodynamics.png)
-
 `Aerodynamics`ではプロペラの空力特性の設定を行います．
-こちらも複数の設定方法から選ぶことができ，
-精度の観点から`Estimate from Thrust Stand Data`または`Estimate from UIUC Propeller Data Site`が望ましいです．
-今回は`Estimate from UIUC Propeller Data Site`を選択します．
+複数の設定方法から選ぶことができ，
+精度の観点から`Estimate from Thrust Stand Data`または`Estimate from UIUC Propeller Data`が望ましいです．
+今回は`Estimate from UIUC Propeller Data`を選択します．
 <a href=https://m-selig.ae.illinois.edu/props/propDB.html target="_blank">UIUC Propeller Data Site</a>
 とは様々なプロペラの空力特性の実験データをまとめたサイトであり，
 例えば<a href=https://www.apcprop.com/ target="_blank">APC</a>のプロペラならば大抵のものはデータを得ることができます．
@@ -95,9 +90,15 @@ RPM,CT,CP
 6768,0.1199,0.0483
 ```
 
-他の 3 枚のプロペラについても設定を行う必要がありますが，回転方向以外は同じなのでコピーします．
-左のタブから順にタブ上部の `Copy From Left` を押して左のタブの設定をコピーします．
-`propeller_0`リンクの設定が他のプロペラリンクにも反映されていることを確認し，各プロペラの`Rotating Direction`を適切に設定します．
+`Electrodynamics`ではモータのダイナミクスに関する設定を行います．
+複数の設定方法から選ぶことができ`Estimate from Experimental Data`が望ましいのですが，
+プロペラ込みのモータの実験データは持っていないため，今回は`Estimate from Motor Spec`を選択します．
+
+![propulsion/electrodynamics](resources/setup_assistant/propulsion/electrodynamics.png)
+
+他の 3 枚のプロペラについても同様の設定を行う必要がありますが，回転方向以外は同じなのでコピーします．
+タブ上部の `Copy To All` を押して`propeller_0`の設定を他の全てのプロペラリンクにコピーします．
+`propeller_0`の設定が他のリンクにも反映されていることを確認し，各プロペラの`Rotating Direction`を適切に設定します．
 リンク名と位置の対応がわからない場合は`Frames Tree`のハイライト機能を用いて確認してください．
 
 ## Fixed Wing
@@ -123,6 +124,7 @@ RPM,CT,CP
 
 ![gnss](resources/setup_assistant/gnss.png)
 
+<!--
 ## オプションデバイス (Camera, LiDAR, Odometry, Tether Station)
 
 ---
@@ -132,10 +134,10 @@ RPM,CT,CP
 - RGB カメラ (RGB Camera)
 - 深度カメラ (Depth Camera)
 - LiDAR (LiDAR)
-- カスタム位置発行機器 (Odometry)
 - ドローンスパイダー (Tether Station)
 
 今回はいずれも搭載しないためパスします．
+-->
 
 ## Controller
 
@@ -156,12 +158,22 @@ URDF やこれまでの設定を元に使用可能な制御器が自動で判定
 状態推定器に関する設定を行います．
 基本的にはデフォルトのままで構いません．
 
+![observer](resources/setup_assistant/observer.png)
+
+## Hardware
+
+---
+
+使用するフライトコントローラハードウェアを設定します．
+Tobas の最初のバージョンである Aso を選択します．
+
+![hardware](resources/setup_assistant/hardware.png)
+
 ## Simulation
 
 ---
 
 Gazebo のシミュレーション環境の設定を行います．
-`Gravity`は標準重力加速度で固定されています．
 経緯度と海抜高度は，デフォルトでは日本経緯度原点と日本水準原点に設定されています．
 今回はさほど重要ではないためデフォルトのままとします．
 また，空力系のモデル化誤差の程度を設定でき，今回はこれもデフォルトのままとします．
@@ -181,7 +193,8 @@ Setup Assistant によって生成される Tobas パッケージの管理者の
 ---
 
 Tobas パッケージを生成するディレクトリとパッケージ名を設定します．
-`Parent Directory`を catkin ワークスペースの`src/`以下に設定し，`Package Name`に適当な名前を入力してください．
+`Parent Directory`を colcon ワークスペースの`src/`以下に設定します．今回はデフォルトのままとします．
+`Package Name`に適当なパッケージ名を設定します．こちらも今回はデフォルトのままとします．
 `Generate`ボタンを押すと，指定したディレクトリに Tobas パッケージ (\*.TBS) が生成されます．
 
 ![ros_package](resources/setup_assistant/ros_package.png)
