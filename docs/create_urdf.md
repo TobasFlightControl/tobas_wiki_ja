@@ -262,13 +262,14 @@ Visual と同じく Mesh を選択してもよいのですが，
 ![frame/collision_2](resources/create_urdf/frame/collision_2.png)
 
 Inertial タブではリンクの質量特性を設定します．
-Origin にはリンクの重心を，Mass にはリンクの質量を，Inertia にはリンクの重心回りの慣性テンソルの要素を設定します．
+Center of Mass にはリンクの重心を，Mass にはリンクの質量を，Inertia with regard to CoM にはリンクの重心回りの慣性テンソルの要素を設定します．
 CAD でのモデリングの際に座標系を NWU 座標系に合わせているため，CAD のプロパティから取得した値をそのまま転記すればよいです．
 もし CAD の座標系がずれていると，ここで調整が必要になります．
-Visual と異なり Inertial は可視化されないため，座標系がずれていると確認が困難です．
-また，全て SI 単位系 (m, kg, kg\*m^2) であることに注意してください．
+画面左上の Show Inertial のチェックを入れると，設定した質量特性を実現する材質均一の直方体が表示されます．
+機体のアームの高さに薄い直方体が表示され，機体の質量特性と等価だと言われても概ね納得できます．
 
-![frame/inertial](resources/create_urdf/frame/inertial.png)
+![frame/inertial_1](resources/create_urdf/frame/inertial_1.png)
+![frame/inertial_2](resources/create_urdf/frame/inertial_2.png)
 
 ## バッテリーリンクの設定
 
@@ -284,7 +285,7 @@ Add ボタンを押すと，Visual オブジェクトが追加されます．
 Origin は原点のままにします．
 LiPo バッテリーはほぼ直方体なので，メッシュファイルは使わずに Geometry の Type に Box を選択します．
 Length，Width，Height に実際のバッテリーの大きさを入力します．
-Material は実際のバッテリーが青を基調としているため青 ((R, G, B) = (0, 0, 1)) に設定します．
+Material を青色 ((R, G, B) = (0, 0, 1)) に設定します．
 
 ![battery/visual_1](resources/create_urdf/battery/visual_1.png)
 ![battery/visual_2](resources/create_urdf/battery/visual_2.png)
@@ -304,14 +305,16 @@ Origin と Geometry を Visual と全く同じように設定します．
 
 Inertial タブでリンクの質量特性を設定します．
 バッテリーの質量特性を直方体で近似することにします．
-すると重心は Joint の原点に一致するため，Origin の要素を全て 0 に設定します．
+重心は Joint の原点に一致するため，Center of Mass の要素を全て 0 に設定します．
 Mass にバッテリーの質量を入力します．
 Inertia の Box Inertia をクリックするとダイアログが表示され，
 X，Y，Z に先程の Length，Width，Height をそれぞれ入力すると，直方体の慣性テンソルがタブ内に反映されます．
-ixx に比べて iyy と izz が大きく，矛盾は無さそうだということがわかります．
+Show Collision のチェックを外して Show Inertial に入れると，
+質量等価の直方体が Visual タブで設定した直方体と正確に一致しており，矛盾は無さそうだということがわかります．
 
 ![battery/inertial_1](resources/create_urdf/battery/inertial_1.png)
 ![battery/inertial_2](resources/create_urdf/battery/inertial_2.png)
+![battery/inertial_3](resources/create_urdf/battery/inertial_3.png)
 
 このように，プリミティブ形状のみを用いてリンクを定義することもできます．
 リンクをパラメトリックに記述でき，修正が容易になるという利点があるため，試作段階では積極的に活用すべきでしょう．
@@ -351,19 +354,22 @@ Origin と Cylinder の Radius，Length を丁度 Visual オブジェクトを�
 
 Inertial タブでリンクの質量特性を設定します．
 Collision と同じく円柱で近似することにします．
-Origin を Collision のそれと等しい値に設定し，Mass にプロペラの質量を入力します．
+Center of Mass を Collision の Origin と等しい値に設定し，Mass にプロペラの質量を入力します．
 Inertia の Cylinder Inertia をクリックするとダイアログが表示され，
 Radius，Length に Collision のそれらをそれぞれ入力すると，円柱の慣性テンソルがタブ内に反映されます．
-izz に比べて ixx と iyy が大きく，矛盾は無さそうだということがわかります．
+Show Collision のチェックを外して Show Inertial に入れると，
+ちょうどプロペラに重なる位置に等価質量の直方体が表示され，矛盾は無さそうだということがわかります．
 
 ![propeller/inertial_1](resources/create_urdf/propeller/inertial_1.png)
 ![propeller/inertial_2](resources/create_urdf/propeller/inertial_2.png)
+![propeller/inertial_3](resources/create_urdf/propeller/inertial_3.png)
 
-プロペラは全部で 4 枚なので他の 3 枚の設定を行うのですが，内容はほとんど同じなので`propeller1`をクローンすると早いです．
+プロペラは全部で 4 枚なので他の 3 枚の設定を行うのですが，内容はほとんど同じなので`propeller1`をクローンします．
 `propeller1`が選択された状態で Link ツリーを右クリックし，Clone Link を選択すると，
 オリジナルとリンク・ジョイント名のみが異なる`propeller1_1`が作成されます．
+リンク名`propeller1_1`を`propeller_2`に変更し，ジョイント名`propeller1_joint_1`を`propeller2_joint`に変更します．
 今回，それぞれのプロペラはジョイント原点の符号と Visual のメッシュファイルのみが異なります．
-`propeller1_1`の Joint タブから Origin の符号を修正し，Visual タブの Geometry の Path を修正します．
+`propeller2`の Joint タブから Origin の符号を修正し，Visual タブの Geometry の Path を修正します．
 同じ要領でもう 2 枚プロペラを増やし，合計 4 枚のプロペラを設定します．
 
 ![propeller/clone](resources/create_urdf/propeller/clone.png)
