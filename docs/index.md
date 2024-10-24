@@ -94,6 +94,8 @@ DJI F450 のフレームキットを使用しています．
 | CPU  | AMD64 (x86-64)                 |                    |
 | GPU  |                                | NVIDIA GeForce RTX |
 
+<br>
+
 ## 連絡先
 
 ---
