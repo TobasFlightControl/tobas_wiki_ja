@@ -7,7 +7,7 @@
 ## トピック
 
 <!-- tobas_constants/constants.hppの内容 -->
-<!-- tobas_gazebo_plugins/common/constants.hppの内容 -->
+<!-- tobas_gazebo_common/constants.hppの内容 -->
 
 ---
 
