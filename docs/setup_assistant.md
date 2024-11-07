@@ -90,12 +90,6 @@ RPM,CT,CP
 6768,0.1199,0.0483
 ```
 
-`Electrodynamics`ではモータのダイナミクスに関する設定を行います．
-複数の設定方法から選ぶことができ`Estimate from Experimental Data`が望ましいのですが，
-プロペラ込みのモータの実験データは持っていないため，今回は`Estimate from Motor Spec`を選択します．
-
-![propulsion/electrodynamics](resources/setup_assistant/propulsion/electrodynamics.png)
-
 他の 3 枚のプロペラについても同様の設定を行う必要がありますが，回転方向以外は同じなのでコピーします．
 タブ上部の `Copy To All` を押して`propeller_0`の設定を他の全てのプロペラリンクにコピーします．
 `propeller_0`の設定が他のリンクにも反映されていることを確認し，各プロペラの`Rotating Direction`を適切に設定します．
