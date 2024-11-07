@@ -12,7 +12,12 @@
 
 ### ESC
 
-Tobas は DShot600 で ESC と通信するため，それに対応したものを選定してください．
+Tobas は Bidirectional DShot 300 で ESC と通信するため，それに対応したものを選定してください．
+少なくとも以下のファームウェアは対応しています．
+
+- <a href=https://github.com/bitdump/BLHeli/tree/master/BLHeli_32%20ARM target="_blank">BLHeli_32</a> (2024 年 6 月にサポート終了)
+- <a href=https://github.com/AlkaMotors/AM32-MultiRotor-ESC-firmware target="_blank">AM32</a>
+- <a href=https://github.com/bird-sanctuary/bluejay target="_blank">bluejay</a>
 
 ### プロペラ
 
