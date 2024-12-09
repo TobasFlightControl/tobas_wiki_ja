@@ -19,6 +19,10 @@
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 float64 voltage  # [V]
 float64 current  # [A]
 ```
@@ -29,7 +33,11 @@ CPU の状態．
 
 ```txt
 std_msgs/Header header
-float64 temperature  # [celsius]
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+float64 temperature  # [degC]
 uint64 frequency     # [Hz]
 float64 load         # [-]
 ```
@@ -40,49 +48,81 @@ RC レシーバーから取得した RC 入力．
 
 ```txt
 std_msgs/Header header
-float64 roll    # CH1: [-1, 1]
-float64 pitch   # CH2: [-1, 1]
-float64 thrust  # CH3: [-1, 1]
-float64 yaw     # CH4: [-1, 1]
-uint8 mode      # CH5: Flight Mode
-bool e_stop     # CH7: Emergency Stop
-bool gpsw       # CH8: General Purpose Switch
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+float64 roll      # CH1: [-1, 1]
+float64 pitch     # CH2: [-1, 1]
+float64 throttle  # CH3: [-1, 1]
+float64 yaw       # CH4: [-1, 1]
+uint8 mode        # CH5: Flight Mode
+bool e_stop       # CH7: Emergency Stop
+bool gpsw         # CH8: General Purpose Switch
 
 uint8 MODE_PROGRAM = 0
 uint8 MODE_STABILIZE = 1
 uint8 MODE_ACROBAT = 2
 ```
 
-#### imu (tobas_msgs/Imu)
+#### imu (tobas_msgs/ImuWithCovarianceStamped)
 
 6 軸 IMU (ジャイロ + 加速度)．
 
 ```txt
 std_msgs/Header header
-tobas_kdl_msgs/Vector gyro                  # [rad/s]
-tobas_kdl_msgs/Vector accel                 # [m/s^2]
-tobas_eigen_msgs/Matrix3d gyro_covariance   # [rad^2/s^2]
-tobas_eigen_msgs/Matrix3d accel_covariance  # [m^2/s^4]
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_msgs/ImuWithCovariance imu
+	tobas_msgs/Imu imu
+		tobas_kdl_msgs/Vector gyro   # [rad/s]
+			float64 x
+			float64 y
+			float64 z
+		tobas_kdl_msgs/Vector accel  # [m/s^2]
+			float64 x
+			float64 y
+			float64 z
+	tobas_eigen_msgs/Matrix3d gyro_covariance   # [rad^2/s^2]
+		float64[9] data
+	tobas_eigen_msgs/Matrix3d accel_covariance  # [m^2/s^4]
+		float64[9] data
 ```
 
-#### magnetic_field (tobas_msgs/MagneticField)
+#### magnetic_field (tobas_msgs/MagneticFieldWithCovarianceStamped)
 
 3 軸の地磁気．
 
 ```txt
 std_msgs/Header header
-tobas_kdl_msgs/Vector magnetic_field  # [-]
-tobas_eigen_msgs/Matrix3d covariance  # [-]
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+MagneticFieldWithCovariance mag
+	tobas_kdl_msgs/Vector mag             # [-]
+		float64 x
+		float64 y
+		float64 z
+	tobas_eigen_msgs/Matrix3d covariance  # [-]
+		float64[9] data
 ```
 
-#### air_pressure (sensor_msgs/FluidPressure)
+#### air_pressure (tobas_msgs/FluidPressureWithVarianceStamped)
 
 大気圧．
 
 ```txt
 std_msgs/Header header
-float64 fluid_pressure  # [Pa]
-float64 variance        # [Pa^2]
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+FluidPressureWithVariance pressure
+	float64 pressure  # [Pa]
+	float64 variance  # [Pa^2]
 ```
 
 #### gps (tobas_msgs/Gps)
@@ -91,6 +131,10 @@ GNSS から取得した位置と速度．
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 
 # Fix Type: gpsFix (UBX-STATUS), fixType (UBX-PVT)
 uint8 fix_type
@@ -102,33 +146,39 @@ uint8 GPS_DEAD_RECHONING_COMBINED = 4
 uint8 TIME_ONLY_FIX = 5
 
 # Position
-float64 latitude                 # [deg]
-float64 longitude                # [deg]
-float64 altitude                 # [m]
-float64[9] position_covariance   # [m^2]
+float64 latitude                                # [deg]
+float64 longitude                               # [deg]
+float64 altitude                                # [m]
+tobas_eigen_msgs/Matrix3d position_covariance   # [m^2]
+	float64[9] data
 
 # Velocity
-tobas_kdl_msgs/Vector ground_speed  # [m/s]
-float64[9] velocity_covariance      # [m^2/s^2]
+tobas_kdl_msgs/Vector ground_speed                 # [m/s]
+	float64 x
+	float64 y
+	float64 z
+tobas_eigen_msgs/Matrix3d velocity_covariance      # [m^2/s^2]
+	float64[9] data
 ```
 
-#### point_cloud (sensor_msgs/PointCloud)
+#### rotor_speeds (tobas_msgs/RotorStateArray)
 
-LiDAR から取得した点群データ
+各ロータの状態．
 
 ```txt
 std_msgs/Header header
-geometry_msgs/Point32[] points
-sensor_msgs/ChannelFloat32[] channels
-```
-
-#### rotor_speeds (tobas_msgs/RotorSpeeds)
-
-各ロータの回転数．
-
-```txt
-std_msgs/Header header
-float64[] speeds  # [rad/s]
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_msgs/RotorState[] states
+	uint8 channel
+	float64 speed    # [rad/s]
+	float64 current  # [A]
+	uint8 status
+	uint8 NO_COMMUNICATION = 0
+	uint8 SPEED_ONLY = 1
+	uint8 ALL_FIELDS_READY = 2
 ```
 
 #### joint_states (sensor_msgs/JointState)
@@ -137,10 +187,15 @@ float64[] speeds  # [rad/s]
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+
 string[] name
-float64[] position  # [m or rad]
-float64[] velocity  # [m/s or rad/s]
-float64[] effort    # [N or Nm]
+float64[] position
+float64[] velocity
+float64[] effort
 ```
 
 ### 状態推定
@@ -151,17 +206,49 @@ float64[] effort    # [N or Nm]
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 
 tobas_kdl_msgs/Frame frame
+	tobas_kdl_msgs/Vector trans
+		float64 x
+		float64 y
+		float64 z
+	tobas_kdl_msgs/Rotation rot
+		float64[9] data
 tobas_kdl_msgs/Twist twist
+	tobas_kdl_msgs/Vector linear
+		float64 x
+		float64 y
+		float64 z
+	tobas_kdl_msgs/Vector angular
+		float64 x
+		float64 y
+		float64 z
 tobas_kdl_msgs/Accel accel
+	tobas_kdl_msgs/Vector linear
+		float64 x
+		float64 y
+		float64 z
+	tobas_kdl_msgs/Vector angular
+		float64 x
+		float64 y
+		float64 z
 
-tobas_eigen_msgs/Matrix3d position_covariance              # [m^2]
-tobas_eigen_msgs/Matrix3d orientation_covariance           # [rad^2]
-tobas_eigen_msgs/Matrix3d linear_velocity_covariance       # [m^2/s^2]
-tobas_eigen_msgs/Matrix3d angular_velocity_covariance      # [rad^2/s^2]
-tobas_eigen_msgs/Matrix3d linear_acceleration_covariance   # [m^2/s^2/4]
-tobas_eigen_msgs/Matrix3d angular_acceleration_covariance  # [rad^2/s^4]
+tobas_eigen_msgs/Matrix3d position_covariance     # [m^2]
+	float64[9] data
+tobas_eigen_msgs/Matrix3d orientation_covariance  # [rad^2]
+	float64[9] data
+tobas_eigen_msgs/Matrix3d velocity_covariance     # [m^2/s^2]
+	float64[9] data
+tobas_eigen_msgs/Matrix3d gyro_covariance         # [rad^2/s^2]
+	float64[9] data
+tobas_eigen_msgs/Matrix3d accel_covariance        # [m^2/s^2/4]
+	float64[9] data
+tobas_eigen_msgs/Matrix3d dgyro_covariance        # [rad^2/s^4]
+	float64[9] data
 
 int8 status
 int8 NO_ERROR = 0
@@ -170,16 +257,22 @@ int8 POSITION_LOST = -1
 
 #### latency (tobas_msgs/Latency)
 
-IMU 取得からロータコマンドまでのレイテンシ．
+IMU 取得からロータコマンドまでの遅延．
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 builtin_interfaces/Duration data
+	int32 sec
+	uint32 nanosec
 ```
 
 #### arming (std_msgs/Bool)
 
-ロータのアーム状態．
+全てのロータがアームされているか否か．
 
 ```
 bool data
@@ -189,22 +282,34 @@ bool data
 
 ユーザはこれらのトピックを発行することでドローンを操作することができます．
 
-#### command/throttles (tobas_msgs/ThrottleArray)
+#### command/rotor_thrusts (tobas_msgs/RotorThrustArray)
 
-各ロータのスロットル (0 ~ 1)．
+各ロータの推力 (非負)．
 
 ```txt
 std_msgs/Header header
-tobas_msgs/Throttle[] throttles
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_msgs/RotorThrust[] thrusts
+	uint8 channel
+	float64 thrust  # [N]
 ```
 
-#### command/rotor_speeds (tobas_msgs/RotorSpeeds)
+#### command/rotor_speeds (tobas_msgs/RotorSpeedArray)
 
 各ロータの回転数 (非負)．
 
 ```txt
 std_msgs/Header header
-float64[] speeds  # [rad/s]
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_msgs/RotorSpeed[] speeds
+	uint8 channel
+	float64 speed  # [rad/s]
 ```
 
 #### command/deflections (tobas_msgs/ControlSurfaceDeflections)
@@ -213,6 +318,10 @@ float64[] speeds  # [rad/s]
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 float64[] deflections  # [deg]
 ```
 
@@ -220,10 +329,27 @@ float64[] deflections  # [deg]
 
 ```txt
 tobas_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
 tobas_msgs/FrameId frame_id  # The frame in whch velocity and acceleration are expressed
+	uint8 data
+	uint8 WORLD = 0
+	uint8 LOCAL = 1
+	uint8 FOOTPRINT = 2
 tobas_kdl_msgs/Vector pos    # [m]
+	float64 x
+	float64 y
+	float64 z
 tobas_kdl_msgs/Vector vel    # [m/s]
+	float64 x
+	float64 y
+	float64 z
 tobas_kdl_msgs/Vector acc    # [m/s^2]
+	float64 x
+	float64 y
+	float64 z
 float64 yaw                  # [rad]
 ```
 
@@ -231,23 +357,56 @@ float64 yaw                  # [rad]
 
 ```txt
 tobas_msgs/CommandLevel level
-tobas_kdl_msgs/Euler rpy  # [rad]
-float64 throttle          # [0, 1]
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
+tobas_kdl_msgs/Euler rpy
+	float64 roll   # [rad]
+	float64 pitch  # [rad]
+	float64 yaw    # [rad]
+float64 throttle  # [0, 1]
 ```
 
 #### command/pose_twist_accel (tobas_msgs/PoseTwistAccelCommand)
 
 ```txt
 tobas_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
 tobas_msgs/FrameId frame_id  # The frame in whch velocity and acceleration are expressed
+	uint8 data
+	uint8 WORLD = 0
+	uint8 LOCAL = 1
+	uint8 FOOTPRINT = 2
 
 tobas_kdl_msgs/Vector pos    # Target position [m]
+	float64 x
+	float64 y
+	float64 z
 tobas_kdl_msgs/Vector vel    # Target linear velocity [m/s]
+	float64 x
+	float64 y
+	float64 z
 tobas_kdl_msgs/Vector acc    # Target linear acceleration (feedforward) [m/s^2]
+	float64 x
+	float64 y
+	float64 z
 
 tobas_kdl_msgs/Euler rpy     # Target orientation [rad]
+	float64 roll   # [rad]
+	float64 pitch  # [rad]
+	float64 yaw    # [rad]
 tobas_kdl_msgs/Vector gyro   # Target angular velocity wrt. the local coordinates [rad/s]
+	float64 x
+	float64 y
+	float64 z
 tobas_kdl_msgs/Vector dgyro  # Target angular acceleration wrt. the local coordinates (feedforward) [rad/s^2]
+	float64 x
+	float64 y
+	float64 z
 ```
 
 #### command/speed_roll_delta_pitch (tobas_msgs/SpeedRollDeltaPitch)
@@ -264,7 +423,13 @@ float64 delta_pitch  # [rad]
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 tobas_msgs/JointCommand[] commands
+	string name
+	float64 data
 ```
 
 #### command/joint_velocities (tobas_msgs/JointCommandArray)
@@ -273,7 +438,13 @@ tobas_msgs/JointCommand[] commands
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 tobas_msgs/JointCommand[] commands
+	string name
+	float64 data
 ```
 
 #### command/joint_efforts (tobas_msgs/JointCommandArray)
@@ -282,7 +453,13 @@ tobas_msgs/JointCommand[] commands
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 tobas_msgs/JointCommand[] commands
+	string name
+	float64 data
 ```
 
 ### Gazebo
@@ -293,6 +470,10 @@ tobas_msgs/JointCommand[] commands
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 float64 voltage  # [V]
 float64 current  # [A]
 ```
@@ -303,17 +484,49 @@ float64 current  # [A]
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 
 tobas_kdl_msgs/Frame frame
+	tobas_kdl_msgs/Vector trans
+		float64 x
+		float64 y
+		float64 z
+	tobas_kdl_msgs/Rotation rot
+		float64[9] data
 tobas_kdl_msgs/Twist twist
+	tobas_kdl_msgs/Vector linear
+		float64 x
+		float64 y
+		float64 z
+	tobas_kdl_msgs/Vector angular
+		float64 x
+		float64 y
+		float64 z
 tobas_kdl_msgs/Accel accel
+	tobas_kdl_msgs/Vector linear
+		float64 x
+		float64 y
+		float64 z
+	tobas_kdl_msgs/Vector angular
+		float64 x
+		float64 y
+		float64 z
 
-tobas_eigen_msgs/Matrix3d position_covariance              # [m^2]
-tobas_eigen_msgs/Matrix3d orientation_covariance           # [rad^2]
-tobas_eigen_msgs/Matrix3d linear_velocity_covariance       # [m^2/s^2]
-tobas_eigen_msgs/Matrix3d angular_velocity_covariance      # [rad^2/s^2]
-tobas_eigen_msgs/Matrix3d linear_acceleration_covariance   # [m^2/s^2/4]
-tobas_eigen_msgs/Matrix3d angular_acceleration_covariance  # [rad^2/s^4]
+tobas_eigen_msgs/Matrix3d position_covariance     # [m^2]
+	float64[9] data
+tobas_eigen_msgs/Matrix3d orientation_covariance  # [rad^2]
+	float64[9] data
+tobas_eigen_msgs/Matrix3d velocity_covariance     # [m^2/s^2]
+	float64[9] data
+tobas_eigen_msgs/Matrix3d gyro_covariance         # [rad^2/s^2]
+	float64[9] data
+tobas_eigen_msgs/Matrix3d accel_covariance        # [m^2/s^2/4]
+	float64[9] data
+tobas_eigen_msgs/Matrix3d dgyro_covariance        # [rad^2/s^4]
+	float64[9] data
 
 int8 status
 int8 NO_ERROR = 0
@@ -326,16 +539,14 @@ int8 POSITION_LOST = -1
 
 ```txt
 std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 tobas_kdl_msgs/Vector vel  # [m/s]
-```
-
-#### gazebo/ground_truth/rotor_state (tobas_msgs/msg/RotorState)
-
-```txt
-std_msgs/Header header
-float64 speed    # [rad/s]
-float64 current  # [A]
-
+	float64 x
+	float64 y
+	float64 z
 ```
 
 ## サービス
@@ -346,11 +557,11 @@ float64 current  # [A]
 
 #### set_arm (tobas_msgs/SetArm)
 
-ロータのアーム状態を変更する．
+全てのロータのアーム状態を変更する．
 
 ```txt
 bool arming
-bool ignore_pre_arm_check
+bool ignore_prearm_check
 ---
 bool success
 string message
@@ -373,6 +584,11 @@ string message
 ```txt
 ---
 tobas_gazebo_msgs/WindParams params
+	float64 mean_speed         # [m/s]
+	float64 direction          # [rad]
+	float64 gust_speed_factor  # [-]
+	float64 gust_duration      # [s]
+	float64 gust_interval      # [s]
 ```
 
 #### gazebo/set_wind_parameters (tobas_gazebo_msgs/SetWindParams)
@@ -381,9 +597,19 @@ tobas_gazebo_msgs/WindParams params
 
 ```txt
 tobas_gazebo_msgs/WindParams params
+	float64 mean_speed         # [m/s]
+	float64 direction          # [rad]
+	float64 gust_speed_factor  # [-]
+	float64 gust_duration      # [s]
+	float64 gust_interval      # [s]
 ---
 bool success
 tobas_gazebo_msgs/WindParams params
+	float64 mean_speed         # [m/s]
+	float64 direction          # [rad]
+	float64 gust_speed_factor  # [-]
+	float64 gust_duration      # [s]
+	float64 gust_interval      # [s]
 ```
 
 #### gazebo/get_tether_parameters (tobas_gazebo_msgs/GetTetherParams)
@@ -393,6 +619,8 @@ tobas_gazebo_msgs/WindParams params
 ```txt
 ---
 tobas_gazebo_msgs/TetherParams params
+	float64 tension         # [N]
+	float64 maximum_length  # [m]
 ```
 
 #### gazebo/set_tether_parameters (tobas_gazebo_msgs/SetTetherParams)
@@ -401,9 +629,13 @@ tobas_gazebo_msgs/TetherParams params
 
 ```txt
 tobas_gazebo_msgs/TetherParams params
+	float64 tension         # [N]
+	float64 maximum_length  # [m]
 ---
 bool success
 tobas_gazebo_msgs/TetherParams params
+	float64 tension         # [N]
+	float64 maximum_length  # [m]
 ```
 
 ## アクション
@@ -417,6 +649,10 @@ tobas_gazebo_msgs/TetherParams params
 ```txt
 # Goal
 tobas_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
 float64 target_altitude     # [m]
 float64 altitude_tolerance  # [m]
 float64 duration            # [s]
@@ -439,6 +675,10 @@ string message
 ```txt
 # Goal
 tobas_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
 
 ---
 
@@ -457,6 +697,10 @@ string message
 ```txt
 # Goal
 tobas_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
 float64 target_latitude    # [m]
 float64 target_longitude   # [m]
 float64 target_altitude    # [m]
@@ -473,6 +717,15 @@ string message
 
 # Feedback
 geometry_msgs/Vector3 target_position   # [m]
+	float64 x
+	float64 y
+	float64 z
 geometry_msgs/Vector3 current_position  # [m]
+	float64 x
+	float64 y
+	float64 z
 geometry_msgs/Vector3 position_error    # [m]
+	float64 x
+	float64 y
+	float64 z
 ```
