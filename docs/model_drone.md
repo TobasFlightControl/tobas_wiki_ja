@@ -38,6 +38,12 @@ Tobas は Bidirectional DShot 300 で ESC と通信するため，それに対�
 RC 受信機が対応しているプロトコルに対応しているものを使用してください．
 今回は<a href=https://www.rc.futaba.co.jp/products/detail/I00000006 target="_blank">Futaba T10J</a>を使用します．
 
+### 電源モジュール
+
+<a href=https://www.digikey.jp/ja/products/detail/texas-instruments/INA228AIDGSR/13691042 target="_blank">INA228</a>
+が搭載されたデジタル電力モジュールを使用してください．
+今回は<a href=https://holybro.com/products/pm02d-power-module target="_blank">Holybro PM02D</a>を使用します．
+
 ## モデリングに関する注意点
 
 ---
