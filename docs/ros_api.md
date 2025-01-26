@@ -270,11 +270,12 @@ builtin_interfaces/Duration data
 	uint32 nanosec
 ```
 
-#### arming (std_msgs/Bool)
+#### arming (tobas_msgs/Arming)
 
 全てのロータがアームされているか否か．
 
 ```
+std_msgs/Header header
 bool data
 ```
 
