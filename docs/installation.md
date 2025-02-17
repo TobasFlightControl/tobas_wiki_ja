@@ -34,11 +34,11 @@
 
 ---
 
-1. ラズパイに Type-C または Tobas ハットの電源コネクタから給電してください．
+1. FC に Type-C またはラズパイハットの電源コネクタから給電してください．
 1. ラズパイのアクセスポイントに接続してください．SSID は`raspberry_wifi`，パスワードは`raspberry`です．
-1. Ubuntu の`Show Apps`から`Tobas`をクリックすると GUI が起動します．
+1. Applications から`Tobas`をクリックすると GUI が起動します．
 
-![tobas_gcs](resources/installation/tobas_gcs.png)
+![tobas_gui](resources/installation/tobas_gui.png)
 
 - **注意:** ラズパイのネットワーク設定前は，Tobas の起動前にラズパイのアクセスポイントに接続する必要があります．
 - **注意:** ラズパイにネットワーク接続しなくても Tobas は起動しますが，一部の機能が制限されます．
