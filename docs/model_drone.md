@@ -12,7 +12,7 @@
 
 ### ESC
 
-Tobas は Bidirectional DShot 300 で ESC と通信するため，それに対応したものを選定してください．
+Tobas は Bidirectional DShot 600 で ESC と通信するため，それに対応したものを選定してください．
 少なくとも以下のファームウェアは対応しています．
 
 - <a href=https://github.com/bitdump/BLHeli/tree/master/BLHeli_32%20ARM target="_blank">BLHeli_32</a> (2024 年 6 月にサポート終了)
@@ -81,7 +81,7 @@ Gazebo (物理シミュレータ) と同じく，NWU 座標系 (X 軸を前，Y 
 ---
 
 以下がアセンブリ全体の画像です．
-<a href=https://www.amazon.co.jp/WORK-F450-Brushless-Transmitter-Accessory/dp/B09SZ7LNXB/ref=asc_df_B09SZ7LNXB/?tag=jpgo-22&linkCode=df0&hvadid=622955507000&hvpos=&hvnetw=g&hvrand=8762434071962657181&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1009314&hvtargid=pla-1931934789257&psc=1&mcid=9454d6926b59324992d70be300c73134 target="\_blank">F450 フレームキット</a>を用いています．
+<a href=https://www.amazon.co.jp/WORK-F450%E3%83%89%E3%83%AD%E3%83%BC%E3%83%B3%E3%82%AD%E3%83%83%E3%83%88%E3%80%81-Pixhawk-%E3%83%91%E3%83%AF%E3%83%BC%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB-%E3%83%96%E3%83%A9%E3%82%B7%E3%83%AC%E3%82%B9%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC/dp/B0DG2L1TQL/ref=sr_1_3?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=3GYOPES1WGR2&dib=eyJ2IjoiMSJ9.o83XfwOwEZ8N-5t7vzCOujH2H1m8EoeLJfvqVLw5e0fEMYxTu6GsOW_y7k2g2cqN9zXNONnVC0RgaYkmVXzNPp6urNfKgfv_3tO8WhaXHcklsPNCTa6W4YaXaaYU6AwSXtOTP2W5_ezMkcHqbwHn9TUjZO1hz6bG3YzgLqa2Mq8i7Fked5iEyT4XsfhLpWZMSxtj4PPSSFdakIkwrrr_SHHcy0iemS4701gWq9mXj3xjyUmW9SNhKiUm4IxeZHVOKYVizMhHxOoyKPiVngZS_Ic0-BtNox3MI9kYAwL1G-3gALObl9lLhpeEAa3_Y9k8FiuU9RnFOt8M02ENUjgcH_yH-e7DzV9zVMKIP1flYuZFtzB3I9ad4oYDhs4BBn_vPVqjz1PIVW5f_QvBy2B_8Ni4iTscf5_NxOFKPmZGDEYJLVvuz7eWlrPm_BrmLfok.4dCd0SfG0HWvLQurl-E2zSMpEg3T4wdp9D-FoXo6tQs&dib_tag=se&keywords=F450&qid=1739802376&sprefix=f450%2Caps%2C140&sr=8-3 target="\_blank">HAWK'S WORK F450 ドローンキット</a>を用いています．
 
 ![F450 Assembly](resources/model_drone/assem.png)
 
