@@ -11,8 +11,8 @@ Tobas は，近年のドローン市場の拡大に伴う機体の大型化と�
 - <a href=http://forestofazumino.web.fc2.com/ros/ros_urdf_xacro.html target="_blank">URDF</a> を元に，機体の構造や質量特性を考慮
 - 推進系や固定翼の空力特性を考慮
 - モータと推進系の連成による非線形ダイナミクスを考慮
-- 関節角の変化によるダイナミクスの変化を考慮
-- 突風やモデル化誤差などの外乱補償
+- 関節角の変化による自重・反力補償
+- 突風や地面効果などの外乱補償
 - 完全 GUI でセットアップ可能
 - ROS に対応し，シミュレーションと実機で同じインターフェースを提供
 
@@ -20,17 +20,26 @@ Tobas は，近年のドローン市場の拡大に伴う機体の大型化と�
 
 ---
 
-### 制御性能の向上・機体設計の幅を拡大
+### 制御性能の向上
 
-機体の重心やプロペラの配置等を考慮する Tobas は制御器の自由度が高く，従来のフライトコントローラよりも優れた制御性能を提供できる可能性があります．
+Tobas は GUI に入力したユーザの機体構造から完全な 6 自由度運動方程式を構築して制御を行うため，　
+従来のフライトコントローラよりも優れた制御性能を発揮できます．
+例えば以下のような情報を GUI に入力します．
 
-また，URDF で表現でき，対応した制御器が存在すればどのような機体でも飛ばすことができます．
-例えば，Tobas は以下のような変則的な機体にも対応しています:
+- 機体を構成する各剛体リンクの力学パラメータ: 質量，重心，慣性テンソル
+- バッテリーのスペック: セル数，放電容量，放電率
+- モータのスペック: KV 値，内部抵抗，磁極数
+- プロペラのスペック: 直径，ピッチ，UIUC のデータ
+
+### 機体設計の幅を拡大
+
+機体構造が URDF で表現でき，対応した制御器が存在すればどのような機体でも飛ばすことができます．
+例えば，Tobas は以下のような変則的な機体にも対応しています．
 
 - 特殊なセンサにより重心が中心部から大きく外れた機体
 - カメラの画角を確保するためにプロペラの配置が非対称な機体
-- ティルトロータを搭載した機体
 - ロボットアームを搭載した機体
+- ティルトロータを搭載した機体
 
 ### ゲイン調整の手間を削減
 
@@ -81,6 +90,15 @@ DJI F450 のフレームキットを使用しています．
 アームを大きく振り回しても位置姿勢を一定範囲内に留めることができています．
 
 <iframe width="474" height="843" src="https://www.youtube.com/embed/L7nRlG1OgyY" title="Tobas | The Drone That Stays Stable with a Swinging Arm (2024/02/15) #drone" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<br>
+
+### アクティブティルトヘキサコプター
+
+全てのアームを両方向に 120 度ずつ回転させられるヘキサコプターです．
+ホバリングした状態で姿勢を大きく変化させられるのが特徴です．
+取り付けた検査機器等を任意の姿勢で保持することができるため，例えば傾いた壁面に対する非破壊検査への応用が期待されます．
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UYwoFjf6ubc?si=RsDKgr98DVvdhaWB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>
 
 ## PC のシステム要件 <!-- cf. https://www.solidworks.com/ja/support/system-requirements -->
