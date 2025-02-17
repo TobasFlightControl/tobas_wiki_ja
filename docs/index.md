@@ -8,7 +8,7 @@ Tobas は，近年のドローン市場の拡大に伴う機体の大型化と�
 
 ---
 
-- <a href=http://forestofazumino.web.fc2.com/ros/ros_urdf_xacro.html target="_blank">URDF</a> を元に，機体の構造や質量特性を考慮
+- <a href=https://docs.ros.org/en/jazzy/Tutorials/Intermediate/URDF/URDF-Main.html target="_blank">URDF</a> を元に，機体の構造や質量特性を考慮
 - 推進系や固定翼の空力特性を考慮
 - モータと推進系の連成による非線形ダイナミクスを考慮
 - 関節角の変化による自重・反力補償
@@ -59,6 +59,27 @@ Tobas は GUI に入力したユーザの機体構造から完全な 6 自由度
 - バッテリーの電圧降下
 - ESC の最大電流
 - センサの遅延，ノイズ
+
+## Flight Management Unit (FMU)
+
+### Tobas Aso
+
+<img src="../resources/introduction/aso_1.png" alt="aso_1" width="49%"> <img src="../resources/introduction/aso_2.png" alt="aso_2" width="49%">
+
+#### IC
+
+- 6-axis IMU: <a href=https://www.st.com/ja/mems-and-sensors/ism330dlc.html target="_blank">ISM330DLC | STMicroelectronics</a>
+- Magnetometer: <a href=https://www.st.com/ja/mems-and-sensors/iis2mdc.html target="_blank">IIS2MDC | STMicroelectronics</a>
+- Barometer: <a href=https://www.st.com/ja/mems-and-sensors/ilps22qs.html target="_blank">ILPS22QS | STMicroelectronics</a>
+- GNSS Receiver: <a href=https://www.u-blox.com/en/product/zed-f9p-module target="_blank">ZED-F9P-15B | u-blox</a>
+- A/D Converter: <a href=https://www.ti.com/product/ja-jp/INA228 target="_blank">INA228 | Texas Instruments</a>
+- Motor Driver: <a href=https://www.st.com/ja/microcontrollers-microprocessors/stm32h7a3-7b3.html target="_blank">STM32H7A3 | STMicroelectronics</a>
+
+#### Interface
+
+- GNSS Antenna: SMA
+- Power Module: Molex 6pin 2.0mm
+- UART, I2C Interface: JST-GH 6pin
 
 ## 使用例
 
