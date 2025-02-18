@@ -20,7 +20,7 @@
 
 - <a href=https://www.raspberrypi.com/products/raspberry-pi-5/ target="_blank">Raspberry Pi 5</a>
 - Tobas ラズベリーパイハット
-- 32GB 以上マイクロ SD カード (例: <a href=https://shop.sandisk.com/ja-jp/products/memory-cards/microsd-cards/sandisk-extreme-uhs-i-microsd?sku=SDSQXAT-032G-JN3MD target="\_blank">SanDisk Extreme 32GB</a>)
+- 32GB 以上マイクロ SD カード (例: <a href=https://shop.sandisk.com/ja-jp/products/memory-cards/microsd-cards/sandisk-extreme-uhs-i-microsd target="_blank">SanDisk Extreme 32GB</a>)
 
 ### 手順
 
