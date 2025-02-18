@@ -1,190 +1,231 @@
 # URDF 作成
 
-前ページで作成した CAD モデルを元に URDF (Unified Robot Description Format, ロボット記述言語) を作成します．
+前ページで作成した CAD モデルを元に URDF (Unified Robot Description Format) を作成します．
 URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式で記述したものです．
 今回は以下のような URDF を作成します:
 
 ```xml
 <robot name="f450">
-  <material name="material_-492512390">
-    <color rgba="1 1 1 0.7" />
-  </material>
-  <material name="material_-496767138">
-    <color rgba="0 0 1 0.7" />
-  </material>
-  <material name="material_-510938680">
-    <color rgba="0 0 0 0.7" />
-  </material>
-  <link name="battery">
-    <inertial>
-      <mass value="0.186" />
-      <origin xyz="0 0 0" rpy="0 -0 0" />
-      <inertia ixx="0.000294655" ixy="0" ixz="0" iyy="0.00184636" iyz="0" izz="0.00193145" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0" />
-      <geometry>
-        <box size="0.106 0.035 0.026" />
-      </geometry>
-      <material name="material_-496767138">
-        <color rgba="0 0 1 0.7" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 -0 0" />
-      <geometry>
-        <box size="0.106 0.035 0.026" />
-      </geometry>
-    </collision>
-  </link>
-  <link name="frame">
-    <inertial>
-      <mass value="0.635" />
-      <origin xyz="0.001573 -0.000596 -0.003436" rpy="0 -0 0" />
-      <inertia ixx="0.009613" ixy="6e-06" ixz="4.8e-05" iyy="0.009072" iyz="4e-06" izz="0.01867" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0" />
-      <geometry>
-        <mesh filename="file:///home/dohi/Downloads/frame.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="material_-510938680">
-        <color rgba="0 0 0 0.7" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 -0.008" rpy="0 -0 0" />
-      <geometry>
-        <box size="0.35 0.35 0.1" />
-      </geometry>
-    </collision>
-  </link>
-  <link name="propeller1">
-    <inertial>
-      <mass value="0.012" />
-      <origin xyz="0 0 0.004" rpy="0 -0 0" />
-      <inertia ixx="0.00046975" ixy="0" ixz="0" iyy="0.00046975" iyz="0" izz="9.375e-05" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0" />
-      <geometry>
-        <mesh filename="file:///home/dohi/Downloads/phantom3_0945_ccw.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="material_-492512390">
-        <color rgba="1 1 1 0.7" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0.004" rpy="0 -0 0" />
-      <geometry>
-        <cylinder radius="0.125" length="0.01" />
-      </geometry>
-    </collision>
-  </link>
-  <link name="propeller1_1">
-    <inertial>
-      <mass value="0.012" />
-      <origin xyz="0 0 0.004" rpy="0 -0 0" />
-      <inertia ixx="0.00046975" ixy="0" ixz="0" iyy="0.00046975" iyz="0" izz="9.375e-05" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0" />
-      <geometry>
-        <mesh filename="file:///home/dohi/Downloads/phantom3_0945_ccw.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="material_-492512390">
-        <color rgba="1 1 1 0.7" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0.004" rpy="0 -0 0" />
-      <geometry>
-        <cylinder radius="0.125" length="0.01" />
-      </geometry>
-    </collision>
-  </link>
-  <link name="propeller1_2">
-    <inertial>
-      <mass value="0.012" />
-      <origin xyz="0 0 0.004" rpy="0 -0 0" />
-      <inertia ixx="0.00046975" ixy="0" ixz="0" iyy="0.00046975" iyz="0" izz="9.375e-05" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0" />
-      <geometry>
-        <mesh filename="file:///home/dohi/Downloads/phantom3_0945_cw.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="material_-492512390">
-        <color rgba="1 1 1 0.7" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0.004" rpy="0 -0 0" />
-      <geometry>
-        <cylinder radius="0.125" length="0.01" />
-      </geometry>
-    </collision>
-  </link>
-  <link name="propeller1_3">
-    <inertial>
-      <mass value="0.012" />
-      <origin xyz="0 0 0.004" rpy="0 -0 0" />
-      <inertia ixx="0.00046975" ixy="0" ixz="0" iyy="0.00046975" iyz="0" izz="9.375e-05" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0" />
-      <geometry>
-        <mesh filename="file:///home/dohi/Downloads/phantom3_0945_cw.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="material_-492512390">
-        <color rgba="1 1 1 0.7" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0.004" rpy="0 -0 0" />
-      <geometry>
-        <cylinder radius="0.125" length="0.01" />
-      </geometry>
-    </collision>
-  </link>
-  <link name="root" />
-  <joint name="battery_joint" type="fixed">
-    <origin xyz="-0.035 0 -0.024" rpy="0 -0 0" />
-    <axis xyz="0 0 0" />
-    <parent link="frame" />
-    <child link="battery" />
-  </joint>
-  <joint name="frame_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 -0 0" />
-    <axis xyz="0 0 0" />
-    <parent link="root" />
-    <child link="frame" />
-    <limit effort="0" velocity="0" lower="0" upper="0" />
-  </joint>
-  <joint name="propeller1_joint" type="continuous">
-    <origin xyz="0.16 -0.16 0.024" rpy="0 0 -0.7854" />
-    <axis xyz="0 0 1" />
-    <parent link="frame" />
-    <child link="propeller1" />
-  </joint>
-  <joint name="propeller1_joint_1" type="continuous">
-    <origin xyz="-0.16 0.16 0.024" rpy="0 0 -0.7854" />
-    <axis xyz="0 0 1" />
-    <parent link="frame" />
-    <child link="propeller1_1" />
-  </joint>
-  <joint name="propeller1_joint_2" type="continuous">
-    <origin xyz="0.16 0.16 0.024" rpy="0 -0 0.7854" />
-    <axis xyz="0 0 1" />
-    <parent link="frame" />
-    <child link="propeller1_2" />
-  </joint>
-  <joint name="propeller1_joint_3" type="continuous">
-    <origin xyz="-0.16 -0.16 0.024" rpy="0 -0 0.7854" />
-    <axis xyz="0 0 1" />
-    <parent link="frame" />
-    <child link="propeller1_3" />
-  </joint>
+    <material name="black">
+        <texture/>
+        <color rgba="0 0 0 1"/>
+    </material>
+    <material name="blue">
+        <texture/>
+        <color rgba="0 0 1 1"/>
+    </material>
+    <material name="red">
+        <texture/>
+        <color rgba="1 0 0 1"/>
+    </material>
+    <material name="white">
+        <texture/>
+        <color rgba="1 1 1 1"/>
+    </material>
+    <link name="base_link"/>
+    <link name="battery">
+        <inertial>
+            <mass value="0.201"/>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <inertia ixx="3.36508e-05" ixy="0" ixz="0" iyy="0.000204903" iyz="0" izz="0.00021229"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <box size="0.107 0.035 0.028"/>
+            </geometry>
+            <material name="blue">
+                <texture/>
+                <color rgba="0 0 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <box size="0.107 0.035 0.028"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="flight_controller">
+        <inertial>
+            <mass value="0.2"/>
+            <origin xyz="0 0 0.025" rpy="0 -0 0"/>
+            <inertia ixx="9.20833e-05" ixy="0" ixz="0" iyy="0.000176667" iyz="0" izz="0.000185417"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <mesh filename="package://tobas_description/meshes/common/flight_controller/tobas_aso.stl" scale="1 1 1"/>
+            </geometry>
+            <material name="red">
+                <texture/>
+                <color rgba="1 0 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.025" rpy="0 -0 0"/>
+            <geometry>
+                <box size="0.09 0.055 0.05"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="frame">
+        <inertial>
+            <mass value="0.55346"/>
+            <origin xyz="0 0 -0.004136" rpy="0 -0 0"/>
+            <inertia ixx="0.008128" ixy="0" ixz="0" iyy="0.008193" iyz="0" izz="0.01597"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <mesh filename="package://tobas_description/meshes/f450/frame.stl" scale="1 1 1"/>
+            </geometry>
+            <material name="black">
+                <texture/>
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -0.03" rpy="0 -0 0"/>
+            <geometry>
+                <box size="0.35 0.35 0.06"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="propeller_0">
+        <inertial>
+            <mass value="0.011"/>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <inertia ixx="3.6019e-05" ixy="0" ixz="0" iyy="3.6019e-05" iyz="0" izz="7.18547e-05"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <mesh filename="package://tobas_description/meshes/common/propeller/phantom3_0945_ccw.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="white">
+                <texture/>
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <cylinder radius="0.1143" length="0.01"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="propeller_1">
+        <inertial>
+            <mass value="0.011"/>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <inertia ixx="3.6019e-05" ixy="0" ixz="0" iyy="3.6019e-05" iyz="0" izz="7.18547e-05"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <mesh filename="package://tobas_description/meshes/common/propeller/phantom3_0945_ccw.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="white">
+                <texture/>
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <cylinder radius="0.1143" length="0.01"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="propeller_2">
+        <inertial>
+            <mass value="0.011"/>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <inertia ixx="3.6019e-05" ixy="0" ixz="0" iyy="3.6019e-05" iyz="0" izz="7.18547e-05"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <mesh filename="package://tobas_description/meshes/common/propeller/phantom3_0945_cw.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="white">
+                <texture/>
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <cylinder radius="0.1143" length="0.01"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="propeller_3">
+        <inertial>
+            <mass value="0.011"/>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <inertia ixx="3.6019e-05" ixy="0" ixz="0" iyy="3.6019e-05" iyz="0" izz="7.18547e-05"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <mesh filename="package://tobas_description/meshes/common/propeller/phantom3_0945_cw.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="white">
+                <texture/>
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <cylinder radius="0.1143" length="0.01"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="battery_joint" type="fixed">
+        <origin xyz="-0.037 0 -0.023" rpy="0 -0 0"/>
+        <axis xyz="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="battery"/>
+    </joint>
+    <joint name="flight_controller_joint" type="fixed">
+        <origin xyz="0 0.015 0" rpy="0 -0 0"/>
+        <axis xyz="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="flight_controller"/>
+    </joint>
+    <joint name="frame_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 -0 0"/>
+        <axis xyz="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="frame"/>
+    </joint>
+    <joint name="propeller_0_joint" type="continuous">
+        <origin xyz="0.159099 -0.159099 0.0247" rpy="0 0 -0.785398"/>
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="propeller_0"/>
+    </joint>
+    <joint name="propeller_1_joint" type="continuous">
+        <origin xyz="-0.159099 0.159099 0.0247" rpy="0 -0 2.35619"/>
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="propeller_1"/>
+    </joint>
+    <joint name="propeller_2_joint" type="continuous">
+        <origin xyz="0.159099 0.159099 0.0247" rpy="0 -0 0.785398"/>
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="propeller_2"/>
+    </joint>
+    <joint name="propeller_3_joint" type="continuous">
+        <origin xyz="-0.159099 -0.159099 0.0247" rpy="0 0 -2.35619"/>
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="propeller_3"/>
+    </joint>
 </robot>
 ```
 
@@ -234,23 +275,19 @@ Parent には先程設定した`root`が選択されています．
 
 Visual タブではリンクの視覚情報の設定を行います．
 Add ボタンを押すと，Visual オブジェクトが追加されます．
-複数の Visual を組み合わせることもできますが，今回は 1 つで構いません．
+複数のオブジェクトを組み合わせることもできますが，今回は 1 つで構いません．
 CAD でのモデリングの際に座標系を NWU 座標系に合わせているため，Origin は原点のままで構いません．
 もし CAD の座標系がずれていると，ここで調整が必要になります．
-Geometry の Type に Mesh を選択し，Path の Browse ボタンから前ページで作成したフレームのメッシュファイルを選択すると，
-モデルビューに可視化されます．
-URDF は SI 単位系より長さの単位は m なのに対し，Fusion360 では mm に設定していたため，実際の 1000 倍のスケールで表示されています．
-モデルビューの格子の 1 マスは 10cm なので，非常に大きく表示されていることがわかります．
-そこで，Scale を`0.001`に設定することでメッシュファイルと URDF のスケールを一致させます．
+Geometry の Type に Mesh を選択し，Path の Browse ボタンから前ページで作成したフレームのメッシュファイルを選択すると，モデルビューに可視化されます．
+メッシュファイルの単位系が SI 単位系でない場合は Scale を調整します．
 Material では Visual オブジェクトの色やテクスチャを設定できます．
-あまり重要ではないのですが，プロペラが白なので適当に黒`(R, G, B) = (0, 0, 0)`に設定します．
 
 ![frame/visual_1](resources/create_urdf/frame/visual_1.png)
 ![frame/visual_2](resources/create_urdf/frame/visual_2.png)
 
 Collision タブではリンクの接触判定を行うための領域を設定します．
 Add ボタンを押すと，Collison オブジェクトが追加されます．
-Visual と同じく複数の Collision を組み合わせることもできます．
+Visual と同じく複数のオブジェクトを組み合わせることもできます．
 Geometry の Type に Box を選択します．
 Visual と同じく Mesh を選択してもよいのですが，
 複雑なメッシュだと接触判定の際に計算が不安定になったり処理が重くなったりする可能性があるため，
@@ -266,7 +303,7 @@ Center of Mass にはリンクの重心を，Mass にはリンクの質量を，
 CAD でのモデリングの際に座標系を NWU 座標系に合わせているため，CAD のプロパティから取得した値をそのまま転記すればよいです．
 もし CAD の座標系がずれていると，ここで調整が必要になります．
 画面左上の Show Inertial のチェックを入れると，設定した質量特性を実現する材質均一の直方体が表示されます．
-機体のアームの高さに薄い直方体が表示され，機体の質量特性と等価だと言われても概ね納得できます．
+機体のフレームの高さに薄い直方体が表示され，概ね矛盾は無さそうだということが分かります．
 
 ![frame/inertial_1](resources/create_urdf/frame/inertial_1.png)
 ![frame/inertial_2](resources/create_urdf/frame/inertial_2.png)
@@ -301,7 +338,8 @@ Collision タブでリンクの接触判定領域を設定します．
 Add ボタンを押すと，Collison オブジェクトが追加されます．
 Origin と Geometry を Visual と全く同じように設定します．
 
-![battery/collision](resources/create_urdf/battery/collision.png)
+![battery/collision_1](resources/create_urdf/battery/collision_1.png)
+![battery/collision_2](resources/create_urdf/battery/collision_2.png)
 
 Inertial タブでリンクの質量特性を設定します．
 バッテリーの質量特性を直方体で近似することにします．
@@ -324,7 +362,7 @@ Show Collision のチェックを外して Show Inertial に入れると，
 ---
 
 Add Link からプロペラリンクを追加します．
-Link Name を`propeller1`，Joint Name を`propeller1_joint`，Parent を`frame`にします．
+Link Name を`propeller_0`，Joint Name を`propeller_0_joint`，Parent を`frame`にします．
 
 ![propeller/add_link](resources/create_urdf/propeller/add_link.png)
 
@@ -364,15 +402,29 @@ Show Collision のチェックを外して Show Inertial に入れると，
 ![propeller/inertial_2](resources/create_urdf/propeller/inertial_2.png)
 ![propeller/inertial_3](resources/create_urdf/propeller/inertial_3.png)
 
-プロペラは全部で 4 枚なので他の 3 枚の設定を行うのですが，内容はほとんど同じなので`propeller1`をクローンします．
-`propeller1`が選択された状態で Link ツリーを右クリックし，Clone Link を選択すると，
-オリジナルとリンク・ジョイント名のみが異なる`propeller1_1`が作成されます．
-リンク名`propeller1_1`を`propeller_2`に変更し，ジョイント名`propeller1_joint_1`を`propeller2_joint`に変更します．
+プロペラは全部で 4 枚なので他の 3 枚の設定を行うのですが，内容はほとんど同じなので`propeller_0`をクローンします．
+`propeller_0`が選択された状態で Link ツリーを右クリックし，Clone Link を選択すると，
+オリジナルとリンク・ジョイント名のみが異なる`propeller_0_1`が作成されます．
+リンク名`propeller_0_1`を`propeller_1`に変更し，ジョイント名`propeller_0_joint_1`を`propeller_1_joint`に変更します．
 今回，それぞれのプロペラはジョイント原点の符号と Visual のメッシュファイルのみが異なります．
-`propeller2`の Joint タブから Origin の符号を修正し，Visual タブの Geometry の Path を修正します．
+`propeller_1`の Joint タブから Origin の符号を修正し，Visual タブの Geometry の Path を修正します．
 同じ要領でもう 2 枚プロペラを増やし，合計 4 枚のプロペラを設定します．
 
 ![propeller/clone](resources/create_urdf/propeller/clone.png)
+
+## FMU リンクの設定
+
+---
+
+バッテリーリンクと同じ要領で FMU リンクを追加します．
+Inertial は Collision と同じジオメトリで直方体近似しました．
+
+![fmu/general](resources/create_urdf/fmu/general.png)
+![fmu/joint](resources/create_urdf/fmu/joint.png)
+![fmu/visual](resources/create_urdf/fmu/visual.png)
+![fmu/collision](resources/create_urdf/fmu/collision.png)
+![fmu/inertial](resources/create_urdf/fmu/inertial.png)
+![fmu/model_view](resources/create_urdf/fmu/model_view.png)
 
 ## URDF の保存
 

@@ -109,7 +109,7 @@ Gazebo (物理シミュレータ) と同じく，NWU 座標系 (X 軸を前，Y 
 
 ### バッテリーのモデリング
 
-<a href=https://www.amazon.co.jp/gp/product/B08ZD17NZC target="\_blank">SIGP 3S 2250mAh 60C</a>を使用します．
+<a href=https://www.amazon.co.jp/gp/product/B08ZD17NZC target="_blank">SIGP 3S 2250mAh 60C</a>を使用します．
 バッテリーはフレームに固定されているためフレームに含めても良かったのですが，
 後でバッテリーだけ交換する可能性を考えて今回は独立したモデルとして作成します．
 GrabCAD にモデルが無かったため，直方体にフィレットをつけただけの簡単なモデルを作成しました．
