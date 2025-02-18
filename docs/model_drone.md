@@ -19,6 +19,8 @@ Tobas は Bidirectional DShot 600 で ESC と通信するため，それに対�
 - <a href=https://github.com/AlkaMotors/AM32-MultiRotor-ESC-firmware target="_blank">AM32</a>
 - <a href=https://github.com/bird-sanctuary/bluejay target="_blank">bluejay</a>
 
+今回は BLHeli32 の<a href=https://ja.aliexpress.com/item/1005004919687788.html target="_blank">Flycolor Raptor5 35A</a>を使用します．
+
 ### プロペラ
 
 制御性能を高めるため，空力特性が分かるものが望ましいです．
@@ -27,10 +29,17 @@ Tobas は Bidirectional DShot 600 で ESC と通信するため，それに対�
 <a href=https://m-selig.ae.illinois.edu/props/propDB.html target="_blank">UIUC Propeller Data Site</a>
 でデータが得られるプロペラを使用してください．
 
+### GNSS アンテナ
+
+GNSS 受信機の周波数帯域とコネクタに対応したアンテナを選択してください．
+Tobas Aso の場合は L1/L5 帯域で SMA コネクタのため，例えば
+<a href=https://www.topgnss.store/products/2pcs-l1-l5-helical-antenna-uav-flight-control-antenna-gps-glonass-galileo-bds-rtk-handheld-receiver-an-103-topgnss-helical target="_blank">TOPGNSS AN-103</a>
+が使用可能です．
+
 ### RC 受信機
 
 8 チャンネル以上の S.BUS に対応しているものを使用してください．
-今回は<a href=https://www.amazon.co.jp/UltraPower-Corona-R8SF-S-BUS-S-FHSS/dp/B087YZYN9W target="_blank">Corona R8SF</a>
+今回は<a href=https://www.rc.futaba.co.jp/products/detail/I00000021 target="_blank">Futaba R2000SBM</a>
 を使用します．
 
 ### RC 送信機
@@ -81,16 +90,16 @@ Gazebo (物理シミュレータ) と同じく，NWU 座標系 (X 軸を前，Y 
 ---
 
 以下がアセンブリ全体の画像です．
-<a href=https://www.amazon.co.jp/WORK-F450%E3%83%89%E3%83%AD%E3%83%BC%E3%83%B3%E3%82%AD%E3%83%83%E3%83%88%E3%80%81-Pixhawk-%E3%83%91%E3%83%AF%E3%83%BC%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB-%E3%83%96%E3%83%A9%E3%82%B7%E3%83%AC%E3%82%B9%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC/dp/B0DG2L1TQL/ref=sr_1_3?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=3GYOPES1WGR2&dib=eyJ2IjoiMSJ9.o83XfwOwEZ8N-5t7vzCOujH2H1m8EoeLJfvqVLw5e0fEMYxTu6GsOW_y7k2g2cqN9zXNONnVC0RgaYkmVXzNPp6urNfKgfv_3tO8WhaXHcklsPNCTa6W4YaXaaYU6AwSXtOTP2W5_ezMkcHqbwHn9TUjZO1hz6bG3YzgLqa2Mq8i7Fked5iEyT4XsfhLpWZMSxtj4PPSSFdakIkwrrr_SHHcy0iemS4701gWq9mXj3xjyUmW9SNhKiUm4IxeZHVOKYVizMhHxOoyKPiVngZS_Ic0-BtNox3MI9kYAwL1G-3gALObl9lLhpeEAa3_Y9k8FiuU9RnFOt8M02ENUjgcH_yH-e7DzV9zVMKIP1flYuZFtzB3I9ad4oYDhs4BBn_vPVqjz1PIVW5f_QvBy2B_8Ni4iTscf5_NxOFKPmZGDEYJLVvuz7eWlrPm_BrmLfok.4dCd0SfG0HWvLQurl-E2zSMpEg3T4wdp9D-FoXo6tQs&dib_tag=se&keywords=F450&qid=1739802376&sprefix=f450%2Caps%2C140&sr=8-3 target="\_blank">HAWK'S WORK F450 ドローンキット</a>を用いています．
+<a href=https://www-v1.dji.com/jp/flame-wheel-arf/spec.html target="_blank">DJI F450 Frame Kit</a>を用いています．
 
 ![F450 Assembly](resources/model_drone/assem.png)
 
 注意点 1 にあるように，最も粗くても剛体単位でモデルを分ける必要があります．
-今回は，4 枚のプロペラ，バッテリー，それ以外 (フレーム，モータ，FC など) で合計 6 つのモデルを作成します．
+今回は，プロペラ (CCW, CW)，バッテリー，FMU，フレームのモデルをそれぞれ作成します．
 
 ### プロペラのモデリング
 
-キットに付属している<a href=https://www.amazon.co.jp/DJI-%E3%83%89%E3%83%AD%E3%83%BC%E3%83%B3%E7%94%A8%E3%83%97%E3%83%AD%E3%83%9A%E3%83%A9-2%E6%9E%9A%E7%B5%84-PHANTOM-Part9/dp/B00YOB2AXQ/ref=sr_1_7_sspa?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=28BXMOF90YJXG&keywords=phantom3+9450&qid=1704516647&s=toys&sprefix=phantom3+9450%2Ctoys%2C160&sr=1-7-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9tdGY&psc=1&smid=A1MUI7UFGML151 target="\_blank"> Phantom3 9450</a>を使用します．
+<a href=https://www.amazon.co.jp/DJI-%E3%83%89%E3%83%AD%E3%83%BC%E3%83%B3%E7%94%A8%E3%83%97%E3%83%AD%E3%83%9A%E3%83%A9-2%E6%9E%9A%E7%B5%84-PHANTOM-Part9/dp/B00YOB2AXQ target="_blank"> Phantom3 9450</a>を使用します．
 <a href=https://grabcad.com/library target="_blank">GrabCAD Library</a>から良さげなモデルをダウンロードし，Fusion360 にインポートします．
 最終的なアセンブリを見越して回転軸が Z 軸に一致するように配置し，材質を ABS に設定します．
 プロパティを見ると質量が約 10g になっており，実物と概ね一致することが確認できました．
@@ -100,7 +109,7 @@ Gazebo (物理シミュレータ) と同じく，NWU 座標系 (X 軸を前，Y 
 
 ### バッテリーのモデリング
 
-<a href=https://www.amazon.co.jp/gp/product/B08ZD17NZC/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1 target="\_blank">SIGP 3S 2250mAh 60C</a>を使用します．
+<a href=https://www.amazon.co.jp/gp/product/B08ZD17NZC target="\_blank">SIGP 3S 2250mAh 60C</a>を使用します．
 バッテリーはフレームに固定されているためフレームに含めても良かったのですが，
 後でバッテリーだけ交換する可能性を考えて今回は独立したモデルとして作成します．
 GrabCAD にモデルが無かったため，直方体にフィレットをつけただけの簡単なモデルを作成しました．
@@ -110,20 +119,26 @@ GrabCAD にモデルが無かったため，直方体にフィレットをつけ
 
 ![SIGP 3S 2250mAh 60C](resources/model_drone/lipo.png)
 
+### FMU のモデリング
+
+今回は Tobas Aso を使用します．
+3D モデル (STEP) は<a href=https://drive.google.com/file/d/124LzAW3CvhgYobC6YJGh0XPJ6KVfslS3 target="_blank">こちら</a>からダウンロードできます．
+STEP ファイルには質量特性が含まれないため，FMU についても URDF を作成する際にプリミティブ形状で近似することにします．
+
+![Tobas Aso](resources/model_drone/tobas_aso.png)
+
 ### フレームのモデリング
 
-プロペラを除く部分全てをフレームとして 1 つのモデルにします．
+プロペラ，バッテリー，FMU を除く部分をフレームとして 1 つのモデルにします．
 プロペラと同じく GrabCAD から STEP ファイルをダウンロードし，Fusion360 にインポートします．
-また，GPS マウントやラズパイ等も適当に見つけてインポートしています．
 注意点 2 にあるように，機体座標系を NWU 座標系に一致するように配置します．
 注意点 3 にあるように各パーツの材質を設定します．
-アームやボルトは 材質が均一ですが，その他のモータ，ESC，バッテリー等は材質がわからないため，代替手段 1 で仮想的な材質を設定します．
-プロパティを見ると質量が約 635g になっており，実物と概ね一致することが確認できました．
+アームやボルトは 材質が均一ですが，モータや ESC は材質がわからないため，代替手段 1 で仮想的な材質を設定します．
 
 ![F450 Frame](resources/model_drone/frame.png)
 
 ### メッシュファイルとプロパティの出力
 
 作成したモデルのメッシュファイルをそれぞれ出力し，原点周りの質量特性やプロペラの原点位置をメモしておきます．
-Fusion360 は Windows で動作していますがこれ以降は Ubuntu での作業になるため，
+Fusion360 は Windows または Mac で動作しますが，これ以降は Ubuntu での作業になるため，
 それらのファイルを Google Drive にアップロードするなどして Ubuntu からも参照できるようにします．
