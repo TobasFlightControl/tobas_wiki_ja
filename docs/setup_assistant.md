@@ -7,7 +7,7 @@ Tobas Setup Assistant は，Tobas を用いてドローンを飛ばすのに必�
 
 ---
 
-Tobas を起動し，ヘッダー左の選択リストから`Setup Assistant`を選択します．
+Tobas を起動し，ツールボタンから`Setup Assistant`を選択します．
 
 ![start](resources/setup_assistant/start.png)
 
@@ -46,7 +46,9 @@ Tobas を起動し，ヘッダー左の選択リストから`Setup Assistant`を
 ![propulsion/selected_links](resources/setup_assistant/propulsion/selected_links.png)
 
 `propeller_0`リンクの設定を行います．
-各パーツのデータシートを見ながら，`ESC`，`Motor`，`Propeller`の各項目に適切な値を入力します．
+各パーツのデータシートを見ながら，`General`，`ESC`，`Motor`，`Propeller`の各項目に適切な値を入力します．
+
+![propulsion/general](resources/setup_assistant/propulsion/general.png)
 
 ![propulsion/esc](resources/setup_assistant/propulsion/esc.png)
 
@@ -90,9 +92,12 @@ RPM,CT,CP
 6768,0.1199,0.0483
 ```
 
-他の 3 枚のプロペラについても同様の設定を行う必要がありますが，回転方向以外は同じなのでコピーします．
+他の 3 枚のプロペラについても同様の設定を行う必要がありますが，RC 出力チャンネルと回転方向以外は同じなのでコピーします．
 タブ上部の `Copy To All` を押して`propeller_0`の設定を他の全てのプロペラリンクにコピーします．
-`propeller_0`の設定が他のリンクにも反映されていることを確認し，各プロペラの`Rotating Direction`を適切に設定します．
+`propeller_0`の設定が他のリンクにも反映されていることを確認してください．
+
+各プロペラの`General`ページから`Channel`と`Turning Direction`を適切に設定します．
+`Channel`は`propeller_0`から順に 0,1,2,3 としています．
 リンク名と位置の対応がわからない場合は`Frames Tree`のハイライト機能を用いて確認してください．
 
 ## Fixed Wing
@@ -102,19 +107,23 @@ RPM,CT,CP
 固定翼の設定を行います．
 今回は回転翼機なのでパスします．
 
-## Custom Joints
+## Joint Config
 
 ---
 
-推進系，固定翼駄面以外の関節の設定を行います．
-今回はプロペラ以外の可動関節は無いためパスします．
+機体がもつ全ての可動関節に関する設定を行います．
+今回は全ての可動関節を推進系に用いているため，ここで編集できるフィールドはありませんが，
+ティルトロータやマニピュレーション用の PWM 駆動関節を持つ場合はここで役割やインターフェース等に関する設定を行います．
 
-## オンボードセンサ (IMU, Barometer, GNSS)
+![joint_config](resources/setup_assistant/joint_config.png)
+
+## オンボードセンサ
 
 ---
 
-9 軸 IMU，気圧センサ，GPS はフライトコントローラに組み込まれています．
-基本的に設定はデフォルトで構いませんが，GNSS レシーバの位置がルートフレームから離れているため，今回は GNSS レシーバのオフセットのみ修正します．
+加速度センサ，ジャイロセンサ，地磁気センサ，気圧センサ，GNSS レシーバはフライトコントローラに組み込まれています．
+基本的に設定はデフォルトで構いませんが，センサ位置がルートフレームから離れている場合はオフセットを適切に設定すると状態推定の精度が改善する可能性があります．
+今回は GNSS レシーバのオフセットのみ修正します．
 
 ![gnss](resources/setup_assistant/gnss.png)
 
@@ -139,9 +148,9 @@ RPM,CT,CP
 
 制御器に関する設定を行います．
 選択リストを開くと制御器のリストが表示されます．
-URDF やこれまでの設定を元に使用可能な制御器が自動で判定されており，
-制御器名に`(Not Applicable)`と表示されていないもののみ使用することができます．
+URDF やこれまでの設定を元に使用可能な制御器のみ選択できるようになっています．
 今回は`Multirotor PID`を選択します．
+パラメータはデフォルトのままとします．
 
 ![controller](resources/setup_assistant/controller.png)
 
@@ -150,7 +159,7 @@ URDF やこれまでの設定を元に使用可能な制御器が自動で判定
 ---
 
 状態推定器に関する設定を行います．
-基本的にはデフォルトのままで構いません．
+`Error State Kalman Filter`を選択し，パラメータはデフォルトのままとします．
 
 ![observer](resources/setup_assistant/observer.png)
 
@@ -162,6 +171,16 @@ URDF やこれまでの設定を元に使用可能な制御器が自動で判定
 Tobas の最初のバージョンである Aso を選択します．
 
 ![hardware](resources/setup_assistant/hardware.png)
+
+## PreArm Check
+
+---
+
+モータを起動する前のチェック項目の有効/無効の設定を行います．
+基本的には全て有効にすべきですが，例えば GNSS などの位置の取得元が 1 つもない場合でも，位置に関する項目を全て無効化することで姿勢制御モードでのみ飛行させることができます．
+今回は全ての項目にチェックします．
+
+![pre_arm_check](resources/setup_assistant/pre_arm_check.png)
 
 ## Simulation
 
