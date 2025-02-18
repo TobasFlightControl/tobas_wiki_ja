@@ -9,7 +9,7 @@ Tobas パッケージの作成とハードウェアセットアップは既に�
 
 PC をフライトコントローラと同じネットワークに接続したうえで Tobas を起動し，`tobas_f450.TBS`を読み込みます．
 
-ヘッダから`Simulation`のページを開き，`Static Configurations`の`Simulation Type`を`HITL`に，`World`を`Standard World`の`basic`に設定します．
+ツールボタンから`Simulation`のページを開き，`Static Configurations`の`Simulation Type`を`HITL`に，`World`を`Standard World`の`basic`に設定します．
 
 ![simulation_page](resources/gazebo_simulation/simulation_page.png)
 

@@ -11,7 +11,7 @@
 ![power_on](resources/flight_test/power_on.png)
 
 アクセスポイントに接続するなど，PC をラズパイと同じネットワークに接続した状態で Tobas GUI を立ち上げ，`Control System`を開きます．
-ヘッダの`Load`ボタンから`tobas_f450.TBS`を読み込むと，現在のセンサ情報等が表示されます．
+右上の`Load`ボタンから`tobas_f450.TBS`を読み込むと，現在のセンサ情報等が表示されます．
 
 ![control_system](resources/flight_test/control_system.png)
 
@@ -31,5 +31,5 @@
 
 1. ドローンを安全に着陸させます．
 1. E_STOP (CH5) をオンにし，モータを停止します．
-1. ヘッダー右の`Shutdown`ボタンからラズパイと GUI をシャットダウンします．
+1. 右上の`Shutdown`ボタンからラズパイと GUI をシャットダウンします．
 1. バッテリーを取り外します．

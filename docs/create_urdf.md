@@ -223,7 +223,7 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
 URDF の作成方法としては，エディタを用いて直接編集することが一般的ですが，
 今回は GUI で URDF が作成できるツールである URDF Builder を使用します．
 
-Tobas を起動し，ヘッダー左の選択リストから URDF Builder を選択します．
+Tobas を起動し，ツールボタンから URDF Builder を選択します．
 
 ![launch](resources/create_urdf/launch.png)
 
