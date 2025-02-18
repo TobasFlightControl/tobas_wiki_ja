@@ -127,7 +127,7 @@ RPM,CT,CP
 
 ![gnss](resources/setup_assistant/gnss.png)
 
-<!--
+<!-- TODO
 ## オプションデバイス (Camera, LiDAR, Odometry, Tether Station)
 
 ---
