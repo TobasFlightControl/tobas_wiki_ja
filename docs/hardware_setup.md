@@ -46,6 +46,8 @@ T10J の場合はチャンネル 1 からチャンネル 4 までは上の表で
 | CH7        | SwE      |
 | CH8        | SwD      |
 
+<br>
+
 ## Tobas パッケージのロードと書き込み
 
 ---
@@ -56,10 +58,64 @@ T10J の場合はチャンネル 1 からチャンネル 4 までは上の表で
 1. 右上の`Browse`ボタンから，Setup Assistant で作成した`tobas_f450.TBS`を選択し，`Load`ボタンで読み込みます．
 1. `Write`ボタンを押して設定をラズパイに書き込みます．これには数分かかります．
 
-## 各種設定とキャリブレーション
+## 各種設定
 
 ---
 
-`Hardware Setup`の各タブについて，記載されている指示に従ってください．
+### Network Setting
 
-<!-- TODO: 各タブについて説明 -->
+WiFi の設定を行います．
+
+1. `Read`ボタンを押してください．現在の設定が読み込まれます．
+1. `Add`ボタンでフィールドを追加し，接続するネットワークの SSID と PSK を入力してください．
+1. `Write`ボタンを押して設定を FC に反映してください．
+
+![network_setting](resources/hardware_setup/network_setting.png)
+
+### Accelerometer Calibration
+
+加速度センサのキャリブレーションを行います．
+FMU を組み込んだ機体を水平面上に置き，`Start`ボタンを押してください．
+数秒でキャリブレーションが完了します．
+
+![accel_calibration](resources/hardware_setup/accel_calibration.png)
+
+### Magnetometer Calibration
+
+地磁気センサのキャリブレーションを行います．
+
+1. `Start`ボタンを押してください．すると，地磁気の値が紫色の点で表示され始めます．
+1. 点群がきれいな楕円体を描くように機体を全方位にゆっくりと回転させてください．6 面それぞれが上を向いた状態で Z 軸回りに 2 周ずつ回転させるのがおすすめです．
+1. 完了したら`Finish`ボタンを押してください．キャリブレーション後の白色の点群が原点周りのきれいな球を描いていれば成功です．
+
+![mag_calibration](resources/hardware_setup/mag_calibration.png)
+
+### Radio Calibration
+
+ラジオ入力 (S.BUS) のキャリブレーションを行います．
+
+1. `Start`ボタンを押してください．すると，S.BUS の各チャンネルの値が表示され始めます．
+1. それぞれのチャンネルについて，操作可能な範囲全体をカバーするようにレバーまたはスイッチを操作してください．
+   レバーと GUI のバーの動作が反対方向の場合は，プロポ側の設定を適切に変更してください．
+1. `Finish`ボタンを押してキャリブレーションを完了してください．
+
+![radio_calibration](resources/hardware_setup/radio_calibration.png)
+
+### Rotor Test
+
+<span style="color: red;"><strong>警告: 必ず全てのプロペラを取り外した状態で実行してください．</strong></span>
+
+![rotor_test](resources/hardware_setup/rotor_test.png)
+
+1. `Start`ボタンを押してください．全てのモータがアームされます．
+1. それぞれのモータについて，レバーを動かして回転させ，RC 出力チャンネルと回転方向が正しいことを確認してください．
+1. それぞれのモータについて，回転数が振動しない程度に制御ゲインを調整してください．
+1. `Save`ボタンを押して制御ゲインを保存してください．
+1. `Stop`ボタンを押してテストを終了してください．
+
+### Joint Test
+
+機体が PWM 駆動関節を持つ場合はそのテストを行うことができます．
+今回の機体はプロペラ以外の可動関節をもたないためスキップします．
+
+![joint_test](resources/hardware_setup/joint_test.png)
