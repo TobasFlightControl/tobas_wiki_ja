@@ -7,19 +7,15 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
 ```xml
 <robot name="f450">
     <material name="black">
-        <texture/>
         <color rgba="0 0 0 1"/>
     </material>
     <material name="blue">
-        <texture/>
         <color rgba="0 0 1 1"/>
     </material>
     <material name="red">
-        <texture/>
         <color rgba="1 0 0 1"/>
     </material>
     <material name="white">
-        <texture/>
         <color rgba="1 1 1 1"/>
     </material>
     <link name="base_link"/>
@@ -35,7 +31,6 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
                 <box size="0.107 0.035 0.028"/>
             </geometry>
             <material name="blue">
-                <texture/>
                 <color rgba="0 0 1 1"/>
             </material>
         </visual>
@@ -46,26 +41,25 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
             </geometry>
         </collision>
     </link>
-    <link name="flight_controller">
+    <link name="fmu">
         <inertial>
             <mass value="0.2"/>
-            <origin xyz="0 0 0.025" rpy="0 -0 0"/>
-            <inertia ixx="9.20833e-05" ixy="0" ixz="0" iyy="0.000176667" iyz="0" izz="0.000185417"/>
+            <origin xyz="0 0 0.009" rpy="0 -0 0"/>
+            <inertia ixx="7.71333e-05" ixy="0" ixz="0" iyy="0.000148067" iyz="0" izz="0.000199067"/>
         </inertial>
         <visual>
             <origin xyz="0 0 0" rpy="0 -0 0"/>
             <geometry>
-                <mesh filename="package://tobas_description/meshes/common/flight_controller/tobas_aso.stl" scale="1 1 1"/>
+                <mesh filename="package://tobas_description/meshes/common/fmu/tobas_aso.stl" scale="1 1 1"/>
             </geometry>
             <material name="red">
-                <texture/>
                 <color rgba="1 0 0 1"/>
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0.025" rpy="0 -0 0"/>
+            <origin xyz="0 0 0.009" rpy="0 -0 0"/>
             <geometry>
-                <box size="0.09 0.055 0.05"/>
+                <box size="0.09 0.062 0.028"/>
             </geometry>
         </collision>
     </link>
@@ -81,7 +75,6 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
                 <mesh filename="package://tobas_description/meshes/f450/frame.stl" scale="1 1 1"/>
             </geometry>
             <material name="black">
-                <texture/>
                 <color rgba="0 0 0 1"/>
             </material>
         </visual>
@@ -104,7 +97,6 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
                 <mesh filename="package://tobas_description/meshes/common/propeller/phantom3_0945_ccw.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <material name="white">
-                <texture/>
                 <color rgba="1 1 1 1"/>
             </material>
         </visual>
@@ -127,7 +119,6 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
                 <mesh filename="package://tobas_description/meshes/common/propeller/phantom3_0945_ccw.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <material name="white">
-                <texture/>
                 <color rgba="1 1 1 1"/>
             </material>
         </visual>
@@ -150,7 +141,6 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
                 <mesh filename="package://tobas_description/meshes/common/propeller/phantom3_0945_cw.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <material name="white">
-                <texture/>
                 <color rgba="1 1 1 1"/>
             </material>
         </visual>
@@ -173,7 +163,6 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
                 <mesh filename="package://tobas_description/meshes/common/propeller/phantom3_0945_cw.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <material name="white">
-                <texture/>
                 <color rgba="1 1 1 1"/>
             </material>
         </visual>
@@ -190,11 +179,11 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
         <parent link="base_link"/>
         <child link="battery"/>
     </joint>
-    <joint name="flight_controller_joint" type="fixed">
-        <origin xyz="0 0.015 0" rpy="0 -0 0"/>
+    <joint name="fmu_joint" type="fixed">
+        <origin xyz="0 0.015 0.02" rpy="0 -0 0"/>
         <axis xyz="0 0 0"/>
         <parent link="base_link"/>
-        <child link="flight_controller"/>
+        <child link="fmu"/>
     </joint>
     <joint name="frame_joint" type="fixed">
         <origin xyz="0 0 0" rpy="0 -0 0"/>
