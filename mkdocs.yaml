@@ -4,7 +4,7 @@ nav:
   - Introduction: index.md # index.mdは必須
   - Getting Started:
       - Installation: installation.md
-      - Model Drone: model_drone.md
+      - Create CAD Model: create_cad_model.md
       - Create URDF: create_urdf.md
       - Setup Assistant: setup_assistant.md
       - Hardware Setup: hardware_setup.md

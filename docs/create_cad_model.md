@@ -92,7 +92,7 @@ Gazebo (物理シミュレータ) と同じく，NWU 座標系 (X 軸を前，Y 
 以下がアセンブリ全体の画像です．
 <a href=https://www-v1.dji.com/jp/flame-wheel-arf/spec.html target="_blank">DJI F450 Frame Kit</a>を用いています．
 
-![F450 Assembly](resources/model_drone/assem.png)
+![F450 Assembly](resources/create_cad_model/assem.png)
 
 注意点 1 にあるように，最も粗くても剛体単位でモデルを分ける必要があります．
 今回は，プロペラ (CCW, CW)，バッテリー，FMU，フレームのモデルをそれぞれ作成します．
@@ -105,7 +105,7 @@ Gazebo (物理シミュレータ) と同じく，NWU 座標系 (X 軸を前，Y 
 プロパティを見ると質量が約 10g になっており，実物と概ね一致することが確認できました．
 画像は時計回りですが，反時計回りのプロペラについても同様の操作を行います．
 
-![Phantom 9450 CW](resources/model_drone/propeller.png)
+![Phantom 9450 CW](resources/create_cad_model/propeller.png)
 
 ### バッテリーのモデリング
 
@@ -117,7 +117,7 @@ GrabCAD にモデルが無かったため，直方体にフィレットをつけ
 注意点 3 にあるように材質を設定したいのですが，バッテリーの材質はわからないしそもそも均一ではありません．
 そこで，バッテリーについては代替手段 2 をとることにし，CAD では材質を設定せず形を作るのみとします．
 
-![SIGP 3S 2250mAh 60C](resources/model_drone/lipo.png)
+![SIGP 3S 2250mAh 60C](resources/create_cad_model/lipo.png)
 
 ### FMU のモデリング
 
@@ -125,7 +125,7 @@ GrabCAD にモデルが無かったため，直方体にフィレットをつけ
 3D モデル (STEP) は<a href=https://drive.google.com/file/d/124LzAW3CvhgYobC6YJGh0XPJ6KVfslS3 target="_blank">こちら</a>からダウンロードできます．
 STEP ファイルには質量特性が含まれないため，FMU についても URDF を作成する際にプリミティブ形状で近似することにします．
 
-![Tobas Aso](resources/model_drone/tobas_aso.png)
+![Tobas Aso](resources/create_cad_model/tobas_aso.png)
 
 ### フレームのモデリング
 
@@ -135,7 +135,7 @@ STEP ファイルには質量特性が含まれないため，FMU について�
 注意点 3 にあるように各パーツの材質を設定します．
 アームやボルトは 材質が均一ですが，モータや ESC は材質がわからないため，代替手段 1 で仮想的な材質を設定します．
 
-![F450 Frame](resources/model_drone/frame.png)
+![F450 Frame](resources/create_cad_model/frame.png)
 
 ### メッシュファイルとプロパティの出力
 
