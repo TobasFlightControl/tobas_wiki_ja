@@ -700,7 +700,7 @@ tobas_gazebo_msgs/TetherParams params
 
 ---
 
-#### takeoff_action (tobas_msgs/Takeoff)
+#### takeoff_action (tobas_mission_msgs/Takeoff)
 
 離陸する．
 
@@ -722,7 +722,7 @@ string message
 # Feedback
 ```
 
-#### land_action (tobas_msgs/Land)
+#### land_action (tobas_mission_msgs/Land)
 
 着陸する．
 
@@ -744,7 +744,7 @@ string message
 # Feedback
 ```
 
-#### move_action (tobas_msgs/Move)
+#### move_action (tobas_mission_msgs/Move)
 
 指定した位置に移動する．
 
