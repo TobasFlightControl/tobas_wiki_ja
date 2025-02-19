@@ -16,30 +16,30 @@ C++と Python の 2 つのパッケージが生成され，それぞれ以下の
 
 ```python
 import rclpy
-import rclpy.node
-import rclpy.qos
+from rclpy.node import Node
+from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy
 
 from tobas_std_msgs.msg import Message
-from tobas_msgs.msg import Gps
+from tobas_msgs.msg import Gnss
 
 
-class GnssStateCheckerNode(rclpy.node.Node):
+class GnssStateCheckerNode(Node):
     def __init__(self) -> None:
         super().__init__("gnss_state_checker")
 
-        qos = rclpy.qos.QoSProfile(depth=1)
-        qos.reliability = rclpy.qos.ReliabilityPolicy.BEST_EFFORT
-        qos.durability = rclpy.qos.DurabilityPolicy.VOLATILE
+        qos = QoSProfile(depth=1)
+        qos.reliability = ReliabilityPolicy.BEST_EFFORT
+        qos.durability = DurabilityPolicy.VOLATILE
 
         self._message_pub = self.create_publisher(Message, "message", qos)
-        self._gps_sub = self.create_subscription(Gps, "gps", self._gps_callback, qos)
+        self._gnss_sub = self.create_subscription(Gnss, "gnss", self._gnss_callback, qos)
 
-    def _gps_callback(self, gps: Gps) -> None:
+    def _gnss_callback(self, gnss: Gnss) -> None:
         message = Message()
-        message.stamp = gps.header.stamp
+        message.stamp = gnss.header.stamp
         message.name = self.get_name()
 
-        if gps.fix_type == Gps.FIX_3D:
+        if gnss.fix_type == Gnss.FIX_3D:
             message.level = Message.LEVEL_INFO
             message.message = "GNSS Fix"
         else:
@@ -57,7 +57,6 @@ def main(args=None) -> None:
 
 if __name__ == "__main__":
     main()
-
 ```
 
 GUI からシミュレーションを起動すると，`Control System`のコンソールにメッセージが表示されます．
