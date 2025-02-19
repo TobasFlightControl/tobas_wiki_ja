@@ -13,7 +13,7 @@
 <br>
 
 もしもシミュレーションは成功したにもかかわらず実機は失敗した場合，
-まずは [URDF Builder](./create_urdf.md) や [Setup Assistant](./setup_assistant.md) の設定に誤りがないか確認してください．
+まずは [URDF](./create_urdf.md) や [Setup Assistant](./setup_assistant.md) の設定に誤りがないか確認してください．
 それでも解決しない場合は，代表の土肥 (masa0u0masa(at)gmail.com) まで連絡していただけると幸いです．
 
 ## Flight Log
