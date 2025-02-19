@@ -56,13 +56,14 @@ float64 roll      # CH1: [-1, 1]
 float64 pitch     # CH2: [-1, 1]
 float64 throttle  # CH3: [-1, 1]
 float64 yaw       # CH4: [-1, 1]
-uint8 mode        # CH5: Flight Mode
-bool e_stop       # CH7: Emergency Stop
+bool enable       # CH5: Enable Radio Control
+                  # CH6: Reserved
+uint8 mode        # CH7: Flight Mode
 bool gpsw         # CH8: General Purpose Switch
 
-uint8 MODE_PROGRAM = 0
+uint8 MODE_ACROBAT = 0
 uint8 MODE_STABILIZE = 1
-uint8 MODE_ACROBAT = 2
+uint8 MODE_LOITER = 2
 ```
 
 #### imu (tobas_msgs/ImuWithCovarianceStamped)
@@ -125,7 +126,7 @@ FluidPressureWithVariance pressure
 	float64 variance  # [Pa^2]
 ```
 
-#### gps (tobas_msgs/Gps)
+#### gnss (tobas_msgs/Gnss)
 
 GNSS から取得した位置と速度．
 
@@ -181,9 +182,9 @@ tobas_msgs/RotorState[] states
 	uint8 ALL_FIELDS_READY = 2
 ```
 
-#### joint_states (sensor_msgs/JointState)
+#### joint_states_2 (tobas_msgs/JointStateArray)
 
-カスタムジョイントの状態．
+ロータ以外の可動ジョイントの状態．
 
 ```txt
 std_msgs/Header header
@@ -191,11 +192,11 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-
-string[] name
-float64[] position
-float64[] velocity
-float64[] effort
+tobas_msgs/JointState[] states
+	string name
+	float64 position
+	float64 velocity
+	float64 effort
 ```
 
 ### 状態推定
@@ -326,19 +327,79 @@ std_msgs/Header header
 float64[] deflections  # [deg]
 ```
 
-#### command/pos_vel_acc_yaw (tobas_msgs/PosVelAccYaw)
+#### command/pwm_periods (tobas_msgs/PwmArray)
+
+PWM デューティサイクル．
 
 ```txt
-tobas_msgs/CommandLevel level
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_msgs/Pwm[] pwms
+	uint8 channel
+	uint16 period  # [us]
+```
+
+#### command/rate_throttle (tobas_command_msgs/RateThrottle)
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_command_msgs/CommandLevel level
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
-tobas_msgs/FrameId frame_id  # The frame in whch velocity and acceleration are expressed
+float64 droll     # [rad/s]
+float64 dpitch    # [rad/s]
+float64 dyaw      # [rad/s]
+float64 throttle  # [0, 1]
+```
+
+#### command/angle_throttle (tobas_command_msgs/AngleThrottle)
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_command_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
+float64 roll      # [rad]
+float64 pitch     # [rad]
+float64 yaw       # [rad]
+float64 throttle  # [0, 1]
+```
+
+#### command/pos_vel_acc_yaw (tobas_command_msgs/PosVelAccYaw)
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+
+tobas_command_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
+tobas_command_msgs/FrameId frame_id  # The frame in whch velocity and acceleration are expressed
 	uint8 data
 	uint8 WORLD = 0
 	uint8 LOCAL = 1
 	uint8 FOOTPRINT = 2
+
 tobas_kdl_msgs/Vector pos    # [m]
 	float64 x
 	float64 y
@@ -354,30 +415,21 @@ tobas_kdl_msgs/Vector acc    # [m/s^2]
 float64 yaw                  # [rad]
 ```
 
-#### command/rpy_throttle (tobas_msgs/RollPitchYawThrottle)
+#### command/pose_twist_accel (tobas_command_msgs/PoseTwistAccelCommand)
 
 ```txt
-tobas_msgs/CommandLevel level
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+
+tobas_command_msgs/CommandLevel level
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
-tobas_kdl_msgs/Euler rpy
-	float64 roll   # [rad]
-	float64 pitch  # [rad]
-	float64 yaw    # [rad]
-float64 throttle  # [0, 1]
-```
-
-#### command/pose_twist_accel (tobas_msgs/PoseTwistAccelCommand)
-
-```txt
-tobas_msgs/CommandLevel level
-	uint8 data
-	uint8 NORMAL = 0
-	uint8 DEFENSIVE = 1
-	uint8 MANUAL = 2
-tobas_msgs/FrameId frame_id  # The frame in whch velocity and acceleration are expressed
+tobas_command_msgs/FrameId frame_id  # The frame in whch velocity and acceleration are expressed
 	uint8 data
 	uint8 WORLD = 0
 	uint8 LOCAL = 1
@@ -410,9 +462,14 @@ tobas_kdl_msgs/Vector dgyro  # Target angular acceleration wrt. the local coordi
 	float64 z
 ```
 
-#### command/speed_roll_delta_pitch (tobas_msgs/SpeedRollDeltaPitch)
+#### command/speed_roll_delta_pitch (tobas_command_msgs/SpeedRollDeltaPitch)
 
 ```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
 float64 speed        # [m/s]
 float64 roll         # [rad]
 float64 delta_pitch  # [rad]
@@ -649,11 +706,7 @@ tobas_gazebo_msgs/TetherParams params
 
 ```txt
 # Goal
-tobas_msgs/CommandLevel level
-	uint8 data
-	uint8 NORMAL = 0
-	uint8 DEFENSIVE = 1
-	uint8 MANUAL = 2
+tobas_command_msgs/CommandLevel level
 float64 target_altitude     # [m]
 float64 altitude_tolerance  # [m]
 float64 duration            # [s]
@@ -675,7 +728,7 @@ string message
 
 ```txt
 # Goal
-tobas_msgs/CommandLevel level
+tobas_command_msgs/CommandLevel level
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -697,7 +750,7 @@ string message
 
 ```txt
 # Goal
-tobas_msgs/CommandLevel level
+tobas_command_msgs/CommandLevel level
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
