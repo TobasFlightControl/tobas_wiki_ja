@@ -1,35 +1,38 @@
 # 飛行試験
 
-実機での飛行試験を行う手順について説明します．
+[シミュレーション](./gazebo_simulation.md) で問題なければ，実機での飛行試験を行います．
 
-## 開始の手順
+## 開始・終了の手順
 
 ---
 
-フライトコントローラと ESC にバッテリーを接続し，給電されていることを確認します．
+シミュレーションを起動すること以外は前ページの HITL の手順と全く同じです．
+機体と十分に距離をとり，安全に飛行させてください．
 
-![power_on](resources/flight_test/power_on.png)
-
-アクセスポイントに接続するなど，PC をラズパイと同じネットワークに接続した状態で Tobas GUI を立ち上げ，`Control System`を開きます．
-右上の`Load`ボタンから`tobas_f450.TBS`を読み込むと，現在のセンサ情報等が表示されます．
-
-![control_system](resources/flight_test/control_system.png)
-
-ステータス欄の`Ready to Arm`が緑色に点灯していることを確認します．
-プロポの E_STOP (CH5) を一度オンにしてからオフにするとモータがアームされ，プロポから操縦できるようになります．
-
-<span style="color: red;"><strong>警告: アーム後に E_STOP をオンにすると，全てのモータが緊急停止します．</strong></span>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EldjS8AnBjw?si=mdp2SFPWEta51UOP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sHoA8yKJPs4?si=CCOEPsu6z9hd7zOb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>
 
-<!-- TODO: Mission Planner, Parameter Tuning, Flight Log -->
+もしもシミュレーションは成功したにもかかわらず実機は失敗した場合，
+まずは [URDF Builder](./create_urdf.md) や [Setup Assistant](./setup_assistant.md) の設定に誤りがないか確認してください．
+それでも解決しない場合は，代表の土肥 (masa0u0masa(at)gmail.com) まで連絡していただけると幸いです．
 
-## 終了の手順
+## Flight Log
 
 ---
 
-1. ドローンを安全に着陸させます．
-1. E_STOP (CH5) をオンにし，モータを停止します．
-1. 右上の`Shutdown`ボタンからラズパイと GUI をシャットダウンします．
-1. バッテリーを取り外します．
+`Flight Log`は，飛行中の状態の記録，再生を行うためのツールです．
+
+![flight_log](resources/flight_test/flight_log.png)
+
+## 飛行ログの記録
+
+1. `Log Name`にログの名前を適当に設定してください．下図では`test`としています．
+1. `Start Recording`ボタンを押すと，ログの記録が開始します．最大 5GB まで連続して記録できるようになっています．
+1. `Stop Recording`ボタンを押すと記録が終了します．
+
+## 飛行ログの表示
+
+1. FC 側と PC 側の`Read`ボタンを押すと，それぞれに保存されているログのリストが表示されます．
+1. 先程記録した`test`の`Download`ボタンを押すと，ログが PC 側にダウンロードされます．
+1. PC 側のリスト中のログ名をクリックすると，保存されているデータが右側にプロットされます．
+1. 右下の再生・停止ボタンやスライダーでログの表示時刻を操作できます．
