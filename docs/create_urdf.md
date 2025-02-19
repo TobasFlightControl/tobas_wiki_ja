@@ -1,6 +1,6 @@
 # URDF 作成
 
-前ページで作成した CAD モデルを元に URDF (Unified Robot Description Format) を作成します．
+CAD モデルを元に URDF (Unified Robot Description Format) を作成します．
 URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式で記述したものです．
 今回は以下のような URDF を作成します:
 
