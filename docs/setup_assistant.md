@@ -168,7 +168,7 @@ URDF やこれまでの設定を元に使用可能な制御器のみ選択でき
 ---
 
 使用するフライトコントローラハードウェアを設定します．
-Tobas の最初のバージョンである Aso を選択します．
+Tobas の最初のバージョンである T1 を選択します．
 
 ![hardware](resources/setup_assistant/hardware.png)
 

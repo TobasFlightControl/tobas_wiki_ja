@@ -62,9 +62,9 @@ Tobas は GUI に入力したユーザの機体構造から完全な 6 自由度
 
 ## Flight Management Unit (FMU)
 
-### Tobas Aso
+### Tobas T1
 
-<img src="../resources/introduction/aso_1.png" alt="aso_1" width="49%"> <img src="../resources/introduction/aso_2.png" alt="aso_2" width="49%">
+<img src="../resources/introduction/t1_1.png" alt="t1_1" width="49%"> <img src="../resources/introduction/t1_2.png" alt="t1_2" width="49%">
 
 #### IC
 
@@ -90,7 +90,7 @@ Tobas は GUI に入力したユーザの機体構造から完全な 6 自由度
 典型的なクアッドコプターです．
 DJI F450 のフレームキットを使用しています．
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sHoA8yKJPs4?si=CCOEPsu6z9hd7zOb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sHoA8yKJPs4?si=CCOEPsu6z9hd7zOb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>
 
 ### 非平面ロータ配置ヘキサコプター

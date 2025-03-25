@@ -50,7 +50,7 @@ URDF は剛体多リンク系のリンク構造や質量特性等を XML 形式�
         <visual>
             <origin xyz="0 0 0" rpy="0 -0 0"/>
             <geometry>
-                <mesh filename="package://tobas_description/meshes/common/fmu/tobas_aso.stl" scale="1 1 1"/>
+                <mesh filename="package://tobas_description/meshes/common/fmu/tobas_t1.stl" scale="1 1 1"/>
             </geometry>
             <material name="red">
                 <color rgba="1 0 0 1"/>

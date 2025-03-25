@@ -32,7 +32,7 @@ Tobas は Bidirectional DShot 600 で ESC と通信するため，それに対�
 ### GNSS アンテナ
 
 GNSS 受信機の周波数帯域とコネクタに対応したアンテナを選択してください．
-Tobas Aso の場合は L1/L5 帯域で SMA コネクタのため，例えば
+Tobas T1 の場合は L1/L5 帯域で SMA コネクタのため，例えば
 <a href=https://www.topgnss.store/products/2pcs-l1-l5-helical-antenna-uav-flight-control-antenna-gps-glonass-galileo-bds-rtk-handheld-receiver-an-103-topgnss-helical target="_blank">TOPGNSS AN-103</a>
 が使用可能です．
 
@@ -121,11 +121,11 @@ GrabCAD にモデルが無かったため，直方体にフィレットをつけ
 
 ### FMU のモデリング
 
-今回は Tobas Aso を使用します．
+今回は Tobas T1 を使用します．
 3D モデル (STEP) は<a href=https://drive.google.com/file/d/124LzAW3CvhgYobC6YJGh0XPJ6KVfslS3 target="_blank">こちら</a>からダウンロードできます．
 STEP ファイルには質量特性が含まれないため，FMU についても URDF を作成する際にプリミティブ形状で近似することにします．
 
-![Tobas Aso](resources/create_cad_model/tobas_aso.png)
+![Tobas T1](resources/create_cad_model/tobas_t1.png)
 
 ### フレームのモデリング
 
