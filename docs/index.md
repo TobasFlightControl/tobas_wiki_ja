@@ -64,7 +64,7 @@ Tobas は GUI に入力したユーザの機体構造から完全な 6 自由度
 
 ### Tobas T1
 
-<img src="../resources/introduction/t1_1.png" alt="t1_1" width="49%"> <img src="../resources/introduction/t1_2.png" alt="t1_2" width="49%">
+<img src="./resources/introduction/t1_1.png" alt="t1_1" width="49%"> <img src="./resources/introduction/t1_2.png" alt="t1_2" width="49%"> <!-- XXX: index.mdだけは参照パスがcwdから -->
 
 #### IC
 
