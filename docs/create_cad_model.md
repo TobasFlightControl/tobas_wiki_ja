@@ -122,8 +122,8 @@ GrabCAD にモデルが無かったため，直方体にフィレットをつけ
 ### FMU のモデリング
 
 今回は Tobas T1 を使用します．
-3D モデル (STEP) は<a href=https://drive.google.com/file/d/124LzAW3CvhgYobC6YJGh0XPJ6KVfslS3 target="_blank">こちら</a>からダウンロードできます．
-STEP ファイルには質量特性が含まれないため，FMU についても URDF を作成する際にプリミティブ形状で近似することにします．
+3D モデルは<a href=https://drive.google.com/drive/folders/1wYKXXwXy_N8ZaACRqDTn1NCoYDJn66fF target="_blank">こちら</a>からダウンロードできます．
+FMU の質量特性を正確に見積もるのは困難なため，URDF を作成する際にプリミティブ形状で近似することにします．
 
 ![Tobas T1](resources/create_cad_model/tobas_t1.png)
 
