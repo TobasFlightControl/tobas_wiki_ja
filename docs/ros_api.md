@@ -27,6 +27,21 @@ float64 voltage  # [V]
 float64 current  # [A]
 ```
 
+### engine_state (tobas_msgs/EngineState)
+
+エンジンの状態．
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+float64 speed            # [rad/s]
+float64 fuel_quantity    # [L]
+float64 oil_temperature  # [degC]
+```
+
 #### cpu (tobas_msgs/Cpu)
 
 CPU の状態．
@@ -57,13 +72,10 @@ float64 pitch     # CH2: [-1, 1]
 float64 throttle  # CH3: [-1, 1]
 float64 yaw       # CH4: [-1, 1]
 bool enable       # CH5: Enable Radio Control
-                  # CH6: Reserved
+bool kill         # CH6: Kill Switch
 uint8 mode        # CH7: Flight Mode
-bool gpsw         # CH8: General Purpose Switch
-
-uint8 MODE_ACROBAT = 0
-uint8 MODE_STABILIZE = 1
-uint8 MODE_LOITER = 2
+bool sub_mode     # CH8: Sub Flight Mode
+bool[8] gpsw      # CH9-16: General Purpose Switch
 ```
 
 #### imu (tobas_msgs/ImuWithCovarianceStamped)
@@ -312,6 +324,22 @@ std_msgs/Header header
 tobas_msgs/RotorSpeed[] speeds
 	uint8 channel
 	float64 speed  # [rad/s]
+```
+
+#### command/ice_propulsion_system (tobas_msgs/IcePropulsionSystemCommand)
+
+内燃機関駆動の機体の制御入力．
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+float64 engine_throttle
+tobas_msgs/PropellerPitchAngle[] pitch_angles
+	string link_name
+	float64 angle  # [rad]
 ```
 
 #### command/deflections (tobas_msgs/ControlSurfaceDeflections)
