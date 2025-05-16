@@ -21,20 +21,23 @@ Tobas を起動し，ツールボタンから`Setup Assistant`を選択します
 ロードが完了すると画面左のタブがアクティブになります．
 これらのタブを上から順に設定していきます．
 
-## Battery
-
----
-
-バッテリーの設定を行います．
-バッテリーの仕様を見ながら以下のように設定します:
-
-![battery](resources/setup_assistant/battery.png)
-
 ## Propulsion
 
 ---
 
-推進系 (プロペラ) の設定を行います．
+推進系の設定を行います．
+今回は電動機のため`Electric Propulsion System`を選択します．
+
+### Battery
+
+バッテリーの設定を行います．
+バッテリーの仕様を確認し，正しく値を入力します．
+
+![battery](resources/setup_assistant/propulsion/battery.png)
+
+### Propulsion Units
+
+各推進ユニットの設定を行います．
 `Available Links`にプロペラとして利用可能なリンクが表示されています．
 表示されない場合は，URDF Builder でプロペラリンクのジョイントタイプが`Continuous`になっていることを確認してください．
 
@@ -121,11 +124,8 @@ RPM,CT,CP
 
 ---
 
-加速度センサ，ジャイロセンサ，地磁気センサ，気圧センサ，GNSS レシーバはFMUに組み込まれています．
+加速度センサ，ジャイロセンサ，地磁気センサ，気圧センサ，GNSS レシーバは FMU に組み込まれています．
 基本的に設定はデフォルトで構いませんが，センサ位置がルートフレームから離れている場合はオフセットを適切に設定すると状態推定の精度が改善する可能性があります．
-今回は GNSS レシーバのオフセットのみ修正します．
-
-![gnss](resources/setup_assistant/gnss.png)
 
 <!-- TODO
 ## オプションデバイス (Camera, LiDAR, Odometry, Tether Station)
@@ -141,6 +141,15 @@ RPM,CT,CP
 
 今回はいずれも搭載しないためパスします．
 -->
+
+## RC Input
+
+---
+
+ラジオコントロールに関する設定を行います．
+送信機や受信機の仕様書を確認し，正しく値を入力します．
+
+![rc_input](resources/setup_assistant/rc_input.png)
 
 ## Controller
 
