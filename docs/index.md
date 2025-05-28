@@ -66,14 +66,14 @@ Tobas は GUI に入力したユーザの機体構造から完全な 6 自由度
 
 <img src="./resources/introduction/t1_1.png" alt="t1_1" width="49%"> <img src="./resources/introduction/t1_2.png" alt="t1_2" width="49%"> <!-- XXX: index.mdだけは参照パスがcwdから -->
 
-#### IC
+#### Sensors & Processors
 
 - 6-axis IMU: <a href=https://www.st.com/ja/mems-and-sensors/ism330dlc.html target="_blank">ISM330DLC | STMicroelectronics</a>
 - Magnetometer: <a href=https://www.st.com/ja/mems-and-sensors/iis2mdc.html target="_blank">IIS2MDC | STMicroelectronics</a>
 - Barometer: <a href=https://www.st.com/ja/mems-and-sensors/ilps22qs.html target="_blank">ILPS22QS | STMicroelectronics</a>
 - GNSS Receiver: <a href=https://www.u-blox.com/en/product/zed-f9p-module target="_blank">ZED-F9P-15B | u-blox</a>
-- A/D Converter: <a href=https://www.ti.com/product/ja-jp/INA228 target="_blank">INA228 | Texas Instruments</a>
-- Motor Driver: <a href=https://www.st.com/ja/microcontrollers-microprocessors/stm32h7a3-7b3.html target="_blank">STM32H7A3 | STMicroelectronics</a>
+- Voltage/Current Sensor: <a href=https://www.ti.com/product/ja-jp/INA228 target="_blank">INA228 | Texas Instruments</a>
+- I/O Controller: <a href=https://www.st.com/ja/microcontrollers-microprocessors/stm32h7a3-7b3.html target="_blank">STM32H7A3 | STMicroelectronics</a>
 
 #### Interface
 
