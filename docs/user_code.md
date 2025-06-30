@@ -1,6 +1,6 @@
 # ユーザプログラム
 
-Setup Assistant で作成した Tobas パッケージ (例: tobas_f450.TBS) に含まれる ROS パッケージのうち，
+Setup Assistant で作成した Tobas プロジェクト (例: tobas_f450.TBS) に含まれる ROS パッケージのうち，
 ユーザパッケージ (例: tobas_f450_user\_\*) はユーザが自由に編集できるパッケージです．
 C++と Python の 2 つのパッケージが生成され，それぞれ以下の 3 つの launch ファイルが含まれます．
 

@@ -206,7 +206,7 @@ Gazebo のシミュレーション環境の設定を行います．
 
 ---
 
-Setup Assistant によって生成される Tobas パッケージの管理者の名前とメールアドレスを入力します．
+Setup Assistant によって生成される Tobas プロジェクトの管理者の名前とメールアドレスを入力します．
 
 ![author_info](resources/setup_assistant/author_info.png)
 
@@ -214,9 +214,9 @@ Setup Assistant によって生成される Tobas パッケージの管理者の
 
 ---
 
-Tobas パッケージを生成するディレクトリとパッケージ名を設定します．
+Tobas プロジェクトを生成するディレクトリとパッケージ名を設定します．
 `Parent Directory`を colcon ワークスペースの`src/`以下に設定します．今回はデフォルトのままとします．
 `Package Name`に適当なパッケージ名を設定します．こちらも今回はデフォルトのままとします．
-`Generate`ボタンを押すと，指定したディレクトリに Tobas パッケージ (\*.TBS) が生成されます．
+`Generate`ボタンを押すと，指定したディレクトリに Tobas プロジェクト (\*.TBS) が生成されます．
 
 ![ros_package](resources/setup_assistant/ros_package.png)
