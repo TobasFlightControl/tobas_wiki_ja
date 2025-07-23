@@ -5,9 +5,10 @@
 ---
 
 1. `tobas_x.x.x_amd64.deb`をダウンロードしてください．
-1. Files から `tobas_x.x.x_amd64.deb`をダブルクリックすると，App Center が起動します．これには数分かかることがあります．
-1. Install を押すとインストールが開始され，Applications に Tobas と Tobas Install が追加されます．これには数分かかることがあります．
-1. Applications から Tobas Install を起動すると，ターミナルが開き追加のインストールが開始します．これには数十分かかることがあります．
+1. エクスプローラから `tobas_x.x.x_amd64.deb`をダブルクリックすると，App Center が起動します．これには数分かかることがあります．
+1. `Install`をクリックするとインストールが開始します．これには数分かかることがあります．
+1. インストールが完了すると，アプリケーションメニューに`TobasInstall`，`TobasSetupAssistant`，`TobasGCS`が追加されます．
+1. アプリケーションメニューから`TobasInstall`を起動すると，ターミナルが開き追加のインストールが開始します．これには数十分かかることがあります．
    ターミナルの最後に`Installation finished successfully.`と表示されればインストール成功です．ターミナルを閉じてください．
 
 ![app_center](resources/installation/app_center.png)
