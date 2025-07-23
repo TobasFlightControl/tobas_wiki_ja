@@ -57,22 +57,21 @@ T10J の場合はチャンネル 1 からチャンネル 4 までは上の表で
 
 ---
 
-1. FMU を起動します．
-2. PC を FMU と同じネットワークに接続します．FMU のアクセスポイントに接続する場合，SSID と PSK は以下です．
+FMU を起動し，PC を FMU と同じネットワークに接続します．FMU のアクセスポイントに接続する場合，SSID と PSK は以下です．
 
 ```txt
-SSID: raspberry_wifi
-PSK : raspberry
+  SSID: raspberry_wifi
+  PSK : raspberry
 ```
 
-3. アプリケーションメニューから`TobasGCS`を起動するか，もしくはターミナルで以下を実行します．
+アプリケーションメニューから`TobasGCS`を起動するか，もしくはターミナルで以下を実行します．
 
 ```bash
 $ ros2 launch tobas_gcs gcs.launch.py
 ```
 
-4. `Load Project`をクリックし，Setup Assistant で作成した`tobas_f450.TBS`をダブルクリックして読み込みます．
-5. `Write Project`をクリックすると，プロジェクトが FMU に送信後にビルドされます．これには数分かかります．
+`Load Project`をクリックし，Setup Assistant で作成した`f450.TBS`をダブルクリックして読み込みます．
+`Write Project`をクリックすると，プロジェクトが FMU に送信後にビルドされます．これには数分かかります．
 
 ![load_and_write](resources/hardware_setup/load_and_write.png)
 
