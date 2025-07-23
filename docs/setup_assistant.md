@@ -59,7 +59,7 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 `Aerodynamics`ではプロペラの空力特性の設定を行います．
 複数の設定方法から選ぶことができますが，プロペラ単体試験のデータを使用するのが望ましいです．
 今回はプルダウンから`Estimate from Thrust Stand Data`を選択します．
-`Load CSV`をクリックし，ファイルダイアログで`/opt/tobas/share/tobas_setup_assistant/data/dji_9450.csv`を選択して`Open`をクリックします．
+`Load CSV`をクリックし，ファイルダイアログで`/opt/tobas/share/tobas_setup_assistant/data/thrust_stand/dji_9450.csv`を選択して`Open`をクリックします．
 すると，プロペラの試験データがテーブルに反映されます．
 
 ![propulsion/aerodynamics](resources/setup_assistant/propulsion/aerodynamics.png)
