@@ -4,8 +4,6 @@ nav:
   - Introduction: index.md # index.mdは必須
   - Getting Started:
       - Installation: installation.md
-      - Create CAD Model: create_cad_model.md
-      - Create URDF: create_urdf.md
       - Setup Assistant: setup_assistant.md
       - Hardware Setup: hardware_setup.md
       - Gazebo Simulation: gazebo_simulation.md
@@ -14,4 +12,5 @@ nav:
       - ROS API: ros_api.md
       - User Code: user_code.md
   - Additional Information:
+      - What is UADF: what_is_uadf.md
       - Trouble Shooting: trouble_shooting.md
