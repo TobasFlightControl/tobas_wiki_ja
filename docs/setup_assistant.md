@@ -83,5 +83,5 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 
 ![save](resources/setup_assistant/save.png)
 
-これで全ての作業が完了しました．
+これで作業は完了です．
 Setup Assistant を閉じ，次に進んでください．

@@ -137,3 +137,6 @@ WiFi の設定を行います．
 今回の機体はプロペラ以外の可動関節をもたないためスキップします．
 
 ![joint_test](resources/hardware_setup/joint_test.png)
+
+これで作業は完了です．
+機体を飛ばす準備が整いました．

@@ -62,3 +62,5 @@ if __name__ == "__main__":
 GUI からシミュレーションを起動すると，`Control System`のコンソールにメッセージが表示されます．
 
 ![console](resources/user_code/console.png)
+
+API の詳細については[ROS API](./ros_api.md)をご覧ください．
