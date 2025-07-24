@@ -284,7 +284,7 @@ int8 POSITION_LOST = -1
 
 全てのロータがアームされているか否か．
 
-```
+```txt
 std_msgs/Header header
 	builtin_interfaces/Time stamp
 		int32 sec
