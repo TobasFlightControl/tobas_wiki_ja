@@ -6,8 +6,8 @@ nav:
       - Installation: installation.md
       - Setup Assistant: setup_assistant.md
       - Hardware Setup: hardware_setup.md
-      - Gazebo Simulation: gazebo_simulation.md
       - Flight Test: flight_test.md
+      - Gazebo Simulation: gazebo_simulation.md
   - For Developers:
       - ROS API: ros_api.md
       - User Code: user_code.md
