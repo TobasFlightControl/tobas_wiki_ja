@@ -11,7 +11,7 @@ C++と Python の 2 つのパッケージが生成され，それぞれ以下の
 自動生成される`f450_user_cpp/nodes/user_node.cpp`と`f450_user_py/f450_user_py/user_node.py`は
 予め launch ファイルに記述されているため，それらは編集するだけで機能します．
 
-試しに GNSS の状態を確認し，測位できているか否かを Tobas メッセージで発行する Python ノードを作成してみます．
+試しに GNSS の状態を確認し，測位できているか否かをメッセージで発行する Python ノードを作成してみます．
 `f450_user_py/f450_user_py/user_node.py`を以下のように編集してください．
 
 ```python
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     main()
 ```
 
-GUI からシミュレーションを起動すると，`Control System`のコンソールにメッセージが表示されます．
+`TobasGCS`からシミュレーションを起動すると，`Control System`のコンソールにメッセージが表示されます．
 
 ![console](resources/user_code/console.png)
 
