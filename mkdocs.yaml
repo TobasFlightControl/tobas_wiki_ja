@@ -1,5 +1,5 @@
 site_name: Tobas
-theme: readthedocs
+theme: gitbook # cf. https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes
 nav:
   - Introduction: index.md # index.mdは必須
   - Getting Started:
