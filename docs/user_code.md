@@ -1,5 +1,10 @@
 # ユーザプログラム
 
+ここでは，ユーザが ROS 2 の基礎を習得していることを前提にしています．
+ROS 2 の学習には
+<a href=https://docs.ros.org/en/jazzy/Tutorials.html target="_blank">Tutorials | ROS 2 Documentation</a>
+をご参照ください．
+
 Setup Assistant で作成した Tobas プロジェクト (例: f450.TBS) に含まれる ROS パッケージのうち，
 ユーザパッケージ (例: f450_user\_\*) はユーザが自由に編集できるパッケージです．
 C++と Python の 2 つのパッケージが生成され，それぞれ以下の 3 つの launch ファイルが含まれます．

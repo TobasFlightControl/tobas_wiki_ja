@@ -138,5 +138,9 @@ WiFi の設定を行います．
 
 ![joint_test](resources/hardware_setup/joint_test.png)
 
+## 次の手順へ
+
+---
+
 これで作業は完了です．
-機体を飛ばす準備が整いました．
+次のステップではいよいよ機体を飛ばしてみます．

@@ -8,6 +8,13 @@ Tobas Setup Assistant は，Tobas を用いてドローンを飛ばすのに必�
 Tobas Setup Assistant を使用するためには，ユーザの機体を表現した Universal Aircraft Description Language (UADF) ファイルが必要です．
 UADF の詳細については[What is UADF](./what_is_uadf.md)をご参照ください．
 
+## 準備
+
+---
+
+このチュートリアルでは，<a href=https://www-v1.dji.com/jp/flame-wheel-arf/feature.html target="_blank">DJI F450</a>を使用します．
+機体の UADF を作る必要がありますが，今回は既に用意してあるものを使用します．
+
 ## 起動
 
 ---
@@ -64,8 +71,8 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 
 ![propulsion/aerodynamics](resources/setup_assistant/propulsion/aerodynamics.png)
 
-`Copy To All`をクリックし，`propeller_0`の設定を他の全てのプロペラリンクにコピーします．
-`propeller_0`の設定が他のリンクにも反映されていることを確認してください．
+この機体の 4 つの推進モジュールは全て同一なため，`Copy To All`をクリックし，`propeller_0`の設定を他の 3 つにコピーします．
+`propeller_0`の設定が他のタブにも反映されていることを確認してください．
 
 ## Flight Management Unit
 
@@ -83,5 +90,10 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 
 ![save](resources/setup_assistant/save.png)
 
+## 次の手順へ
+
+---
+
 これで作業は完了です．
-Setup Assistant を閉じ，次に進んでください．
+Setup Assistant を閉じてください．
+次は，実機を作成してハードウェアのセットアップを行います．
