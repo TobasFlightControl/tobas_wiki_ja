@@ -60,8 +60,8 @@ T10J の場合はチャンネル 1 からチャンネル 4 までは上の表で
 FMU を起動し，PC を FMU と同じネットワークに接続します．FMU のアクセスポイントに接続する場合，SSID と PSK は以下です．
 
 ```txt
-  SSID: raspberry_wifi
-  PSK : raspberry
+SSID: raspberry_wifi
+PSK : raspberry
 ```
 
 アプリケーションメニューから`TobasGCS`を起動するか，もしくはターミナルで以下を実行します．
