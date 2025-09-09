@@ -14,3 +14,5 @@ nav:
   - Additional Information:
       - What is UADF: what_is_uadf.md
       - Trouble Shooting: trouble_shooting.md
+markdown_extensions:
+  - admonition
