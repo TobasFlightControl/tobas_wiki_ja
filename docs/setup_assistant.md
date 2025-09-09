@@ -46,7 +46,7 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 ### Battery
 
 バッテリーの設定を行います．
-バッテリーの仕様を確認し，各項目に適切な値を入力します．
+バッテリーの仕様を確認し，各項目に適切な値を入力してください．
 
 ![battery](resources/setup_assistant/propulsion/battery.png)
 
@@ -55,7 +55,8 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 各推進ユニットの設定を行います．
 
 まず`propeller_0`リンクの設定を行います．
-各部品の仕様を確認し，`ESC`，`Motor`，`Propeller`の各項目に適切な値を入力します．
+機体との対応関係がわからない場合は，画面左上の`Frame Tree`からリンク名をクリックすることでモデルビューにハイライトされます．
+各部品の仕様を確認し，`ESC`，`Motor`，`Propeller`の各項目に適切な値を入力してください．
 
 ![propulsion/esc](resources/setup_assistant/propulsion/esc.png)
 
@@ -80,7 +81,7 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 
 ハードウェアに関するを設定を行います．
 `Tobas T1`が選択されていることを確認し，
-4 つの推進ユニットそれぞれについて，適切に DShot チャンネルを設定します．
+4 つの推進ユニットそれぞれについて，適切に DShot チャンネルを設定してください．
 
 ![fmu](resources/setup_assistant/fmu.png)
 
