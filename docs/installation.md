@@ -14,7 +14,7 @@
 ![app_center](resources/installation/app_center.png)
 ![terminal](resources/installation/terminal.png)
 
-## フライトコントローラのセットアップ
+## フライトコントローラのイメージ書き込み
 
 ---
 
