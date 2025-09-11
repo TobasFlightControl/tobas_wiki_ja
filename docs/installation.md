@@ -34,6 +34,12 @@
 
 ![balena_etcher](resources/installation/balena_etcher.png)
 
+<!-- prettier-ignore-start -->
+!!! note
+    PC用のdebパッケージとFC用のイメージのバージョンは，マイナーバージョン (2桁目) まで一致していれば対応しています．
+    例えば，PCがv1.2.3でFCがv1.2.4の場合は対応していますが，v1.2.3とv1.3.3の場合は動作が保証されません．
+<!-- prettier-ignore-end -->
+
 ## 次の手順へ
 
 ---
