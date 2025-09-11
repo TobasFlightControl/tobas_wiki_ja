@@ -5,27 +5,23 @@ ROS 2 の学習には
 <a href=https://docs.ros.org/en/jazzy/Tutorials.html target="_blank">Tutorials | ROS 2 Documentation</a>
 をご参照ください．
 
-Setup Assistant で作成した Tobas プロジェクト (例: tobas_f450.TBS) に含まれる ROS パッケージのうち，
-ユーザパッケージ (例: f450_user\_\*) はユーザが自由に編集できるパッケージです．
+Setup Assistant で作成した Tobas プロジェクト (例: tobas_tobas_f450.TBS) に含まれる ROS パッケージのうち，
+ユーザパッケージ (例: tobas_f450_user\_\*) はユーザが自由に編集できるパッケージです．
 C++と Python の 2 つのパッケージが生成され，それぞれ以下の 3 つの launch ファイルが含まれます．
 
 - `common.launch.py`: 実機とシミュレーションの両方で起動されます．
 - `gazebo.launch.py`: シミュレーション時のみ起動されます．
 - `real.launch.py`: 実機でのみ起動されます．
 
-自動生成される`f450_user_cpp/nodes/user_node.cpp`と`f450_user_py/f450_user_py/user_node.py`は
-予め launch ファイルに記述されているため，それらは編集するだけで機能します．
-
 試しに GNSS の状態を確認し，測位できているか否かをメッセージで発行する Python ノードを作成してみます．
-`f450_user_py/f450_user_py/user_node.py`を以下のように編集してください．
+`tobas_f450_user_py/tobas_f450_user_py/user_node.py`を以下のように編集してください．
 
 ```python
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy
 
-from tobas_std_msgs.msg import Message
-from tobas_msgs.msg import Gnss
+from tobas_msgs.msg import Gnss, Message
 
 
 class GnssStateCheckerNode(Node):
@@ -41,7 +37,7 @@ class GnssStateCheckerNode(Node):
 
     def _gnss_callback(self, gnss: Gnss) -> None:
         message = Message()
-        message.stamp = gnss.header.stamp
+        message.header.stamp = gnss.header.stamp
         message.name = self.get_name()
 
         if gnss.fix_type == Gnss.FIX_3D:
@@ -62,6 +58,32 @@ def main(args=None) -> None:
 
 if __name__ == "__main__":
     main()
+```
+
+このノードが自動で起動するよう設定します．
+`tobas_f450_user_py/launch/common.launch.py`の`add_action`の部分のコメントアウトを外してください．
+
+```python
+# Do not delete or rename this file because it is executed in tobas_f450_config/common_interface.launch.py.
+
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+
+def generate_launch_description():
+    ld = LaunchDescription()
+
+    # Please add the nodes that run both on real hardware and in simulation.
+
+    ld.add_action(
+        Node(
+            package="tobas_f450_user_py",
+            executable="user_node",
+            namespace="f450",
+        )
+    )
+
+    return ld
 ```
 
 `TobasGCS`からシミュレーションを起動すると，`Control System`のコンソールにメッセージが表示されます．
