@@ -70,7 +70,7 @@ FC に電源を投入し，地上局用の PC を FC と同じネットワーク
 $ ros2 launch tobas_gcs gcs.launch.py
 ```
 
-`Load Project`をクリックし，Setup Assistant で作成した`f450.TBS`をダブルクリックして読み込みます．
+`Load Project`をクリックし，Setup Assistant で作成した`tobas_f450.TBS`をダブルクリックして読み込みます．
 `Write Project`をクリックすると，プロジェクトが FC に送信された後にビルドされます．これには数分かかります．
 
 ![load_and_write](resources/hardware_setup/load_and_write.png)
