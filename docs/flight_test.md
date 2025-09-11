@@ -6,15 +6,18 @@
 
 ### 開始の手順
 
-1. FMU と全ての ESC に適切に給電します．
-1. PC を FMU と同じネットワークに接続します．
+1. ドローンにバッテリーを接続します．
+1. PC を FC と同じネットワークに接続します．
 1. `TobasGCS`を起動します．
-1. `Load Project`をクリックし，`f450.TBS`を読み込みます．
-1. `Control System`を開きます．
+1. `Load Project`をクリックし，`tobas_f450.TBS`を読み込みます．
+1. ツールボタンの中にある`Control System`をクリックして開きます．
 1. `Pre-Arm Check`の全ての項目が達成できていることを確認します．
 1. プロポの電源を入れ，`Enable` スイッチをオンにし，`Kill`スイッチをオフにします．
+1. プロポのスイッチで飛行モードを決めます．最初は`Stabilize` (姿勢制御モード) が安全です．
 1. スロットルレバーを下，ヨーレバーを右に傾けた状態で 1 秒間維持するとアームします．
-1. アームしたら各レバーで操縦することができます．
+1. アームしたらヨーレバーを戻し，スロットルレバーを少しずつ上げます．
+
+![start](resources/flight_test/start.png)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sHoA8yKJPs4?si=CCOEPsu6z9hd7zOb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>
@@ -23,8 +26,8 @@
 
 1. スロットルレバーを下，ヨーレバーを左に傾けた状態で 1 秒間維持するとディスアームします．
    もしくは，`Kill`スイッチをオンにすることでもディスアームできます．
-1. GCS の電源ボタンをクリックし，FMU をシャットダウンします．
-1. 安全に十分に気をつけて，FMU と ESC への給電を切ります．
+1. GCS の電源ボタン (赤色) をクリックし，FC をシャットダウンします．
+1. 安全に十分に気をつけて，FC と ESC への給電を切ります．
 
 以下では地上局の各機能について説明します．
 
@@ -60,7 +63,10 @@
    ウェイポイントの座標は画面上のマップ中のアイコンをドラッグアンドドロップすること でも操作できます．
 1. `Execute`ボタンを押すとミッションが実行されます．
 
-**注意**: プロポの`Enable`スイッチがオンだとプロポからの指令が優先されるため，必ずオフにした状態で実行してください．
+<!-- prettier-ignore-start -->
+!!! note
+    プロポの`Enable`スイッチがオンだとプロポからの指令が優先されるため，必ずオフにした状態で実行してください．
+<!-- prettier-ignore-end -->
 
 ![mission_planner](resources/flight_test/mission_planner.png)
 
@@ -74,7 +80,7 @@
 
 ### 手順
 
-1. `Load`をクリックすると，FMU から現在のパラメータが読み込まれます．
+1. `Load`をクリックすると，FC から現在のパラメータが読み込まれます．
 1. 増減ボタンまたはスライダー操作でパラメータをオンラインで調整できます．
 1. `Save`をクリックすると，現在のパラメータがローカル PC 内のプロジェクトフォルダに保存されます．
 1. 飛行終了後に`Write`をクリックして保存したパラメータを FC にフラッシュします．
