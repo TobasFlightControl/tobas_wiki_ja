@@ -14,6 +14,7 @@ nav:
       - User Code: user_code.md
   - Additional Information:
       - What is UADF: what_is_uadf.md
+      - 3D Models: cad_models.md
       - Trouble Shooting: trouble_shooting.md
 markdown_extensions:
   - admonition # Required for "note"
