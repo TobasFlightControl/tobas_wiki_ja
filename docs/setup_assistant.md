@@ -55,8 +55,13 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 各推進ユニットの設定を行います．
 
 まず`propeller_0`リンクの設定を行います．
-機体との対応関係がわからない場合は，画面左上の`Frame Tree`からリンク名をクリックすることでモデルビューにハイライトされます．
 各部品の仕様を確認し，`ESC`，`Motor`，`Propeller`の各項目に適切な値を入力してください．
+
+<!-- prettier-ignore-start -->
+!!! note
+    機体上のプロペラと表示されているリンク名との対応関係がわからない場合は，
+    画面左上の`Frame Tree`からリンク名をクリックすることでモデルビューにハイライトされます．
+<!-- prettier-ignore-end -->
 
 ![propulsion/esc](resources/setup_assistant/propulsion/esc.png)
 
@@ -65,29 +70,37 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 ![propulsion/propeller](resources/setup_assistant/propulsion/propeller.png)
 
 `Aerodynamics`ではプロペラの空力特性の設定を行います．
-複数の設定方法から選ぶことができますが，プロペラ単体試験のデータを使用するのが望ましいです．
-今回はプルダウンから`Estimate from Thrust Stand Data`を選択します．
-`Load CSV`をクリックし，ファイルダイアログで`/opt/tobas/share/tobas_setup_assistant/data/thrust_stand/dji_9450.csv`を選択して`Open`をクリックします．
-すると，プロペラの試験データがテーブルに反映されます．
+複数の設定方法から選ぶことができますが，今回使用するプロペラである DJI 9450 は予めモデルが用意されているので，それを使います．
+最初の選択リストから`Select Propeller Model`を選択し，その下の選択リストで`dji_9450`を選択してください．
 
 ![propulsion/aerodynamics](resources/setup_assistant/propulsion/aerodynamics.png)
 
-この機体の 4 つの推進モジュールは全て同一なため，`Copy To All`をクリックし，`propeller_0`の設定を他の 3 つにコピーします．
+この機体の 4 つの推進ユニットは全て同一なため，`Copy To All`をクリックし，`propeller_0`の設定を他の 3 つにコピーします．
 `propeller_0`の設定が他のタブにも反映されていることを確認してください．
 
 ## Flight Management Unit
 
 ---
 
-ハードウェアに関するを設定を行います．
+ハードウェアに関する設定を行います．　
 `Tobas T1`が選択されていることを確認し，
 4 つの推進ユニットそれぞれについて，適切に DShot チャンネルを設定してください．
 
 ![fmu](resources/setup_assistant/fmu.png)
 
+## Remote Connection
+
+---
+
+地上局から FC に遠隔で接続するための設定を行います．
+`Hostname`を選択し，[Boot Device Configuration](./bootmedia_config.md)で設定した FC のホスト名を入力してください．
+FC 側に固定 IP を振っている場合は，それを指定することもできます．
+
+![remote_connection](resources/setup_assistant/remote_connection.png)
+
 ## プロジェクトの保存
 
-`Save`をクリックし，ファイルダイアログで`~/Tobas/colcon_ws/src/`以下に`f450.TBS`として保存します．
+`Save`をクリックし，ファイルダイアログで`~/Tobas/colcon_ws/src/`以下に`tobas_f450.TBS`として保存します．
 
 ![save](resources/setup_assistant/save.png)
 
