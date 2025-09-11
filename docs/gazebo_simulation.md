@@ -7,6 +7,7 @@
 `TobasGCS`を起動して`tobas_f450.TBS`を読み込み，ツールボタンから`Simulation`を選択します．
 
 `Static Configurations`の`Simulation Type`を`SITL`に，`World`を`Standard World`の`flight_training`に設定します．
+その他の項目はデフォルトのままとします．
 
 ![simulation_settings](resources/gazebo_simulation/simulation_settings.png)
 
@@ -15,6 +16,7 @@
 ![launch_gazebo](resources/gazebo_simulation/launch_gazebo.png)
 
 `Dynamic Configurations`から風速などの環境設定，`Commanders`から機体への指令を行うことができます．
+[Flight Test](./flight_test.md)で紹介したミッション計画やパラメータチューニングなども実機と同様に行うことができます．
 
 ![send_command](resources/gazebo_simulation/send_command.png)
 
@@ -30,7 +32,7 @@ RC キャリブレーションを行っていれば，シミュレーション�
    のような USB シリアル変換モジュールを用意します．
 1. USB シリアル変換モジュールを，High-Low を反転する設定にします．
 1. USB シリアル変換モジュールを PC と RC 受信機に接続します．
-1. PC から，USB シリアル変換モジュールに読み取り許可を与えます: `$ sudo chmod 666 /dev/ttyUSB0`
+1. PC から，USB シリアル変換モジュールに読み取り許可を与えます: `$ sudo chmod 666 /dev/ttyUSBx`
 1. プロポの信号が`Control System`に表示されれば成功です．実機と同様に操作できます．
 
 ## ROS を介した操作
