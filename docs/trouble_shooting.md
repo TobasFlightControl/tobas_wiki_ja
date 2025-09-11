@@ -30,11 +30,11 @@ Ubuntu の起動画面でユーザ名を選択した際に画面右下に現れ�
 - `Ubuntu` もしくは `Ubuntu on Wayland` が選択可能な場合 → `Ubuntu`
 - `Ubuntu on Xorg` もしくは `Ubuntu` が選択可能な場合 → `Ubuntu on Xorg`
 
-## Tobas プロジェクトが存在しないと言われる: Local directory /home/user/.../hoge.TBS does not exist.
+## Tobas プロジェクトが存在しないと言われる: Local directory /.../hoge.TBS does not exist.
 
 ---
 
-Python の os.path.isdir() が，ディレクトリが存在するにも関わらず False を返しています．
+Python の`os.path.isdir()`が，ディレクトリが存在するにも関わらず`False`を返しています．
 原因は不明ですが，apt パッケージを更新することで改善しました．
 
 ```bash
