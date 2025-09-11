@@ -1,7 +1,7 @@
 site_name: Tobas
 theme: readthedocs # cf. https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes
 nav:
-  - Introduction: index.md # index.mdは必須
+  - Introduction: index.md # Required
   - Getting Started:
       - Installation: installation.md
       - Boot Device Configuration: bootmedia_config.md
@@ -16,4 +16,4 @@ nav:
       - What is UADF: what_is_uadf.md
       - Trouble Shooting: trouble_shooting.md
 markdown_extensions:
-  - admonition
+  - admonition # Required for "note"
