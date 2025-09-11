@@ -5,7 +5,7 @@
 ---
 
 1. <a href=https://drive.google.com/file/d/1c-4ALeUQ1Ot2ZB8eEXENVPNiNxLpBGDG/view target="_blank">tobas_2.7.0_amd64.deb</a>をダウンロードしてください．
-1. エクスプローラからダウンロードした deb パッケージをダブルクリックすると，App Center が起動します．これには数分かかることがあります．
+1. エクスプローラを開き，ダウンロードした deb パッケージをダブルクリックすると，App Center が起動します．これには数分かかることがあります．
 1. `Install`をクリックするとインストールが開始します．これには数分かかることがあります．
 1. インストールが完了すると，アプリケーションメニューに`TobasInstall`，`TobasBootmediaConfig`，`TobasSetupAssistant`，`TobasGCS`が追加されます．
 1. アプリケーションメニューから`TobasInstall`を起動すると，ターミナルが開き追加のインストールが開始します．これには数十分かかることがあります．
