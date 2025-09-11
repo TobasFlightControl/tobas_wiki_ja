@@ -4,13 +4,14 @@
 
 ---
 
-設計通りに実機を作成します．
+Setup Assistant で設定したとおりに実機を作成します．
 
 <!-- TODO: Navio2のような詳細な手順 -->
 <!-- cf. https://docs.emlid.com/navio2/hardware-setup/ -->
 <!-- cf. https://docs.emlid.com/navio2/ardupilot/typical-setup-schemes/ -->
 
-<img src="../resources/hardware_setup/f450_1.png" alt="F450_1" width="49%"> <img src="../resources/hardware_setup/f450_2.png" alt="F450_2" width="49%">
+<img src="../resources/hardware_setup/f450_1.png" alt="f450_1" width="49%"/>
+<img src="../resources/hardware_setup/f450_2.png" alt="f450_2" width="49%"/>
 
 ## プロポの設定
 
@@ -59,12 +60,9 @@ GPSw (General Purpose Switch) はユーザが自由に使えるスイッチで�
 
 ---
 
-FMU を起動し，PC を FMU と同じネットワークに接続します．FMU のアクセスポイントに接続する場合，SSID と PSK は以下です．
-
-```txt
-SSID: raspberry_wifi
-PSK : raspberry
-```
+FC に電源を投入し，地上局用の PC を FC と同じネットワークに接続します．
+[Boot Device Configuration](./bootmedia_config.md)で複数のネットワークを設定した場合は，
+利用可能な最も優先度の高いネットワークが選択されていることに注意してください．
 
 アプリケーションメニューから`TobasGCS`を起動するか，もしくはターミナルで以下を実行します．
 
@@ -73,42 +71,38 @@ $ ros2 launch tobas_gcs gcs.launch.py
 ```
 
 `Load Project`をクリックし，Setup Assistant で作成した`f450.TBS`をダブルクリックして読み込みます．
-`Write Project`をクリックすると，プロジェクトが FMU に送信後にビルドされます．これには数分かかります．
+`Write Project`をクリックすると，プロジェクトが FC に送信された後にビルドされます．これには数分かかります．
 
 ![load_and_write](resources/hardware_setup/load_and_write.png)
 
-## 各種設定
+## Sensor Calibration
+
+各センサのキャリブレーションを行います．
+画面上部のツールボタンの中にある`Sensor Calib`をクリックしてください．
 
 ---
-
-### Network Setting
-
-WiFi の設定を行います．
-
-1. `Read`をクリックすると，現在の設定が読み込まれます．
-1. `Add`をクリックしてフィールドを追加し，接続するネットワークの SSID と PSK を入力してください．
-1. `Write`をクリックすると，設定が FMU に反映されます．
-
-![network_setting](resources/hardware_setup/network_setting.png)
 
 ### Accelerometer Calibration
 
 加速度センサのキャリブレーションを行います．
 機体を水平面上に置き，`Start`をクリックしてください．
-数秒でキャリブレーションが完了します．
+数秒でキャリブレーションが完了し，しばらくするとタブが赤色から緑色に変化します．
 
 ![accel_calibration](resources/hardware_setup/accel_calibration.png)
 
 ### Magnetometer Calibration
 
 地磁気センサのキャリブレーションを行います．
-地磁気センサは周囲の環境の影響を強く受けるため，FMU を機体に取り付けた状態で実行してください．
+地磁気センサは周囲の環境の影響を強く受けるため，FC を機体に取り付けた状態で実行してください．
 
-1. `Start`をクリックすると，地磁気の値が紫色の点で表示され始めます．
-1. 点群がきれいな楕円体を描くように機体を全方位にゆっくりと回転させてください．6 面それぞれが上を向いた状態で Z 軸回りに 2 周ずつ回転させるのがおすすめです．
-1. 完了したら`Finish`をクリックしてください．キャリブレーション後の白色の点群が原点周りのきれいな球を描いていれば成功です．
+1. `Start`をクリックすると，地磁気の値が白色の点群として表示され始めます．
+1. FC の 6 つの面それぞれについて，面を上に向けた状態で機体を鉛直軸周りにゆっくりと回転させてください．
+   進捗バーが 100%に到達したら完了です．
+1. 完了したら`Finish`をクリックしてください．推定された楕円体が青色，歪み補正後の点群が緑色で表示されます．
+   青色の楕円体が白色の点群に重なっており，緑色の点群が原点周りに球を描いていれば成功です．
 
-![mag_calibration](resources/hardware_setup/mag_calibration.png)
+<img src="../resources/hardware_setup/mag_calibration_1.png" alt="mag_calibration_1" width="49%"/>
+<img src="../resources/hardware_setup/mag_calibration_2.png" alt="mag_calibration_2" width="49%"/>
 
 ### Radio Calibration
 
@@ -117,9 +111,16 @@ WiFi の設定を行います．
 1. `Start`をクリックすると，S.BUS の各チャンネルの値が表示され始めます．
 1. それぞれのチャンネルについて，操作可能な範囲全体をカバーするようにレバーまたはスイッチを操作してください．
    レバーと GUI のバーの動作が反対方向の場合は，プロポ側の設定を適切に変更してください．
-1. `Finish`をクリックすると，キャリブレーションを完了します．
+1. 完了したら`Finish`をクリックしてください．
 
 ![radio_calibration](resources/hardware_setup/radio_calibration.png)
+
+## Actuator Test
+
+各アクチュエータの動作テストを行います．
+画面上部のツールボタンの中にある`Actuator Test`をクリックしてください．
+
+---
 
 ### Rotor Test
 
@@ -128,23 +129,21 @@ WiFi の設定を行います．
 ![rotor_test](resources/hardware_setup/rotor_test.png)
 
 1. `Start`をクリックすると，全てのモータが回転できる状態になります．
-1. それぞれのモータについて，レバーを動かして回転させ，RC 出力チャンネルと回転方向が正しいことを確認してください．
-1. それぞれのモータについて，回転数が振動しない程度に制御ゲインを調整してください．
-1. `Save`をクリックすると，制御ゲインが FMU に保存されます．
+1. それぞれのモータについて，レバーを動かして回転数を指令し，接続と回転方向が正しいことを確認してください．
+1. それぞれのモータについて，制御ゲインを調整してください．回転数が振動しない最大のゲインの 1~2 段階下にすると良いです．
+1. `Save`をクリックすると，制御ゲインが FC に保存されます．
 1. `Stop`をクリックすると，テストが終了します．
 
 <!-- prettier-ignore-start -->
 !!! note
-    モータが回転しない場合は，FMU上面の`ERR`ランプが点灯していないか確認してください．
+    モータが回転しない場合は，FC上面の`ERR`ランプが点灯していないか確認してください．
     点灯している場合は，一度電源を切ってから再び給電してみてください．
 <!-- prettier-ignore-end -->
 
 ### Joint Test
 
-機体が固定翼機の操舵面のような PWM 駆動関節を持つ場合は，それぞれの関節の位置指令テストを行うことができます．
+機体がチルトロータや固定翼機の操舵面のような PWM 駆動関節を持つ場合は，それぞれの関節の位置指令テストを行うことができます．
 今回の機体はプロペラ以外の可動関節をもたないためスキップします．
-
-![joint_test](resources/hardware_setup/joint_test.png)
 
 ## 次の手順へ
 
