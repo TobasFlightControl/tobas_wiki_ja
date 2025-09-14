@@ -4,7 +4,7 @@
 
 ---
 
-1. <a href=https://drive.google.com/file/d/1c-4ALeUQ1Ot2ZB8eEXENVPNiNxLpBGDG/view target="_blank">tobas_2.7.0_amd64.deb</a>をダウンロードしてください．
+1. <a href=https://drive.google.com/file/d/1c-4ALeUQ1Ot2ZB8eEXENVPNiNxLpBGDG target="_blank">tobas_2.7.0_amd64.deb</a>をダウンロードしてください．
 1. エクスプローラを開き，ダウンロードした deb パッケージをダブルクリックすると，App Center が起動します．これには数分かかることがあります．
 1. `Install`をクリックするとインストールが開始します．これには数分かかることがあります．
 1. インストールが完了すると，アプリケーションメニューに`TobasInstall`，`TobasBootmediaConfig`，`TobasSetupAssistant`，`TobasGCS`が追加されます．
@@ -26,7 +26,7 @@
 
 ### 手順
 
-1. <a href=https://drive.google.com/file/d/1MjfR1DEoKNEM6cuVDl58FnBEJPLeRhPJ/view target="_blank">tobas_2.7.0_arm64.img.gz</a>をダウンロードしてください．
+1. <a href=https://drive.google.com/file/d/1MjfR1DEoKNEM6cuVDl58FnBEJPLeRhPJ target="_blank">tobas_2.7.0_arm64.img.gz</a>をダウンロードしてください．
 1. マイクロ SD カードを，適当な SD カードリーダーを介して PC に接続してください．
 1. <a href="https://etcher.balena.io/" target="_blank">balenaEtcher</a>などのイメージフラッシャーをインストールして起動してください．
 1. イメージファイルにダウンロードしたイメージファイルを選択し，ターゲットにマイクロ SD カードを選択し，書き込みを開始してください．
