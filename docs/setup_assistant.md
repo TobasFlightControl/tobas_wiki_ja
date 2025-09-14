@@ -22,7 +22,8 @@ UADF の詳細については[What is UADF](./what_is_uadf.md)をご参照くだ
 - モータ: <a href=https://ja.aliexpress.com/item/1005008178619191.html target="_blank">DJI A2212 920KV</a> (CW x 2, CCW x 2)
 - プロペラ: <a href=https://ja.aliexpress.com/item/1005004372872772.html target="_blank">DJI 9450</a> (CW x 2, CCW x 2)
 - ESC: <a href=https://ja.aliexpress.com/item/1005008565930299.html target="_blank">Flycolor Raptor5 35A</a> x 4
-- GNSS アンテナ: <a href=https://ja.aliexpress.com/item/1005003648574213.html target="_blank">TOPGNSS AN103</a>
+- GNSS アンテナ: <a href=https://www.topgnss.store/en-jp/products/2pcs-l1-l5-helical-antenna-uav-flight-control-antenna-gps-glonass-galileo-bds-rtk-handheld-receiver-an-103-topgnss-helical target="_blank">TOPGNSS AN-103</a>
+- RC 受信機: <a href=https://www.rc.futaba.co.jp/products/detail/I00000018 target="_blank">Futaba R3001SB</a>
 
 機体の UADF を作る必要がありますが，今回は既に用意してあるものを使用します．
 
