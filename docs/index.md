@@ -121,14 +121,3 @@ DJI F450 のフレームキットを使用しています．
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UYwoFjf6ubc?si=RsDKgr98DVvdhaWB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>
-
-## PC のシステム要件 <!-- cf. https://www.solidworks.com/ja/support/system-requirements -->
-
----
-
-| 要件 | 必須                           | 推奨               | 備考               |
-| :--- | :----------------------------- | ------------------ | ------------------ |
-| OS   | Ubuntu 24.04 LTS (ROS 2 Jazzy) |                    | ネイティブ環境推奨 |
-| RAM  | 8GB                            | 16GB               |                    |
-| CPU  | AMD64 (x86-64)                 |                    |                    |
-| GPU  |                                | NVIDIA GeForce RTX |                    |

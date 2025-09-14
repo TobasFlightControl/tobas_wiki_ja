@@ -4,6 +4,19 @@
 
 ---
 
+### 必要なもの
+
+- 以下のシステム要件を満たす PC <!-- cf. https://www.solidworks.com/ja/support/system-requirements -->
+
+| 要件 | 必須                           | 推奨               | 備考               |
+| :--- | :----------------------------- | ------------------ | ------------------ |
+| OS   | Ubuntu 24.04 LTS (ROS 2 Jazzy) |                    | ネイティブ環境推奨 |
+| RAM  | 8GB                            | 16GB               |                    |
+| CPU  | AMD64 (x86-64)                 |                    |                    |
+| GPU  |                                | NVIDIA GeForce RTX |                    |
+
+<br>
+
 ### 手順 (デスクトップから)
 
 <a href=https://drive.google.com/file/d/1c-4ALeUQ1Ot2ZB8eEXENVPNiNxLpBGDG/view target="_blank">tobas_2.7.0_amd64.deb</a>をダウンロードしてください．
