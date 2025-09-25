@@ -102,7 +102,7 @@ tobas_kdl_msgs/Vector dgyro  # [rad/s^2]
 	float64 z
 ```
 
-#### imu_raw (tobas_msgs/Imu)
+#### imu_filtered (tobas_msgs/Imu)
 
 フィルタリング後の IMU．
 
@@ -191,7 +191,7 @@ tobas_eigen_msgs/Matrix3d velocity_covariance      # [m^2/s^2]
 	float64[9] data
 ```
 
-#### rotor_speeds (tobas_msgs/RotorStateArray)
+#### rotor_states (tobas_msgs/RotorStateArray)
 
 各ロータの状態．
 
@@ -421,6 +421,28 @@ tobas_kdl_msgs/Vector accel  # Target linear acceleration wrt. the global coordi
 float64 yaw                  # Target yaw angle [rad]
 ```
 
+#### command/accel_pitch_yaw (tobas_command_msgs/AccelPitchYaw)
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_command_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
+
+tobas_kdl_msgs/Vector accel  # Target linear acceleration wrt. the global coordinates [m/s^2]
+	float64 x
+	float64 y
+	float64 z
+float64 pitch                # Target pitch angle [rad]
+float64 yaw                  # Target yaw angle [rad]
+```
+
 #### command/pos_vel (tobas_command_msgs/PosVel)
 
 ```txt
@@ -470,6 +492,32 @@ tobas_kdl_msgs/Vector vel  # Target linear velocity wrt. the global coordinates 
 float64 yaw                # Target yaw angle [rad]
 ```
 
+#### command/pos_vel_pitch_yaw (tobas_command_msgs/PosVelPitchYaw)
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_command_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
+
+tobas_kdl_msgs/Vector pos  # Target position wrt. the global coordinates [m]
+	float64 x
+	float64 y
+	float64 z
+tobas_kdl_msgs/Vector vel  # Target linear velocity wrt. the global coordinates [m/s]
+	float64 x
+	float64 y
+	float64 z
+float64 pitch              # Target pitch angle [rad]
+float64 yaw                # Target yaw angle [rad]
+```
+
 #### command/speed_roll_delta_pitch (tobas_command_msgs/SpeedRollDeltaPitch)
 
 ```txt
@@ -491,7 +539,7 @@ float64 delta_pitch  # [rad]
 
 #### command/joint_positions (tobas_msgs/JointCommandArray)
 
-カスタムジョイントに対する位置指令．
+ジョイントに対する位置指令．
 
 ```txt
 std_msgs/Header header
@@ -506,7 +554,7 @@ tobas_msgs/JointCommand[] commands
 
 #### command/joint_velocities (tobas_msgs/JointCommandArray)
 
-カスタムジョイントに対する速度指令．
+ジョイントに対する速度指令．
 
 ```txt
 std_msgs/Header header
@@ -521,7 +569,7 @@ tobas_msgs/JointCommand[] commands
 
 #### command/joint_efforts (tobas_msgs/JointCommandArray)
 
-カスタムジョイントに対する力指令．
+ジョイントに対する力指令．
 
 ```txt
 std_msgs/Header header
@@ -703,6 +751,16 @@ bool success
 tobas_gazebo_msgs/TetherParams params
 	float64 tension         # [N]
 	float64 maximum_length  # [m]
+```
+
+#### gazebo/break_rotor/${rotor_link_name} (std_srvs/Trigger)
+
+モータを強制的に停止する．
+
+```txt
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages
 ```
 
 ## アクション
