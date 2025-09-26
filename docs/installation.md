@@ -90,7 +90,7 @@ SD カードを，カードリーダーを介して PC に接続してくださ�
 
 ![balena_etcher](resources/installation/balena_etcher.png)
 
-正常に終了したら SD カードを PC から取り外し，ラズパイに挿入してください．
+正常に終了したら SD カードを PC から取り外してください．
 
 ### 手順 (ターミナルから)
 
@@ -119,7 +119,7 @@ SD カードを，カードリーダーを介して PC に接続してくださ�
 $ sudo dd if=tobas_2.8.0_arm64.img of=/dev/sdx bs=4M conv=fsync status=progress
 ```
 
-正常に終了したら SD カードを PC から取り外し，ラズパイに挿入してください．
+正常に終了したら SD カードを PC から取り外してください．
 
 <!-- prettier-ignore-start -->
 !!! note
