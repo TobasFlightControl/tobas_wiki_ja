@@ -16,7 +16,8 @@
 ---
 
 - PM100:
-  <a href=https://drive.google.com/file/d/1kjQTG9dZjn99Qy_VQruE4_IYFIeoM04z/view target="_blank">STEP</a>
+  <a href=https://drive.google.com/file/d/1cWLGx4dmDD0GANLtdFgPslu-3P7Ldcn1/view target="_blank">STEP</a>,
+  <a href=https://drive.google.com/file/d/1jxW6Wek1kOv5HWQMthAjRdgMiSLwiuJN/view target="_blank">Fusion F3Z</a>
 
 ## PWM Distribution Board
 
