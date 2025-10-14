@@ -11,7 +11,8 @@ nav:
       - Simulation: simulation.md
   - For Developers:
       - ROS API: ros_api.md
-      - User Code: user_code.md
+      - User Code (Python): user_code_py.md
+      - User Code (C++): user_code_cpp.md
   - Additional Information:
       - What is UADF: what_is_uadf.md
       - 3D Models: cad_models.md

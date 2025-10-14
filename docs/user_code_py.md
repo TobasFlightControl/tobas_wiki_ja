@@ -1,6 +1,6 @@
-# ユーザプログラム
+# ユーザコード (Python)
 
-ここでは，ユーザが ROS 2 の基礎を習得していることを前提にしています．
+ここでは，ユーザが Python と ROS 2 の基礎を習得していることを前提にしています．
 ROS 2 の学習には
 <a href=https://docs.ros.org/en/jazzy/Tutorials.html target="_blank">Tutorials | ROS 2 Documentation</a>
 をご参照ください．
@@ -13,7 +13,7 @@ C++と Python の 2 つのパッケージが生成され，それぞれ以下の
 - `gazebo.launch.py`: シミュレーション時のみ起動されます．
 - `real.launch.py`: 実機でのみ起動されます．
 
-試しに GNSS の状態を確認し，測位できているか否かをメッセージで発行する Python ノードを作成してみます．
+試しに GNSS の状態を確認し，3 次元測位できている場合にメッセージを発する Python ノードを作成してみます．
 `tobas_f450_user_py/tobas_f450_user_py/user_node.py`を以下のように編集してください．
 
 ```python
@@ -21,7 +21,8 @@ import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy
 
-from tobas_msgs.msg import Gnss, Message
+from tobas_msgs.msg import Message
+from tobas_msgs.msg import Gnss
 
 
 class GnssStateCheckerNode(Node):
@@ -42,12 +43,8 @@ class GnssStateCheckerNode(Node):
 
         if gnss.fix_type == Gnss.FIX_3D:
             message.level = Message.LEVEL_INFO
-            message.message = "GNSS Fix"
-        else:
-            message.level = Message.LEVEL_WARN
-            message.message = "GNSS No Fix"
-
-        self._message_pub.publish(message)
+            message.message = "GNSS 3D Fix"
+            self._message_pub.publish(message)
 
 
 def main(args=None) -> None:
