@@ -6,7 +6,8 @@
 
 ### 手順 (デスクトップから)
 
-<a href=https://drive.google.com/file/d/1lm4Y_In__WT1oNqVqsW_EevMR5N7WAQU/view target="_blank">tobas_2.8.0_amd64.deb</a>をダウンロードしてください．
+<a href=https://drive.google.com/file/d/1lm4Y_In__WT1oNqVqsW_EevMR5N7WAQU/view target="_blank">tobas_2.8.0_amd64.deb</a>
+をダウンロードしてください．
 ウイルススキャンはできなくても問題ありません．
 
 エクスプローラを開き，ダウンロードした deb パッケージをダブルクリックすると，App Center が起動します．
@@ -14,7 +15,9 @@
 
 ![app_center](resources/installation/app_center.png)
 
-インストールが完了すると，アプリケーションメニューに`TobasBootmediaConfig`，`TobasGCS`，`TobasInstall`，`TobasSetupAssistant`が追加されます．
+インストールが完了すると，アプリケーションメニューに
+`TobasBootmediaConfig`，`TobasGCS`，`TobasInstall`，`TobasSetupAssistant`
+が追加されます．
 
 ![applications](resources/installation/applications.png)
 
@@ -25,7 +28,8 @@
 
 ### 手順 (ターミナルから)
 
-<a href=https://drive.google.com/file/d/1lm4Y_In__WT1oNqVqsW_EevMR5N7WAQU/view target="_blank">tobas_2.8.0_amd64.deb</a>をダウンロードします．
+<a href=https://drive.google.com/file/d/1lm4Y_In__WT1oNqVqsW_EevMR5N7WAQU/view target="_blank">tobas_2.8.0_amd64.deb</a>
+をダウンロードします．
 
 ```bash
 $ sudo apt install -y python3-pip
@@ -62,7 +66,8 @@ $ tobas_install_prereqs
 
 ### 手順 (デスクトップから)
 
-<a href=https://drive.google.com/file/d/1zHG3gOVOFipMpKbjKfkf8CvWmIM4jpQd/view target="_blank">tobas_2.8.0_arm64.img.gz</a>をダウンロードしてください．
+<a href=https://drive.google.com/file/d/1zHG3gOVOFipMpKbjKfkf8CvWmIM4jpQd/view target="_blank">tobas_2.8.0_arm64.img.gz</a>
+をダウンロードしてください．
 ウイルススキャンはできなくても問題ありません．
 
 適当なイメージフラッシャーをインストールしてください．例えば以下が使用可能です．
@@ -81,7 +86,8 @@ SD カードを，カードリーダーを介して PC に接続してくださ�
 
 ### 手順 (ターミナルから)
 
-<a href=https://drive.google.com/file/d/1zHG3gOVOFipMpKbjKfkf8CvWmIM4jpQd/view target="_blank">tobas_2.8.0_arm64.img.gz</a>をダウンロードします．
+<a href=https://drive.google.com/file/d/1zHG3gOVOFipMpKbjKfkf8CvWmIM4jpQd/view target="_blank">tobas_2.8.0_arm64.img.gz</a>
+をダウンロードします．
 
 ```bash
 $ sudo apt install -y python3-pip
