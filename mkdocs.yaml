@@ -15,6 +15,7 @@ nav:
   - Additional Information:
       - What is UADF: what_is_uadf.md
       - 3D Models: cad_models.md
+      - System Architecture: system_architecture.md
       - Trouble Shooting: trouble_shooting.md
 markdown_extensions:
   - admonition # Required for "note"
