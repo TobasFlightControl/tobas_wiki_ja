@@ -121,3 +121,37 @@ DJI F450 のフレームキットを使用しています．
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UYwoFjf6ubc?si=RsDKgr98DVvdhaWB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>
+
+## システム要件
+
+---
+
+### PC <!-- cf. https://www.solidworks.com/ja/support/system-requirements -->
+
+以下の要件を満たす必要があります．
+
+| 要件 | 必須                           | 推奨               | 備考               |
+| :--- | :----------------------------- | ------------------ | ------------------ |
+| OS   | Ubuntu 24.04 LTS (ROS 2 Jazzy) |                    | ネイティブ環境推奨 |
+| RAM  | 8GB                            | 16GB               |                    |
+| CPU  | AMD64 (x86-64)                 |                    |                    |
+| GPU  |                                | NVIDIA GeForce RTX |                    |
+
+<br>
+
+### ESC
+
+Bidirectional DShot プロトコルに対応している必要があります．
+例えば以下のファームウェアは対応しています．
+
+- <a href=https://github.com/bitdump/BLHeli/tree/master/BLHeli_32%20ARM target="_blank">BLHeli_32</a> (2024 年 6 月にサポート終了)
+- <a href=https://github.com/AlkaMotors/AM32-MultiRotor-ESC-firmware target="_blank">AM32</a>
+- <a href=https://github.com/bird-sanctuary/bluejay target="_blank">bluejay</a>
+
+### GNSS アンテナ
+
+FMU に搭載されている GNSS 受信機の周波数帯域とコネクタに対応している必要があります．
+
+### RC 受信機
+
+8 チャンネル以上の S.BUS に対応している必要があります．
