@@ -12,7 +12,7 @@ UADF の詳細については[What is UADF](./what_is_uadf.md)をご参照くだ
 
 ---
 
-このチュートリアルでは，典型的なクアッドコプターである DJI F450 を使用します．　
+このチュートリアルでは，典型的なクアッドコプターである DJI F450 を使用します．
 構成部品は以下のとおりです：
 
 - フライトコントローラ: Tobas T103 <!-- TODO: URL -->
@@ -21,7 +21,7 @@ UADF の詳細については[What is UADF](./what_is_uadf.md)をご参照くだ
 - バッテリー: <a href=https://ja.aliexpress.com/item/4000244479545.html target="_blank">HRB 3S 5000mAh 50C</a>
 - モータ: <a href=https://ja.aliexpress.com/item/1005008178619191.html target="_blank">DJI A2212 920KV</a> (CW x 2, CCW x 2)
 - プロペラ: <a href=https://ja.aliexpress.com/item/1005004372872772.html target="_blank">DJI 9450</a> (CW x 2, CCW x 2)
-- ESC: <a href=https://ja.aliexpress.com/item/1005008565930299.html target="_blank">Flycolor Raptor5 35A</a> x 4
+- ESC: <a href=https://www.fly-color.net/index.php?c=category&id=234 target="\_blank">Flycolor Raptor5 35A</a> x 4
 - GNSS アンテナ: <a href=https://www.topgnss.store/en-jp/products/2pcs-l1-l5-helical-antenna-uav-flight-control-antenna-gps-glonass-galileo-bds-rtk-handheld-receiver-an-103-topgnss-helical target="_blank">TOPGNSS AN-103</a>
 - RC 受信機: <a href=https://www.rc.futaba.co.jp/products/detail/I00000018 target="_blank">Futaba R3001SB</a>
 
