@@ -11,7 +11,8 @@
 
 ![simulation_settings](resources/gazebo_simulation/simulation_settings.png)
 
-`Start`をクリックするとシミュレーションが起動します．これには数分かかることがあります．
+`Start`をクリックすると，プロジェクトをビルドした後にシミュレーションが起動します．
+初回は環境データのダウンロードのために時間がかかることがあります．
 
 ![launch_gazebo](resources/gazebo_simulation/launch_gazebo.png)
 
