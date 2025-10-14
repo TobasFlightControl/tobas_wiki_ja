@@ -1,5 +1,8 @@
 # 3D Models
 
+製品の 3D モデルです．
+機体設計の際にご利用ください．
+
 ## Flight Management Unit
 
 ---
