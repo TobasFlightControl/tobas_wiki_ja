@@ -5,13 +5,13 @@ ROS 2 の学習には
 <a href=https://docs.ros.org/en/jazzy/Tutorials.html target="_blank">Tutorials | ROS 2 Documentation</a>
 をご参照ください．
 
-Setup Assistant で作成した Tobas プロジェクト (例: tobas_tobas_f450.TBS) に含まれる ROS パッケージのうち，
-ユーザパッケージ (例: tobas_f450_user\_\*) はユーザが自由に編集できるパッケージです．
-C++と Python の 2 つのパッケージが生成され，それぞれ以下の 3 つの launch ファイルが含まれます．
+Setup Assistant で作成した Tobas プロジェクト (例: tobas_f450.TBS) に含まれる ROS パッケージのうち，
+ユーザ Python パッケージ (例: tobas_f450_user_py) はユーザが自由に編集できる Python パッケージです．
+以下の 3 つの launch ファイルが含まれます．
 
 - `common.launch.py`: 実機とシミュレーションの両方で起動されます．
-- `gazebo.launch.py`: シミュレーション時のみ起動されます．
 - `real.launch.py`: 実機でのみ起動されます．
+- `gazebo.launch.py`: シミュレーション時のみ起動されます．
 
 試しに GNSS の状態を確認し，3 次元測位できている場合にメッセージを発する Python ノードを作成してみます．
 `tobas_f450_user_py/tobas_f450_user_py/user_node.py`を以下のように編集してください．
@@ -83,8 +83,8 @@ def generate_launch_description():
     return ld
 ```
 
-`TobasGCS`からシミュレーションを起動すると，`Control System`のコンソールにメッセージが表示されます．
+GCS からシミュレーションを起動すると，`Control System`のコンソールにメッセージが表示されます．
 
-![console](resources/user_code/console.png)
+![console](resources/user_code_py/console.png)
 
 API の詳細については[ROS API](./ros_api.md)をご覧ください．
