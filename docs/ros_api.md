@@ -57,9 +57,26 @@ uint64 frequency     # [Hz]
 float64 load         # [-]
 ```
 
+#### sbus (tobas_msgs/Sbus)
+
+RC レシーバから取得した生の S.BUS メッセージ．
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+uint16[16] periods
+bool ch17
+bool ch18
+bool frame_lost
+bool failsafe
+```
+
 #### rc_input (tobas_msgs/RCInput)
 
-RC レシーバーから取得した RC 入力．
+S.BUS を変換し，扱いやすくしたメッセージ．
 
 ```txt
 std_msgs/Header header
