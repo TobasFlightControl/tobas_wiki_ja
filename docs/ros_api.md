@@ -839,8 +839,8 @@ tobas_command_msgs/CommandLevel level
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
-float64 target_latitude    # [m]
-float64 target_longitude   # [m]
+float64 target_latitude    # [deg]
+float64 target_longitude   # [deg]
 float64 target_altitude    # [m]
 float64 acceptance_radius  # [m]
 float64 duration           # [s]
