@@ -90,15 +90,22 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 この機体の 4 つの推進ユニットは全て同一なため，`Copy To All`をクリックし，`propeller_0`の設定を他の 3 つにコピーします．
 `propeller_0`の設定が他のタブにも反映されていることを確認してください．
 
-## Flight Management Unit
+## Hardware Interface
 
 ---
 
-ハードウェアに関する設定を行います．　
+ハードウェアの接続に関する設定を行います．　
 `Tobas T1`が選択されていることを確認し，
 4 つの推進ユニットそれぞれについて，適切に DShot チャンネルを設定してください．
 
 ![fmu](resources/setup_assistant/fmu.png)
+
+<!-- prettier-ignore-start -->
+!!! note
+    ここでインターフェースを指定しない場合，例えば CAN-ESC を使う場合などは，
+    そのままではハードウェアは駆動されないため，
+    ハードウェアと Tobas ソフトウェアを繋ぐ ROS ノードを自作する必要があります．
+<!-- prettier-ignore-end -->
 
 ## Remote Connection
 
