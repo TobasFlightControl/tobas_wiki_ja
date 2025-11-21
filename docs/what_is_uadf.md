@@ -51,289 +51,221 @@ URDF の`revolute`がベースになっています．
     `tilt`ジョイントの先には 1 つの`thrust`ジョイントが接続していなければなりません．
 <!-- prettier-ignore-end -->
 
-## UADF の作成例
+## UADF の作成方法
 
 ---
 
-### Typical Quadcopter (DJI F450)
-
-4 つの`thrust`ジョイントをもつ典型的なクアッドコプターです．
+ここでは，チュートリアルで用いた典型的なクアッドコプターである DJI F450 の UADF を作成します．
 
 ![f450](resources/what_is_uadf/f450.png)
 
-<details><summary>XACRO 展開前</summary>
+URDF には視覚化のためにメッシュファイルやテクスチャファイルを取り込む機能があり，
+URDF そのものに加えてそれらのファイルも一緒に配布されることが多いため，
+ロボットごとに専用の ROS パッケージを作ると便利です．
+今回は `~/colcon_ws/src/` 直下に` tobas_f450_description` というパッケージを作成し，その中に必要な全てのファイルを含めることにします．
+<a href=https://github.com/TobasFlightControl/tobas_f450_description target="_blank">TobasFlightControl/tobas_f450_description</a>
+に完成したパッケージを公開しています．
+
+### ROS パッケージの構成と必須ファイル
+
+`tobas_f450_description`は以下のような構成になっています．
+
+```text
+tobas_f450_description/
+├── meshes
+│   ├── frame.stl
+│   ├── phantom3_0945_ccw.stl
+│   ├── phantom3_0945_cw.stl
+│   └── tobas_t100.stl
+├── urdf
+│   └── f450.uadf
+├── CMakeLists.txt
+└── package.xml
+```
+
+`package.xml`はパッケージの概要と依存関係を記述したファイルです．
+各 ROS パッケージのルートに必ず 1 つ置く必要があります．
+今回作るパッケージは外部のパッケージには依存していないため，パッケージ名やライセンスなど最小限の要素のみ記述しています．
 
 ```xml
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="f450">
+<package format="3">
+	<name>tobas_f450_description</name>
+	<version>0.0.0</version>
+	<description>A UADF example for the DJI F450.</description>
+	<maintainer email="m.dohi@tobas.jp">Masayoshi Dohi</maintainer>
+	<license>MIT</license>
+	<buildtool_depend>ament_cmake</buildtool_depend>
+	<export>
+		<build_type>ament_cmake</build_type>
+	</export>
+</package>
+```
 
-  <!-- Included URDF Files -->
-  <xacro:include filename="$(find tobas_description)/urdf/components/common.xacro"/>
-  <xacro:include filename="$(find tobas_description)/urdf/components/fmu/tobas_t1.xacro"/>
-  <xacro:include filename="$(find tobas_description)/urdf/components/battery/hrb_3s_5000mah_50c.xacro"/>
-  <xacro:include filename="$(find tobas_description)/urdf/components/propeller/phantom3_0945.uadf"/>
+`CMakeLists.txt`はパッケージのビルドやインストールの手順を記述したファイルです．
+メッシュファイルを格納するディレクトリである`meshes`と，UADF を格納するディレクトリである`urdf`をインストールするようにします．
 
-  <!-- Properties -->
-  <xacro:property name="frame_width" value="0.35"/>
-  <xacro:property name="frame_height" value="0.06"/>
-  <xacro:property name="propeller_offset" value="0.225"/>
+```cmake
+cmake_minimum_required(VERSION 3.25)
+project(tobas_f450_description)
+find_package(ament_cmake REQUIRED)
+install(DIRECTORY meshes urdf DESTINATION share/${PROJECT_NAME})
+ament_package()
+```
 
-  <!-- Base Link -->
+### UADF の書き方
+
+今回作成する F450 の UADF は以下のような構成要素から成ります．
+
+- 空のルートリンク (必須)
+- モータを含むメインフレーム
+- メインフレームに固定されたバッテリー
+- メインフレームに固定された FMU
+- 4 つのプロペラ
+
+これらの要素はそれぞれ 1 つの剛体リンクとして記述され，
+それらが適切なジョイントで接続されることで全体として 1 つのツリー構造を形成します．
+
+今回はメインフレーム以下の全てのリンクをルートリンクにぶら下げる形をとることにします．
+全体のツリー構造は以下のようになります．
+
+```text
+base_link
+├──frame
+├──battery
+├──fmu
+├──propeller_0
+├──propeller_1
+├──propeller_2
+└──propeller_3
+```
+
+まず，URDF のルート要素を記述します．
+URDF のルート要素は`robot`でなければならず，`name`属性を指定する必要があります．
+以下の全ての要素はこのルート要素の中に記述します．
+
+```xml
+<robot name="f450">
+</robot>
+```
+
+`robot`の中に空のルートリンクを記述します．
+ルートリンクは大きさや質量を持たない概念上のリンクで，全ての UADF は必ず 1 つのルートリンクを持つ必要があります．
+
+```xml
+  <!-- Base Link (Empty) -->
   <link name="base_link"/>
+```
 
-  <!-- Frame -->
+メインフレームをルートリンクに固定します．
+`visual`のメッシュファイルはパッケージからの相対パスで指定しています．
+このように`package://<package name>`で ROS パッケージへの相対パスを記述できます．
+`collision`の接触領域はメッシュファイルを使うとシミュレーションが重くなるため直方体で近似しています．
+`inertial`の質量特性は 3D CAD から取得した値をそのまま転記しています．
+
+```xml
+  <!-- Main Frame -->
   <joint name="frame_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="frame"/>
   </joint>
   <link name="frame">
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://tobas_description/meshes/f450/frame.stl" scale="1 1 1"/>
-      </geometry>
-      <xacro:insert_block name="black"/>
-    </visual>
     <inertial>
       <mass value="0.55346"/>
-      <origin xyz="0 0 -4.136e-3" rpy="0 0 0"/>
-      <inertia ixx="8.128e-3" ixy="0" ixz="0" iyy="8.193e-3" iyz="0" izz="1.597e-2"/>
-    </inertial>
-    <collision>
-      <origin xyz="0 0 ${-frame_height/2}" rpy="0 0 0"/>
-      <geometry>
-        <box size="${frame_width} ${frame_width} ${frame_height}"/>
-      </geometry>
-    </collision>
-  </link>
-
-  <!-- Flight Controller -->
-  <xacro:tobas_t1 parent="base_link">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </xacro:tobas_t1>
-
-  <!-- Battery -->
-  <xacro:hrb_3s_5000mah_50c link_name="battery" parent="base_link">
-    <origin xyz="0 0 -0.025" rpy="0 0 0"/>
-  </xacro:hrb_3s_5000mah_50c>
-
-  <!-- Propellers -->
-  <xacro:macro name="propeller" params="index direction yaw_deg">
-    <xacro:phantom3_0945 parent="base_link" index="${index}" direction="${direction}">
-      <origin xyz="${propeller_offset*cos(yaw_deg*deg2rad)} ${propeller_offset*sin(yaw_deg*deg2rad)} 0.0247" rpy="0 0 ${yaw_deg*deg2rad}"/>
-    </xacro:phantom3_0945>
-  </xacro:macro>
-
-  <xacro:propeller index="0" direction="ccw" yaw_deg="-45"/>
-  <xacro:propeller index="1" direction="ccw" yaw_deg="135"/>
-  <xacro:propeller index="2" direction="cw" yaw_deg="45"/>
-  <xacro:propeller index="3" direction="cw" yaw_deg="-135"/>
-
-</robot>
-```
-
-</details>
-
-<details><summary>XACRO 展開後</summary>
-
-```xml
-<robot name="f450">
-  <material name="black">
-    <texture/>
-    <color rgba="0 0 0 1"/>
-  </material>
-  <material name="red">
-    <texture/>
-    <color rgba="1 0 0 1"/>
-  </material>
-  <material name="white">
-    <texture/>
-    <color rgba="1 1 1 1"/>
-  </material>
-  <material name="yellow">
-    <texture/>
-    <color rgba="1 1 0 1"/>
-  </material>
-  <link name="base_link"/>
-  <link name="battery">
-    <inertial>
-      <mass value="0.376"/>
-      <origin xyz="0 0 0" rpy="0 -0 0"/>
-      <inertia ixx="9.024e-05" ixy="0" ixz="0" iyy="0.000770831" iyz="0" izz="0.000824975"/>
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0"/>
-      <geometry>
-        <box size="0.155 0.048 0.024"/>
-      </geometry>
-      <material name="yellow">
-        <texture/>
-        <color rgba="1 1 0 1"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 -0 0"/>
-      <geometry>
-        <box size="0.155 0.048 0.024"/>
-      </geometry>
-    </collision>
-  </link>
-  <link name="fmu">
-    <inertial>
-      <mass value="0.16"/>
-      <origin xyz="0 0 0.014" rpy="0 -0 0"/>
-      <inertia ixx="6.17067e-05" ixy="0" ixz="0" iyy="0.000118453" iyz="0" izz="0.000159253"/>
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0"/>
-      <geometry>
-        <mesh filename="package://tobas_f450_config/meshes/tobas_t1.stl" scale="1 1 1"/>
-      </geometry>
-      <material name="red">
-        <texture/>
-        <color rgba="1 0 0 1"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0.014" rpy="0 -0 0"/>
-      <geometry>
-        <box size="0.09 0.062 0.028"/>
-      </geometry>
-    </collision>
-  </link>
-  <link name="frame">
-    <inertial>
-      <mass value="0.55346"/>
-      <origin xyz="0 0 -0.004136" rpy="0 -0 0"/>
+      <origin xyz="0 0 -0.004136" rpy="0 0 0"/>
       <inertia ixx="0.008128" ixy="0" ixz="0" iyy="0.008193" iyz="0" izz="0.01597"/>
     </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://tobas_f450_config/meshes/frame.stl" scale="1 1 1"/>
+        <mesh filename="package://tobas_f450_description/meshes/frame.stl" scale="1 1 1"/>
       </geometry>
       <material name="black">
-        <texture/>
         <color rgba="0 0 0 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 -0.03" rpy="0 -0 0"/>
+      <origin xyz="0 0 -0.03" rpy="0 0 0"/>
       <geometry>
         <box size="0.35 0.35 0.06"/>
       </geometry>
     </collision>
   </link>
-  <link name="propeller_0">
-    <inertial>
-      <mass value="0.011"/>
-      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
-      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0"/>
-      <geometry>
-        <mesh filename="package://tobas_f450_config/meshes/phantom3_0945_ccw.stl" scale="1 1 1"/>
-      </geometry>
-      <material name="white">
-        <texture/>
-        <color rgba="1 1 1 1"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
-      <geometry>
-        <cylinder radius="0.12" length="0.012"/>
-      </geometry>
-    </collision>
-  </link>
-  <link name="propeller_1">
-    <inertial>
-      <mass value="0.011"/>
-      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
-      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0"/>
-      <geometry>
-        <mesh filename="package://tobas_f450_config/meshes/phantom3_0945_ccw.stl" scale="1 1 1"/>
-      </geometry>
-      <material name="white">
-        <texture/>
-        <color rgba="1 1 1 1"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
-      <geometry>
-        <cylinder radius="0.12" length="0.012"/>
-      </geometry>
-    </collision>
-  </link>
-  <link name="propeller_2">
-    <inertial>
-      <mass value="0.011"/>
-      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
-      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0"/>
-      <geometry>
-        <mesh filename="package://tobas_f450_config/meshes/phantom3_0945_cw.stl" scale="1 1 1"/>
-      </geometry>
-      <material name="white">
-        <texture/>
-        <color rgba="1 1 1 1"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
-      <geometry>
-        <cylinder radius="0.12" length="0.012"/>
-      </geometry>
-    </collision>
-  </link>
-  <link name="propeller_3">
-    <inertial>
-      <mass value="0.011"/>
-      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
-      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 -0 0"/>
-      <geometry>
-        <mesh filename="package://tobas_f450_config/meshes/phantom3_0945_cw.stl" scale="1 1 1"/>
-      </geometry>
-      <material name="white">
-        <texture/>
-        <color rgba="1 1 1 1"/>
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0.006" rpy="0 -0 0"/>
-      <geometry>
-        <cylinder radius="0.12" length="0.012"/>
-      </geometry>
-    </collision>
-  </link>
+```
+
+バッテリーと FMU をメインフレームと同じ要領で追加します．
+それぞれの慣性モーメントは，質量が`collision`と同じ大きさの直方体に均一に分布している場合の値を計算して記入しています．
+具体的な計算方法については[Inertia Moment](./inertia_moment.md)をご確認ください．
+
+```xml
+  <!-- Battery -->
   <joint name="battery_joint" type="fixed">
-    <origin xyz="0 0 -0.025" rpy="0 -0 0"/>
-    <axis xyz="0 0 0"/>
+    <origin xyz="0 0 -0.025" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="battery"/>
   </joint>
+  <link name="battery">
+    <inertial>
+      <mass value="0.376"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="9.024e-05" ixy="0" ixz="0" iyy="0.000770831" iyz="0" izz="0.000824975"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.155 0.048 0.024"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.155 0.048 0.024"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Flight Management Unit -->
   <joint name="fmu_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 -0 0"/>
-    <axis xyz="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="fmu"/>
   </joint>
-  <joint name="frame_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 -0 0"/>
-    <axis xyz="0 0 0"/>
-    <parent link="base_link"/>
-    <child link="frame"/>
-  </joint>
+  <link name="fmu">
+    <inertial>
+      <mass value="0.16"/>
+      <origin xyz="0 0 0.014" rpy="0 0 0"/>
+      <inertia ixx="6.17067e-05" ixy="0" ixz="0" iyy="0.000118453" iyz="0" izz="0.000159253"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/tobas_t100.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.014" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.09 0.062 0.028"/>
+      </geometry>
+    </collision>
+  </link>
+```
+
+プロペラを追加します．
+ジョイントタイプに UADF 特有の`thrust`を指定し，`axis`を推力方向の+Z 軸方向 (`0 0 1`)，`direction`を反時計回り (`ccw`) とします．
+`visual`のメッシュファイルはパッケージからの相対パスで指定しています．
+`collision`の接触領域は円柱で近似しています．
+`inertial`の慣性モーメントは，質量が`collision`と同じ大きさの円柱に均一に分布している場合の値を計算して記入しています．
+具体的な計算方法については[Inertia Moment](./inertia_moment.md)をご確認ください．
+
+```xml
+  <!-- Propeller (0) -->
   <joint name="propeller_0_joint" type="thrust">
     <origin xyz="0.159099 -0.159099 0.0247" rpy="0 0 -0.785398"/>
     <axis xyz="0 0 1"/>
@@ -341,20 +273,222 @@ URDF の`revolute`がベースになっています．
     <child link="propeller_0"/>
     <direction value="ccw"/>
   </joint>
+  <link name="propeller_0">
+    <inertial>
+      <mass value="0.011"/>
+      <origin xyz="0 0 0.006" rpy="0 0 0"/>
+      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/phantom3_0945_ccw.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.006" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.12" length="0.012"/>
+      </geometry>
+    </collision>
+  </link>
+```
+
+同様に他の 3 つのプロペラを追加します．
+それぞれジョイント原点，回転方向，メッシュパスが異なることに注意してください．
+
+最終的な UADF は以下のようになります．
+
+```xml
+<robot name="f450">
+
+  <!-- Base Link (Empty) -->
+  <link name="base_link"/>
+
+  <!-- Main Frame -->
+  <joint name="frame_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="frame"/>
+  </joint>
+  <link name="frame">
+    <inertial>
+      <mass value="0.55346"/>
+      <origin xyz="0 0 -0.004136" rpy="0 0 0"/>
+      <inertia ixx="0.008128" ixy="0" ixz="0" iyy="0.008193" iyz="0" izz="0.01597"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/frame.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.35 0.35 0.06"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Battery -->
+  <joint name="battery_joint" type="fixed">
+    <origin xyz="0 0 -0.025" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="battery"/>
+  </joint>
+  <link name="battery">
+    <inertial>
+      <mass value="0.376"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="9.024e-05" ixy="0" ixz="0" iyy="0.000770831" iyz="0" izz="0.000824975"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.155 0.048 0.024"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.155 0.048 0.024"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Flight Management Unit -->
+  <joint name="fmu_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="fmu"/>
+  </joint>
+  <link name="fmu">
+    <inertial>
+      <mass value="0.16"/>
+      <origin xyz="0 0 0.014" rpy="0 0 0"/>
+      <inertia ixx="6.17067e-05" ixy="0" ixz="0" iyy="0.000118453" iyz="0" izz="0.000159253"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/tobas_t100.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.014" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.09 0.062 0.028"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Propeller (0) -->
+  <joint name="propeller_0_joint" type="thrust">
+    <origin xyz="0.159099 -0.159099 0.0247" rpy="0 0 -0.785398"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="propeller_0"/>
+    <direction value="ccw"/>
+  </joint>
+  <link name="propeller_0">
+    <inertial>
+      <mass value="0.011"/>
+      <origin xyz="0 0 0.006" rpy="0 0 0"/>
+      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/phantom3_0945_ccw.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.006" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.12" length="0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Propeller (1) -->
   <joint name="propeller_1_joint" type="thrust">
-    <origin xyz="-0.159099 0.159099 0.0247" rpy="0 -0 2.35619"/>
+    <origin xyz="-0.159099 0.159099 0.0247" rpy="0 0 2.35619"/>
     <axis xyz="0 0 1"/>
     <parent link="base_link"/>
     <child link="propeller_1"/>
     <direction value="ccw"/>
   </joint>
+  <link name="propeller_1">
+    <inertial>
+      <mass value="0.011"/>
+      <origin xyz="0 0 0.006" rpy="0 0 0"/>
+      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/phantom3_0945_ccw.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.006" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.12" length="0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Propeller (2) -->
   <joint name="propeller_2_joint" type="thrust">
-    <origin xyz="0.159099 0.159099 0.0247" rpy="0 -0 0.785398"/>
+    <origin xyz="0.159099 0.159099 0.0247" rpy="0 0 0.785398"/>
     <axis xyz="0 0 1"/>
     <parent link="base_link"/>
     <child link="propeller_2"/>
     <direction value="cw"/>
   </joint>
+  <link name="propeller_2">
+    <inertial>
+      <mass value="0.011"/>
+      <origin xyz="0 0 0.006" rpy="0 0 0"/>
+      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/phantom3_0945_cw.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.006" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.12" length="0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Propeller (3) -->
   <joint name="propeller_3_joint" type="thrust">
     <origin xyz="-0.159099 -0.159099 0.0247" rpy="0 0 -2.35619"/>
     <axis xyz="0 0 1"/>
@@ -362,11 +496,47 @@ URDF の`revolute`がベースになっています．
     <child link="propeller_3"/>
     <direction value="cw"/>
   </joint>
+  <link name="propeller_3">
+    <inertial>
+      <mass value="0.011"/>
+      <origin xyz="0 0 0.006" rpy="0 0 0"/>
+      <inertia ixx="3.9732e-05" ixy="0" ixz="0" iyy="3.9732e-05" iyz="0" izz="7.92e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://tobas_f450_description/meshes/phantom3_0945_cw.stl" scale="1 1 1"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.006" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.12" length="0.012"/>
+      </geometry>
+    </collision>
+  </link>
+
 </robot>
 ```
 
-</details>
-<br>
+## UADF の作成例
+
+---
+
+上では単純なクアッドコプターの UADF を作成しましたが，UADF では他にも様々な機体を表現することができます．
+ここでは他の UADF の作成例をいくつか紹介します．
+
+先ほどと異なり XACRO と呼ばれる XML のマクロを用いており，内部で以下のようなプログラミング的な処理を行っています：
+
+- 他のファイルをインクルード
+- 定数を定義
+- 簡単な数値計算
+- 繰り返し処理を関数化
+
+XACRO を用いることで XML をより短く，わかりやすく書くことができます．
 
 ### Non-Planar Octacopter (TOC8)
 

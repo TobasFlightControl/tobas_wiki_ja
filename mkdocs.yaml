@@ -15,8 +15,14 @@ nav:
       - User Code (C++): user_code_cpp.md
   - Additional Information:
       - What is UADF: what_is_uadf.md
+      - Inertia Moment: inertia_moment.md
       - 3D Models: cad_models.md
       - System Architecture: system_architecture.md
       - Trouble Shooting: trouble_shooting.md
 markdown_extensions:
   - admonition # Required for "note"
+  - pymdownx.arithmatex: # Required for writing equations
+      generic: true
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
