@@ -62,9 +62,9 @@ Tobas では機体の構造は[UADF (Universal Aircraft Description Format)](./w
 
 ## Flight Management Unit (FMU)
 
-### Tobas T100
+### Tobas FC100
 
-<img src="./resources/introduction/t100_1.png" alt="t100_1" width="49%"> <img src="./resources/introduction/t100_2.png" alt="t100_2" width="49%"> <!-- index.mdだけは参照パスがcwdから -->
+<img src="./resources/introduction/fc100_1.png" alt="fc100_1" width="49%"> <img src="./resources/introduction/fc100_2.png" alt="fc100_2" width="49%"> <!-- index.mdだけは参照パスがcwdから -->
 
 #### Sensors & Processors
 

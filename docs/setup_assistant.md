@@ -15,8 +15,8 @@ UADF の詳細については[What is UADF](./what_is_uadf.md)をご参照くだ
 このチュートリアルでは，典型的なクアッドコプターである DJI F450 を使用します．
 構成部品は以下のとおりです：
 
-- フライトコントローラ: Tobas T103 <!-- TODO: URL -->
-- Power Module: Tobas PM100 <!-- TODO: URL -->
+- フライトコントローラ: Tobas FC101 <!-- TODO: URL -->
+- Power Module: Tobas PM101 <!-- TODO: URL -->
 - フレーム: <a href=https://ja.aliexpress.com/item/1005007683004849.html target="_blank">DJI F450 Frame</a>
 - バッテリー: <a href=https://ja.aliexpress.com/item/4000244479545.html target="_blank">HRB 3S 5000mAh 50C</a>
 - モータ: <a href=https://ja.aliexpress.com/item/1005008178619191.html target="_blank">DJI A2212 920KV</a> (CW x 2, CCW x 2)
@@ -95,7 +95,7 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 ---
 
 ハードウェアの接続に関する設定を行います．　
-`Tobas T1`が選択されていることを確認し，
+`Tobas FC1xx`が選択されていることを確認し，
 4 つの推進ユニットそれぞれについて，適切に DShot チャンネルを設定してください．
 
 ![fmu](resources/setup_assistant/fmu.png)

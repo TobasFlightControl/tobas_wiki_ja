@@ -76,7 +76,7 @@ tobas_f450_description/
 │   ├── frame.stl
 │   ├── phantom3_0945_ccw.stl
 │   ├── phantom3_0945_cw.stl
-│   └── tobas_t100.stl
+│   └── tobas_fc100.stl
 ├── urdf
 │   └── f450.uadf
 ├── CMakeLists.txt
@@ -242,7 +242,7 @@ URDF のルート要素は`robot`でなければならず，`name`属性を指�
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://tobas_f450_description/meshes/tobas_t100.stl" scale="1 1 1"/>
+        <mesh filename="package://tobas_f450_description/meshes/tobas_fc100.stl" scale="1 1 1"/>
       </geometry>
       <material name="red">
         <color rgba="1 0 0 1"/>
@@ -381,7 +381,7 @@ URDF のルート要素は`robot`でなければならず，`name`属性を指�
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://tobas_f450_description/meshes/tobas_t100.stl" scale="1 1 1"/>
+        <mesh filename="package://tobas_f450_description/meshes/tobas_fc100.stl" scale="1 1 1"/>
       </geometry>
       <material name="red">
         <color rgba="1 0 0 1"/>
@@ -552,7 +552,7 @@ XACRO を用いることで XML をより短く，わかりやすく書くこと
 
   <!-- Included URDF Files -->
   <xacro:include filename="$(find tobas_description)/urdf/components/common.xacro"/>
-  <xacro:include filename="$(find tobas_description)/urdf/components/fmu/tobas_t1.xacro"/>
+  <xacro:include filename="$(find tobas_description)/urdf/components/fmu/tobas_fc100.xacro"/>
   <xacro:include filename="$(find tobas_description)/urdf/components/battery/sigp_6s_1100mah_120c.xacro"/>
   <xacro:include filename="$(find tobas_description)/urdf/components/combo/mt3508_0945.uadf"/>
 
@@ -593,9 +593,9 @@ XACRO を用いることで XML をより短く，わかりやすく書くこと
   </link>
 
   <!-- Flight Controller -->
-  <xacro:tobas_t1 parent="base_link">
+  <xacro:tobas_fc100 parent="base_link">
     <origin xyz="0 0 0.0425" rpy="0 0 0"/>
-  </xacro:tobas_t1>
+  </xacro:tobas_fc100>
 
   <!-- Battery -->
   <xacro:sigp_6s_1100mah_120c link_name="battery" parent="base_link">
@@ -690,7 +690,7 @@ XACRO を用いることで XML をより短く，わかりやすく書くこと
     <visual>
       <origin xyz="0 0 0" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://tobas_toc8_pt001_config/meshes/tobas_t1.stl" scale="1 1 1"/>
+        <mesh filename="package://tobas_toc8_pt001_config/meshes/tobas_fc100.stl" scale="1 1 1"/>
       </geometry>
       <material name="red">
         <texture/>
@@ -1236,7 +1236,7 @@ XACRO を用いることで XML をより短く，わかりやすく書くこと
 
   <!-- Included URDF Files -->
   <xacro:include filename="$(find tobas_description)/urdf/components/common.xacro"/>
-  <xacro:include filename="$(find tobas_description)/urdf/components/fmu/tobas_t1.xacro"/>
+  <xacro:include filename="$(find tobas_description)/urdf/components/fmu/tobas_fc100.xacro"/>
   <xacro:include filename="$(find tobas_description)/urdf/components/battery/hrb_6s_5000mah_50c.xacro"/>
   <xacro:include filename="$(find tobas_description)/urdf/components/landing_gear/zhizicathy_electric_150.xacro"/>
   <xacro:include filename="$(find voliro_like_pt003_description)/urdf/tmotor_1344.uadf"/>
@@ -1275,9 +1275,9 @@ XACRO を用いることで XML をより短く，わかりやすく書くこと
   </link>
 
   <!-- Flight Controller -->
-  <xacro:tobas_t1 parent="base_link">
+  <xacro:tobas_fc100 parent="base_link">
     <origin xyz="0 0 0.058" rpy="0 0 0"/>
-  </xacro:tobas_t1>
+  </xacro:tobas_fc100>
 
   <!-- Battery -->
   <xacro:hrb_6s_5000mah_50c link_name="battery" parent="base_link">
@@ -1553,7 +1553,7 @@ XACRO を用いることで XML をより短く，わかりやすく書くこと
     <visual>
       <origin xyz="0 0 0" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://tobas_voliro_like_pt003_config/meshes/tobas_t1.stl" scale="1 1 1"/>
+        <mesh filename="package://tobas_voliro_like_pt003_config/meshes/tobas_fc100.stl" scale="1 1 1"/>
       </geometry>
       <material name="red">
         <texture/>
