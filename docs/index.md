@@ -105,15 +105,6 @@ DJI F450 のフレームキットを使用しています．
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1RIXLGmx1RA?si=ADkOlZsAMb1tHyNr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <br>
 
-### ロボットアームドローン
-
-4 軸のロボットアームを搭載した，非平面ロータ配置ヘキサコプターです．
-アームにより発生する反力や重心の変化を動的に保証することで，
-アームを大きく振り回しても位置姿勢を一定範囲内に留めることができています．
-
-<iframe width="474" height="843" src="https://www.youtube.com/embed/L7nRlG1OgyY" title="Tobas | The Drone That Stays Stable with a Swinging Arm (2024/02/15) #drone" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<br>
-
 ### アクティブチルトヘキサコプター
 
 全てのアームを両方向に 120 度ずつ回転させられるヘキサコプターです．
@@ -122,6 +113,14 @@ DJI F450 のフレームキットを使用しています．
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UYwoFjf6ubc?si=RsDKgr98DVvdhaWB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>
+
+### ロボットアームドローン
+
+チルトヘキサコプターに 4 軸のロボットアームを搭載した機体です．  
+アームにより発生する反力や重心の変化を動的に保証することで，
+アームを大きく振り回しても位置姿勢を一定範囲内に留めることができています．
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3peWIltNV3o?si=OLdfuQGEHEI1L_N-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## システム要件
 
