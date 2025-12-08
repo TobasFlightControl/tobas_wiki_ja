@@ -15,8 +15,8 @@ UADF の詳細については[What is UADF](./what_is_uadf.md)をご参照くだ
 このチュートリアルでは，典型的なクアッドコプターである DJI F450 を使用します．
 構成部品は以下のとおりです：
 
-- フライトコントローラ: Tobas FC101 <!-- TODO: URL -->
-- Power Module: Tobas PM101 <!-- TODO: URL -->
+- フライトコントローラ: <a href=https://tobas.jp/product target="_blank">Tobas FC101</a>
+- Power Module: <a href=https://tobas.jp/product target="_blank">Tobas PM101</a>
 - フレーム: <a href=https://ja.aliexpress.com/item/1005007683004849.html target="_blank">DJI F450 Frame</a>
 - バッテリー: <a href=https://ja.aliexpress.com/item/4000244479545.html target="_blank">HRB 3S 5000mAh 50C</a>
 - モータ: <a href=https://ja.aliexpress.com/item/1005008178619191.html target="_blank">DJI A2212 920KV</a> (CW x 2, CCW x 2)
@@ -98,7 +98,7 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 `Tobas FC1xx`が選択されていることを確認し，
 4 つの推進ユニットそれぞれについて，適切に DShot チャンネルを設定してください．
 
-![fmu](resources/setup_assistant/fmu.png)
+![hardware_interface](resources/setup_assistant/hardware_interface.png)
 
 <!-- prettier-ignore-start -->
 !!! note
@@ -119,7 +119,7 @@ FC 側に固定 IP を振っている場合は，それを指定することも�
 
 ## プロジェクトの保存
 
-`Save`をクリックし，ファイルダイアログで`~/Tobas/colcon_ws/src/`以下に`tobas_f450.TBS`として保存します．
+`Save`をクリックし，ファイルダイアログで`~/.local/share/tobas/colcon_ws/src/`以下に`tobas_f450.TBS`として保存します．
 
 ![save](resources/setup_assistant/save.png)
 

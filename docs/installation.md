@@ -22,9 +22,10 @@
 ![applications](resources/installation/applications.png)
 
 アプリケーションメニューから`TobasInstall`を起動すると，ターミナルが開き追加のインストールが開始します．これには数十分かかることがあります．
-ターミナルの最後に`Installation finished successfully.`と表示されればインストール成功です．ターミナルを閉じてください．
+ターミナルの最後に`Installation finished successfully.`と表示されればインストール成功です．
+Enter キーを押してターミナルを閉じてください．
 
-![terminal](resources/installation/terminal.png)
+![tobas_install_prereqs](resources/installation/tobas_install_prereqs.png)
 
 ### 手順 (ターミナルから)
 
