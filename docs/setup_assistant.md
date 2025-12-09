@@ -70,7 +70,7 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 各部品の仕様を確認し，`ESC`，`Motor`，`Propeller`の各項目に適切な値を入力してください．
 
 <!-- prettier-ignore-start -->
-!!! note
+!!! tip
     機体上のプロペラと表示されているリンク名との対応関係がわからない場合は，
     画面左上の`Frame Tree`からリンク名をクリックすることでモデルビューにハイライトされます．
 <!-- prettier-ignore-end -->
