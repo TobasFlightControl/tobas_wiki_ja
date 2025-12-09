@@ -22,6 +22,12 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sHoA8yKJPs4?si=CCOEPsu6z9hd7zOb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>
 
+<!-- prettier-ignore-start -->
+!!! note
+    屋内などGNSSが使えない環境では位置・速度に関するチェック項目にパスできないため，
+    Setup AssistantのFail-Safeのタブからそれらに関するチェックを外す必要があります．
+<!-- prettier-ignore-end -->
+
 ### 終了の手順
 
 1. スロットルレバーを下，ヨーレバーを左に傾けた状態で 1 秒間維持するとディスアームします．
