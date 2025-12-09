@@ -138,4 +138,5 @@ $ sudo dd if=tobas_2.9.0_arm64.img of=/dev/sdx bs=4M conv=fsync status=progress
 ---
 
 これでインストールは完了です．
+インストール時に実行された変更を反映するため，次の操作に進む前に一度 PC を再起動しておくことをおすすめします．
 次は Tobas Bootmedia Config を用いて起動前の初期設定を行います．
