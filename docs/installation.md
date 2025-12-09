@@ -6,7 +6,7 @@
 
 ### 手順 (デスクトップから)
 
-<a href=https://drive.google.com/file/d/10jSK2oRpiKa5EMkG1Ov4UM0nQaL9mBII/view target="_blank">tobas_2.9.0_amd64.deb</a>
+<a href=https://drive.google.com/file/d/1cFEetTMiAqnVF2PJ6ngi_-3RO1dMTaVd/view target="_blank">tobas_2.9.1_amd64.deb</a>
 をダウンロードしてください．
 ウイルススキャンはできなくても問題ありません．
 
@@ -35,14 +35,14 @@ Enter キーを押してターミナルを閉じてください．
 
 ### 手順 (ターミナルから)
 
-<a href=https://drive.google.com/file/d/10jSK2oRpiKa5EMkG1Ov4UM0nQaL9mBII/view target="_blank">tobas_2.9.0_amd64.deb</a>
+<a href=https://drive.google.com/file/d/1cFEetTMiAqnVF2PJ6ngi_-3RO1dMTaVd/view target="_blank">tobas_2.9.1_amd64.deb</a>
 をダウンロードします．
 
 ```bash
 $ sudo apt install -y python3-pip
 $ sudo pip install gdown --break-system-packages
 $ cd ~/Download
-$ gdown --fuzzy 'https://drive.google.com/file/d/10jSK2oRpiKa5EMkG1Ov4UM0nQaL9mBII/view'
+$ gdown --fuzzy 'https://drive.google.com/file/d/1cFEetTMiAqnVF2PJ6ngi_-3RO1dMTaVd/view'
 ```
 
 既に Tobas がインストールされていて更新したい場合は，一度古いパッケージをアンインストールします．
@@ -54,7 +54,7 @@ $ sudo dpkg -r tobas
 Tobas をインストールします．
 
 ```bash
-$ sudo dpkg -i tobas_2.9.0_amd64.deb
+$ sudo dpkg -i tobas_2.9.1_amd64.deb
 ```
 
 依存パッケージをインストールします．
