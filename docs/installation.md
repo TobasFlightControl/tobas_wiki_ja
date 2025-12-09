@@ -15,6 +15,12 @@
 
 ![app_center](resources/installation/app_center.png)
 
+既に Tobas がインストールされていて更新したい場合は，一度古いパッケージをアンインストールする必要があります．
+App Center で Synaptic Package Manager をインストールして起動し，
+`tobas`を右クリックして完全削除を指定してから適用するとパッケージがアンインストールされ，再びインストールできるようになります．
+
+![synaptic](resources/installation/synaptic.png)
+
 インストールが完了すると，アプリケーションメニューに
 `TobasBootmediaConfig`，`TobasGCS`，`TobasInstall`，`TobasSetupAssistant`
 が追加されます．
@@ -37,6 +43,12 @@ $ sudo apt install -y python3-pip
 $ sudo pip install gdown --break-system-packages
 $ cd ~/Download
 $ gdown --fuzzy 'https://drive.google.com/file/d/10jSK2oRpiKa5EMkG1Ov4UM0nQaL9mBII/view'
+```
+
+既に Tobas がインストールされていて更新したい場合は，一度古いパッケージをアンインストールします．
+
+```bash
+$ sudo dpkg -r tobas
 ```
 
 Tobas をインストールします．
