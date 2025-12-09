@@ -791,9 +791,18 @@ string message # informational, e.g. for error messages
 ```txt
 # Goal
 tobas_command_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
+
 float64 target_altitude     # [m]
-float64 altitude_tolerance  # [m]
-float64 duration            # [s]
+
+float64 max_speed           # [m/s]
+float64 max_accel           # [m/s^2]
+float64 max_jerk            # [m/s^3]
+
+float64 altitude_tolerance  # [m] By default, the altitude tolerance is infinite.
 float64 timeout             # [s] Timeout after command duration. By default, timeout is infinite.
 
 ---
@@ -818,6 +827,8 @@ tobas_command_msgs/CommandLevel level
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
+float64 speed  # [m/s]
+
 ---
 
 # Result
@@ -839,12 +850,21 @@ tobas_command_msgs/CommandLevel level
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
-float64 target_latitude    # [deg]
-float64 target_longitude   # [deg]
-float64 target_altitude    # [m]
-float64 acceptance_radius  # [m]
-float64 duration           # [s]
-float64 timeout            # [s] Timeout after command duration. By default, timeout is infinite.
+
+float64 target_latitude          # [deg]
+float64 target_longitude         # [deg]
+float64 target_altitude          # [m]
+
+float64 max_horizontal_velocity  # [m/s]
+float64 max_vertical_velocity    # [m/s]
+float64 max_horizontal_accel     # [m/s^2]
+float64 max_vertical_accel       # [m/s^2]
+float64 max_horizontal_jerk      # [m/s^3]
+float64 max_vertical_jerk        # [m/s^3]
+
+float64 acceptance_radius        # [m] By default, the acceptance radius is infinite.
+float64 altitude_tolerance       # [m] By default, the altitude tolerance is infinite.
+float64 timeout                  # [s] Timeout after command duration. By default, timeout is infinite.
 
 ---
 
