@@ -116,8 +116,8 @@ DJI F450 のフレームキットを使用しています．
 
 ### ロボットアームドローン
 
-チルトヘキサコプターに 4 軸のロボットアームを搭載した機体です．  
-アームにより発生する反力や重心の変化を動的に保証することで，
+チルトヘキサコプターに 4 軸のロボットアームを搭載した機体です．
+アームにより発生する反力や重心の変化を動的に補償することで，
 アームを大きく振り回しても位置姿勢を一定範囲内に留めることができています．
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3peWIltNV3o?si=OLdfuQGEHEI1L_N-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
