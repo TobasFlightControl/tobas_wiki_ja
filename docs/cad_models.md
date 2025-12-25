@@ -9,8 +9,8 @@
 
 ### Tobas FC101
 
-- <a href=https://drive.google.com/file/d/1aJJO3cbJRHRl25UKnGwyx9pMhX5rkXoK/view?usp target="_blank">FC101 (STEP)</a>
-- <a href=https://drive.google.com/file/d/1g9ubDZjbcwwTutAJQ_KtJHqV6g-_r1zu/view target="_blank">IO-Board (STEP)</a>
+- <a href=https://drive.google.com/file/d/1aJJO3cbJRHRl25UKnGwyx9pMhX5rkXoK/view target="_blank">FC101 (STEP)</a>
+- <a href=https://drive.google.com/file/d/1L0Vw0UFXt8O9-qcBErcfsW2Oo0_V_Qm4/view target="_blank">IO-Board (STEP)</a>
 
 ## Power Module
 
