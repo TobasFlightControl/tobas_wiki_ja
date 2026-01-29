@@ -8,7 +8,6 @@
 
 <a href=https://drive.google.com/file/d/1zDkvbO9Xx4-IsWKEUFX8CtNHLcnBZ0X_/view target="_blank">tobas_2.10.0_amd64.deb</a>
 をダウンロードしてください．
-ウイルススキャンはできなくても問題ありません．
 
 エクスプローラを開き，ダウンロードした deb パッケージをダブルクリックすると，App Center が起動します．
 `Install`をクリックするとインストールが開始します．これには数分かかることがあります．
@@ -81,7 +80,6 @@ $ tobas_install_prereqs
 
 <a href=https://drive.google.com/file/d/1HfKCUhTENP3RGpWEuIYAzcdeJeJg5s6d/view target="_blank">tobas_2.10.0_arm64.img.gz</a>
 をダウンロードしてください．
-ウイルススキャンはできなくても問題ありません．
 
 適当なイメージフラッシャーをインストールしてください．例えば以下が使用可能です．
 

@@ -55,10 +55,10 @@ Tobas では機体の構造は[UADF (Universal Aircraft Description Format)](./w
 以下のような，飛行に大きな影響を与える要素を簡単にシミュレーションできます：
 
 - 風 (定常風，乱流，突風)
-- 機体のモデル化誤差
 - バッテリーの電圧降下
 - ESC の最大電流
 - センサの遅延，ノイズ
+- 吊り下げ荷物
 
 ## Flight Management Unit (FMU)
 
