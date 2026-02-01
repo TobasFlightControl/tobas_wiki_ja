@@ -2,19 +2,6 @@
 
 現在までに報告されたトラブルとその解決方法をまとめています．
 
-## フライトコントローラが起動しない
-
----
-
-### 1. 不要なメタデータが残っている可能性
-
-SD カードを一度ゼロクリアしてからイメージを書き込んでください．
-
-```bash
-$ sudo dd if=/dev/zero of=/dev/sdx bs=4M conv=fsync status=progress
-$ sudo dd if=tobas_x.x.x_arm64.img of=/dev/sdx bs=4M conv=fsync status=progress
-```
-
 ## Gazebo の動作が重い
 
 ---
@@ -32,7 +19,7 @@ Ubuntu の起動画面でユーザ名を選択した際に画面右下に現れ�
 - `Ubuntu` もしくは `Ubuntu on Wayland` が選択可能な場合 → `Ubuntu`
 - `Ubuntu on Xorg` もしくは `Ubuntu` が選択可能な場合 → `Ubuntu on Xorg`
 
-## Tobas プロジェクトが存在しないと言われる: Local directory /.../hoge.TBS does not exist.
+## 明らかに存在するプロジェクトフォルダが存在しないと言われる: Local directory /.../hoge.TBS does not exist.
 
 ---
 
@@ -44,6 +31,29 @@ $ sudo apt update
 $ sudo apt upgrade -y
 $ sudo apt autoremove --purge -y
 $ sudo apt autoclean
+```
+
+## FC と PC 間の ROS 通信ができない
+
+---
+
+### 1. ファイアウォールがUDPを弾いている可能性
+
+ROS 2 のネットワーク間通信は内部で UDP を用いていますが，
+ファイアウォールがそれを許可していない可能性があります．
+以下のコマンドでファイアウォールの状態を確認し，
+許可されたポートリストに UDP の 7400 台のポートが含まれなければこれが原因かもしれません．
+
+```bash
+$ sudo ufw status
+```
+
+本当は使用するポートのみを許可するのが望ましいですが，
+ひとまずUFWを無効化して再起動すると通信できるようになります．
+
+```bash
+$ sudo ufw disable
+$ sudo reboot
 ```
 
 ## ユーザコードを作成して書き込んだが FC が動作していない
