@@ -6,7 +6,7 @@
 
 ### 手順 (デスクトップから)
 
-<a href=https://drive.google.com/file/d/1zDkvbO9Xx4-IsWKEUFX8CtNHLcnBZ0X_/view target="_blank">tobas_2.10.0_amd64.deb</a>
+<a href=https://drive.google.com/file/d/1QNNvc6K5yO9zhdZY9ZPUE1vAMqOobMub/view target="_blank">tobas_2.11.0_amd64.deb</a>
 をダウンロードしてください．
 
 エクスプローラを開き，ダウンロードした deb パッケージをダブルクリックすると，App Center が起動します．
@@ -34,14 +34,14 @@ Enter キーを押してターミナルを閉じてください．
 
 ### 手順 (ターミナルから)
 
-<a href=https://drive.google.com/file/d/1zDkvbO9Xx4-IsWKEUFX8CtNHLcnBZ0X_/view target="_blank">tobas_2.10.0_amd64.deb</a>
+<a href=https://drive.google.com/file/d/1QNNvc6K5yO9zhdZY9ZPUE1vAMqOobMub/view target="_blank">tobas_2.11.0_amd64.deb</a>
 をダウンロードします．
 
 ```bash
 $ sudo apt install -y python3-pip
 $ sudo pip install gdown --break-system-packages
 $ cd ~/Download
-$ gdown --fuzzy 'https://drive.google.com/file/d/1zDkvbO9Xx4-IsWKEUFX8CtNHLcnBZ0X_/view'
+$ gdown --fuzzy 'https://drive.google.com/file/d/1QNNvc6K5yO9zhdZY9ZPUE1vAMqOobMub/view'
 ```
 
 既に Tobas がインストールされていて更新したい場合は，一度古いパッケージをアンインストールします．
@@ -53,7 +53,7 @@ $ sudo dpkg -r tobas
 Tobas をインストールします．
 
 ```bash
-$ sudo dpkg -i tobas_2.10.0_amd64.deb
+$ sudo dpkg -i tobas_2.11.0_amd64.deb
 ```
 
 依存パッケージをインストールします．
@@ -78,7 +78,7 @@ $ tobas_install_prereqs
 
 ### 手順 (デスクトップから)
 
-<a href=https://drive.google.com/file/d/1HfKCUhTENP3RGpWEuIYAzcdeJeJg5s6d/view target="_blank">tobas_2.10.0_arm64.img.gz</a>
+<a href=https://drive.google.com/file/d/1Z432WzD5BTAqqgibZaPBUgSvLbqIRcVP/view target="_blank">tobas_2.11.0_arm64.img.gz</a>
 をダウンロードしてください．
 
 適当なイメージフラッシャーをインストールしてください．例えば以下が使用可能です．
@@ -97,21 +97,21 @@ SD カードを，カードリーダーを介して PC に接続してくださ�
 
 ### 手順 (ターミナルから)
 
-<a href=https://drive.google.com/file/d/1HfKCUhTENP3RGpWEuIYAzcdeJeJg5s6d/view target="_blank">tobas_2.10.0_arm64.img.gz</a>
+<a href=https://drive.google.com/file/d/1Z432WzD5BTAqqgibZaPBUgSvLbqIRcVP/view target="_blank">tobas_2.11.0_arm64.img.gz</a>
 をダウンロードします．
 
 ```bash
 $ sudo apt install -y python3-pip
 $ sudo pip install gdown --break-system-packages
 $ cd ~/Download
-$ gdown --fuzzy 'https://drive.google.com/file/d/1HfKCUhTENP3RGpWEuIYAzcdeJeJg5s6d/view'
+$ gdown --fuzzy 'https://drive.google.com/file/d/1Z432WzD5BTAqqgibZaPBUgSvLbqIRcVP/view'
 ```
 
 ダウンロードしたファイルを解凍します．
 
 ```bash
 $ sudo apt install -y gzip
-$ gunzip tobas_2.10.0_arm64.img.gz
+$ gunzip tobas_2.11.0_arm64.img.gz
 ```
 
 SD カードを，カードリーダーを介して PC に接続してください．
@@ -120,7 +120,7 @@ SD カードを，カードリーダーを介して PC に接続してくださ�
 `/dev/sdx`は実際のパスに置き換えてください．
 
 ```bash
-$ sudo dd if=tobas_2.10.0_arm64.img of=/dev/sdx bs=4M conv=fsync status=progress
+$ sudo dd if=tobas_2.11.0_arm64.img of=/dev/sdx bs=4M conv=fsync status=progress
 ```
 
 正常に終了したら SD カードを PC から取り外してください．
