@@ -291,10 +291,6 @@ tobas_eigen_msgs/Matrix3d velocity_covariance     # [m^2/s^2]
 	float64[9] data
 tobas_eigen_msgs/Matrix3d gyro_covariance         # [rad^2/s^2]
 	float64[9] data
-
-int8 status
-int8 NO_ERROR = 0
-int8 POSITION_LOST = -1
 ```
 
 #### arming (tobas_msgs/Arming)
@@ -356,6 +352,28 @@ tobas_kdl_msgs/Vector rate  # Target angular velocity wrt. the local coordinates
 float64 throttle            # Target throttle [0, 1]
 ```
 
+#### command/rate_throttle_vector (tobas_command_msgs/RateThrottleVector)
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_command_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
+
+tobas_kdl_msgs/Vector rate  # Target angular velocity wrt. the local coordinates [rad/s]
+	float64 x
+	float64 y
+	float64 z
+float64 throttle            # Target throttle [0, 1]
+float64 thrust_angle        # Target thrust angle [rad]
+```
+
 #### command/angle (tobas_command_msgs/Angle)
 
 ```txt
@@ -395,6 +413,28 @@ tobas_kdl_msgs/Euler angle  # Target euler angles wrt. the global coordinates [r
 	float64 pitch  # [rad]
 	float64 yaw    # [rad]
 float64 throttle            # Target throttle [0, 1]
+```
+
+#### command/angle_throttle_vector (tobas_command_msgs/AngleThrottleVector)
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_command_msgs/CommandLevel level
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
+	uint8 MANUAL = 2
+
+tobas_kdl_msgs/Euler angle  # Target euler angles wrt. the global coordinates [rad]
+	float64 roll   # [rad]
+	float64 pitch  # [rad]
+	float64 yaw    # [rad]
+float64 throttle            # Target throttle [0, 1]
+float64 thrust_angle        # Target thrust angle [rad]
 ```
 
 #### command/accel (tobas_command_msgs/Accel)
@@ -660,10 +700,6 @@ tobas_eigen_msgs/Matrix3d velocity_covariance     # [m^2/s^2]
 	float64[9] data
 tobas_eigen_msgs/Matrix3d gyro_covariance         # [rad^2/s^2]
 	float64[9] data
-
-int8 status
-int8 NO_ERROR = 0
-int8 POSITION_LOST = -1
 ```
 
 #### gazebo/ground_truth/wind (tobas_msgs/Wind)
@@ -770,6 +806,37 @@ tobas_gazebo_msgs/TetherParams params
 	float64 maximum_length  # [m]
 ```
 
+#### gazebo/attach_suspended_load (tobas_gazebo_msgs/AttachSuspendedLoad)
+
+吊り下げ荷物を取り付ける．
+
+```txt
+geometry_msgs/Vector3 attachment_point  # [m] Attachment point on the aircraft wrt. the local frame
+	float64 x
+	float64 y
+	float64 z
+float64 load_sx                         # [m]
+float64 load_sy                         # [m]
+float64 load_sz                         # [m]
+float64 load_mass                       # [kg]
+float64 cable_length                    # [m]
+float64 cable_young_modulus             # [Pa]
+float64 cable_cross_sectional_area        # [m^2]
+---
+bool success
+string message
+```
+
+#### gazebo/detach_suspended_load (tobas_gazebo_msgs/DetachSuspendedLoad)
+
+吊り下げ荷物を取り外す．
+
+```txt
+---
+bool success
+string message
+```
+
 #### gazebo/break_rotor/${rotor_link_name} (std_srvs/Trigger)
 
 モータを強制的に停止する．
@@ -784,26 +851,21 @@ string message # informational, e.g. for error messages
 
 ---
 
-#### takeoff_action (tobas_mission_msgs/Takeoff)
+#### execute_mission (tobas_mission_msgs/ExecuteMission)
 
-離陸する．
+一連のミッションを実行する．
 
 ```txt
 # Goal
-tobas_command_msgs/CommandLevel level
-	uint8 data
-	uint8 NORMAL = 0
-	uint8 DEFENSIVE = 1
-	uint8 MANUAL = 2
-
-float64 target_altitude     # [m]
-
-float64 max_speed           # [m/s]
-float64 max_accel           # [m/s^2]
-float64 max_jerk            # [m/s^3]
-
-float64 altitude_tolerance  # [m] By default, the altitude tolerance is infinite.
-float64 timeout             # [s] Timeout after command duration. By default, timeout is infinite.
+tobas_mission_msgs/Mission mission
+	std_msgs/Header header
+		builtin_interfaces/Time stamp
+			int32 sec
+			uint32 nanosec
+		string frame_id
+	tobas_mission_msgs/MissionItem[] items
+		uint8 type
+		byte[] data
 
 ---
 
@@ -813,77 +875,7 @@ string message
 ---
 
 # Feedback
+uint32 current_index
 ```
 
-#### land_action (tobas_mission_msgs/Land)
-
-着陸する．
-
-```txt
-# Goal
-tobas_command_msgs/CommandLevel level
-	uint8 data
-	uint8 NORMAL = 0
-	uint8 DEFENSIVE = 1
-	uint8 MANUAL = 2
-
-float64 speed  # [m/s]
-
----
-
-# Result
-string message
-
----
-
-# Feedback
-```
-
-#### move_action (tobas_mission_msgs/Move)
-
-指定した位置に移動する．
-
-```txt
-# Goal
-tobas_command_msgs/CommandLevel level
-	uint8 data
-	uint8 NORMAL = 0
-	uint8 DEFENSIVE = 1
-	uint8 MANUAL = 2
-
-float64 target_latitude          # [deg]
-float64 target_longitude         # [deg]
-float64 target_altitude          # [m]
-
-float64 max_horizontal_velocity  # [m/s]
-float64 max_vertical_velocity    # [m/s]
-float64 max_horizontal_accel     # [m/s^2]
-float64 max_vertical_accel       # [m/s^2]
-float64 max_horizontal_jerk      # [m/s^3]
-float64 max_vertical_jerk        # [m/s^3]
-
-float64 acceptance_radius        # [m] By default, the acceptance radius is infinite.
-float64 altitude_tolerance       # [m] By default, the altitude tolerance is infinite.
-float64 timeout                  # [s] Timeout after command duration. By default, timeout is infinite.
-
----
-
-# Result
-string message
-
----
-
-# Feedback
-geometry_msgs/Vector3 target_position   # [m]
-	float64 x
-	float64 y
-	float64 z
-geometry_msgs/Vector3 current_position  # [m]
-	float64 x
-	float64 y
-	float64 z
-geometry_msgs/Vector3 position_error    # [m]
-	float64 x
-	float64 y
-	float64 z
-```
+<!-- TODO: ミッションコマンドの詳細 -->
