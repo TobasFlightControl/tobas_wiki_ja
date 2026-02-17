@@ -321,7 +321,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -341,7 +341,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -362,7 +362,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -384,7 +384,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -404,7 +404,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -425,7 +425,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -447,7 +447,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -467,7 +467,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -488,7 +488,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -510,7 +510,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -534,7 +534,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -559,7 +559,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -585,7 +585,7 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-tobas_command_msgs/CommandLevel level
+tobas_command_msgs/Priority priority
 	uint8 data
 	uint8 NORMAL = 0
 	uint8 DEFENSIVE = 1
@@ -859,20 +859,25 @@ string message # informational, e.g. for error messages
 
 ```txt
 # Goal
-tobas_mission_msgs/Mission mission
-	std_msgs/Header header
-		builtin_interfaces/Time stamp
-			int32 sec
-			uint32 nanosec
-		string frame_id
-	tobas_mission_msgs/MissionItem[] items
-		uint8 type
-		byte[] data
+tobas_mission_msgs/MissionItem[] items
+	uint8 type
+	byte[] data
+tobas_mission_msgs/Priority priority
+	uint8 data
+	uint8 NORMAL = 0
+	uint8 DEFENSIVE = 1
 
 ---
 
 # Result
-string message
+tobas_mission_msgs/ErrorCode error_code
+	int8 data
+	int8 NO_ERROR = 0
+	int8 MISSION_SUPERSEDED = -1
+	int8 MANUAL_OVERRIDE = -2
+	int8 ACCEPTANCE_TIMEOUT = -3
+	int8 OTHER_ERROR = -4
+string error_message
 
 ---
 
