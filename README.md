@@ -3,7 +3,7 @@
 ## セットアップ (Ubuntu 24.04 LTS)
 
 ```bash
-$ sudo apt install mkdocs
+$ sudo apt install -y mkdocs mkdocs-material
 ```
 
 ## ローカルでの実行
