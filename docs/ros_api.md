@@ -502,7 +502,7 @@ float64 pitch                # Target pitch angle [rad]
 float64 yaw                  # Target yaw angle [rad]
 ```
 
-#### command/pos_vel (tobas_command_msgs/PosVel)
+#### command/pos_vel_acc (tobas_command_msgs/PosVelAcc)
 
 ```txt
 std_msgs/Header header
@@ -521,12 +521,16 @@ tobas_kdl_msgs/Vector pos  # Target position wrt. the global coordinates [m]
 	float64 y
 	float64 z
 tobas_kdl_msgs/Vector vel  # Target linear velocity wrt. the global coordinates [m/s]
+	float64 x
+	float64 y
+	float64 z
+tobas_kdl_msgs/Vector acc  # Target linear acceleration wrt. the global coordinates [m/s]
 	float64 x
 	float64 y
 	float64 z
 ```
 
-#### command/pos_vel_yaw (tobas_command_msgs/PosVelYaw)
+#### command/pos_vel_acc_yaw (tobas_command_msgs/PosVelAccYaw)
 
 ```txt
 std_msgs/Header header
@@ -545,13 +549,17 @@ tobas_kdl_msgs/Vector pos  # Target position wrt. the global coordinates [m]
 	float64 y
 	float64 z
 tobas_kdl_msgs/Vector vel  # Target linear velocity wrt. the global coordinates [m/s]
+	float64 x
+	float64 y
+	float64 z
+tobas_kdl_msgs/Vector acc  # Target linear acceleration wrt. the global coordinates [m/s]
 	float64 x
 	float64 y
 	float64 z
 float64 yaw                # Target yaw angle [rad]
 ```
 
-#### command/pos_vel_pitch_yaw (tobas_command_msgs/PosVelPitchYaw)
+#### command/pos_vel_acc_pitch_yaw (tobas_command_msgs/PosVelAccPitchYaw)
 
 ```txt
 std_msgs/Header header
@@ -570,6 +578,10 @@ tobas_kdl_msgs/Vector pos  # Target position wrt. the global coordinates [m]
 	float64 y
 	float64 z
 tobas_kdl_msgs/Vector vel  # Target linear velocity wrt. the global coordinates [m/s]
+	float64 x
+	float64 y
+	float64 z
+tobas_kdl_msgs/Vector acc  # Target linear acceleration wrt. the global coordinates [m/s]
 	float64 x
 	float64 y
 	float64 z
