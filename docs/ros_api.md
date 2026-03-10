@@ -259,7 +259,7 @@ std_msgs/Header header
 		uint32 nanosec
 	string frame_id
 
-tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the vehicle frame
+tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the body frame
 	tobas_kdl_msgs/Vector trans
 		float64 x
 		float64 y
@@ -680,7 +680,7 @@ std_msgs/Header header
 		uint32 nanosec
 	string frame_id
 
-tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the vehicle frame
+tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the body frame
 	tobas_kdl_msgs/Vector trans
 		float64 x
 		float64 y
