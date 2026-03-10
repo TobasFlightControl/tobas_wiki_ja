@@ -259,14 +259,14 @@ std_msgs/Header header
 		uint32 nanosec
 	string frame_id
 
-tobas_kdl_msgs/Frame frame
+tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the vehicle frame
 	tobas_kdl_msgs/Vector trans
 		float64 x
 		float64 y
 		float64 z
 	tobas_kdl_msgs/Rotation rot
 		float64[9] data
-tobas_kdl_msgs/Twist twist
+tobas_kdl_msgs/Twist twist  # The 6D twist expressed in the body frame
 	tobas_kdl_msgs/Vector linear
 		float64 x
 		float64 y
@@ -275,7 +275,7 @@ tobas_kdl_msgs/Twist twist
 		float64 x
 		float64 y
 		float64 z
-tobas_kdl_msgs/Accel accel
+tobas_kdl_msgs/Accel accel  # The 6D accel expressed in the body frame
 	tobas_kdl_msgs/Vector linear
 		float64 x
 		float64 y
@@ -327,7 +327,7 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Vector rate  # Target angular velocity wrt. the local coordinates [rad/s]
+tobas_kdl_msgs/Vector rate  # Target angular velocity expressed in the local frame [rad/s]
 	float64 x
 	float64 y
 	float64 z
@@ -347,7 +347,7 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Vector rate  # Target angular velocity wrt. the local coordinates [rad/s]
+tobas_kdl_msgs/Vector rate  # Target angular velocity expressed in the local frame [rad/s]
 	float64 x
 	float64 y
 	float64 z
@@ -368,7 +368,7 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Vector rate  # Target angular velocity wrt. the local coordinates [rad/s]
+tobas_kdl_msgs/Vector rate  # Target angular velocity expressed in the local frame [rad/s]
 	float64 x
 	float64 y
 	float64 z
@@ -390,7 +390,7 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Euler angle  # Target euler angles wrt. the global coordinates [rad]
+tobas_kdl_msgs/Euler angle  # Target euler angles expressed in the global frame [rad]
 	float64 roll   # [rad]
 	float64 pitch  # [rad]
 	float64 yaw    # [rad]
@@ -410,7 +410,7 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Euler angle  # Target euler angles wrt. the global coordinates [rad]
+tobas_kdl_msgs/Euler angle  # Target euler angles expressed in the global frame [rad]
 	float64 roll   # [rad]
 	float64 pitch  # [rad]
 	float64 yaw    # [rad]
@@ -431,7 +431,7 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Euler angle  # Target euler angles wrt. the global coordinates [rad]
+tobas_kdl_msgs/Euler angle  # Target euler angles expressed in the global frame [rad]
 	float64 roll   # [rad]
 	float64 pitch  # [rad]
 	float64 yaw    # [rad]
@@ -453,7 +453,7 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Vector accel  # Target linear acceleration wrt. the global coordinates [m/s^2]
+tobas_kdl_msgs/Vector accel  # Target linear acceleration expressed in the global frame [m/s^2]
 	float64 x
 	float64 y
 	float64 z
@@ -473,7 +473,7 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Vector accel  # Target linear acceleration wrt. the global coordinates [m/s^2]
+tobas_kdl_msgs/Vector accel  # Target linear acceleration expressed in the global frame [m/s^2]
 	float64 x
 	float64 y
 	float64 z
@@ -494,7 +494,7 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Vector accel  # Target linear acceleration wrt. the global coordinates [m/s^2]
+tobas_kdl_msgs/Vector accel  # Target linear acceleration expressed in the global frame [m/s^2]
 	float64 x
 	float64 y
 	float64 z
@@ -516,15 +516,15 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Vector pos  # Target position wrt. the global coordinates [m]
+tobas_kdl_msgs/Vector pos  # Target position expressed in the global frame [m]
 	float64 x
 	float64 y
 	float64 z
-tobas_kdl_msgs/Vector vel  # Target linear velocity wrt. the global coordinates [m/s]
+tobas_kdl_msgs/Vector vel  # Target linear velocity expressed in the global frame [m/s]
 	float64 x
 	float64 y
 	float64 z
-tobas_kdl_msgs/Vector acc  # Target linear acceleration wrt. the global coordinates [m/s]
+tobas_kdl_msgs/Vector acc  # Target linear acceleration expressed in the global frame [m/s]
 	float64 x
 	float64 y
 	float64 z
@@ -544,15 +544,15 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Vector pos  # Target position wrt. the global coordinates [m]
+tobas_kdl_msgs/Vector pos  # Target position expressed in the global frame [m]
 	float64 x
 	float64 y
 	float64 z
-tobas_kdl_msgs/Vector vel  # Target linear velocity wrt. the global coordinates [m/s]
+tobas_kdl_msgs/Vector vel  # Target linear velocity expressed in the global frame [m/s]
 	float64 x
 	float64 y
 	float64 z
-tobas_kdl_msgs/Vector acc  # Target linear acceleration wrt. the global coordinates [m/s]
+tobas_kdl_msgs/Vector acc  # Target linear acceleration expressed in the global frame [m/s]
 	float64 x
 	float64 y
 	float64 z
@@ -573,15 +573,15 @@ tobas_command_msgs/Priority priority
 	uint8 DEFENSIVE = 1
 	uint8 MANUAL = 2
 
-tobas_kdl_msgs/Vector pos  # Target position wrt. the global coordinates [m]
+tobas_kdl_msgs/Vector pos  # Target position expressed in the global frame [m]
 	float64 x
 	float64 y
 	float64 z
-tobas_kdl_msgs/Vector vel  # Target linear velocity wrt. the global coordinates [m/s]
+tobas_kdl_msgs/Vector vel  # Target linear velocity expressed in the global frame [m/s]
 	float64 x
 	float64 y
 	float64 z
-tobas_kdl_msgs/Vector acc  # Target linear acceleration wrt. the global coordinates [m/s]
+tobas_kdl_msgs/Vector acc  # Target linear acceleration expressed in the global frame [m/s]
 	float64 x
 	float64 y
 	float64 z
@@ -680,14 +680,14 @@ std_msgs/Header header
 		uint32 nanosec
 	string frame_id
 
-tobas_kdl_msgs/Frame frame
+tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the vehicle frame
 	tobas_kdl_msgs/Vector trans
 		float64 x
 		float64 y
 		float64 z
 	tobas_kdl_msgs/Rotation rot
 		float64[9] data
-tobas_kdl_msgs/Twist twist
+tobas_kdl_msgs/Twist twist  # The 6D twist expressed in the body frame
 	tobas_kdl_msgs/Vector linear
 		float64 x
 		float64 y
@@ -696,7 +696,7 @@ tobas_kdl_msgs/Twist twist
 		float64 x
 		float64 y
 		float64 z
-tobas_kdl_msgs/Accel accel
+tobas_kdl_msgs/Accel accel  # The 6D accel expressed in the body frame
 	tobas_kdl_msgs/Vector linear
 		float64 x
 		float64 y
