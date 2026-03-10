@@ -868,6 +868,7 @@ string message # informational, e.g. for error messages
 #### execute_mission (tobas_mission_msgs/ExecuteMission)
 
 一連のミッションを実行する．
+各コマンドの具体的な内容は`tobas_mission_items`を参照．
 
 ```txt
 # Goal
