@@ -112,8 +112,20 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 ---
 
 地上局から FC に遠隔で接続するための設定を行います．
-`Hostname`を選択し，[Boot Device Configuration](./bootmedia_config.md)で設定した FC のホスト名を入力してください．
-FC 側に固定 IP を振っている場合は，それを指定することもできます．
+
+### Network Interface
+
+FCが外部と通信する際に使用するネットワークインターフェースを指定します．
+今回はFCとGCSの通信にポケットWi-Fiを使うため，`Wireless`を選択します．
+有線LANを使用する場合は`Wired`，
+外部の通信モジュールを使わずラズパイ内臓のアクセスポイントを使用する場合は`Access Point`を選択してください．
+これら以外の構成場合，例えばVPNのインターフェース`tun0`を使う場合などは，`Other`を選択し直接インターフェース名を指定してください．
+
+### Host
+
+GCSがLAN内でFCを識別するためのアドレスの設定を行います．
+FCのIPを固定していればそれを直接使用することもできますが，今回は手軽なホスト名を使用することにします．
+`Hostname`を選択し，[Boot Device Configuration](./bootmedia_config.md)で設定したFCのホスト名を入力してください．
 
 ![remote_connection](resources/setup_assistant/remote_connection.png)
 
