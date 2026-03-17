@@ -9,7 +9,8 @@
 ![simulation_settings](resources/simulation/simulation_settings.png)
 
 `Start`をクリックすると，プロジェクトをビルドした後にシミュレーションが起動します．
-初回は環境データのダウンロードのために時間がかかることがあります．
+初回は環境データのダウンロードのために時間がかかります．
+環境の複雑さやネットワーク環境にも依りますが，長くとも10分以内には起動することが多いです．
 
 ![launch_gazebo](resources/simulation/launch_gazebo.png)
 
