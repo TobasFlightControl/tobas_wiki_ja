@@ -6,12 +6,14 @@
 
 ## トピック
 
-<!-- tobas_constants/constants.hppの内容 -->
+<!-- tobas_constants/ros_interfaces.hppの内容 -->
 <!-- tobas_gazebo_common/constants.hppの内容 -->
 
 ---
 
-### センサデータ
+### Common
+
+実機，シミュレーション両方で使用できるトピックです．
 
 #### battery (tobas_msgs/Battery)
 
@@ -246,9 +248,7 @@ tobas_msgs/JointState[] states
 	float64 effort
 ```
 
-### 状態推定
-
-#### odom (tobas_msgs/Odometry)
+#### odom (tobas_msgs/OdometryWithCovarianceStamped)
 
 状態推定器によって推定された，起動位置に対する位置，速度，加速度．
 
@@ -258,41 +258,80 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-
-tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the body frame
-	tobas_kdl_msgs/Vector trans
-		float64 x
-		float64 y
-		float64 z
-	tobas_kdl_msgs/Rotation rot
+tobas_msgs/OdometryWithCovariance odom
+	tobas_msgs/Odometry odom
+		tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the body frame
+			tobas_kdl_msgs/Vector trans
+				float64 x
+				float64 y
+				float64 z
+			tobas_kdl_msgs/Rotation rot
+				float64[9] data
+		tobas_kdl_msgs/Twist twist  # The 6D twist expressed in the body frame
+			tobas_kdl_msgs/Vector linear
+				float64 x
+				float64 y
+				float64 z
+			tobas_kdl_msgs/Vector angular
+				float64 x
+				float64 y
+				float64 z
+		tobas_kdl_msgs/Accel accel  # The 6D accel expressed in the body frame
+			tobas_kdl_msgs/Vector linear
+				float64 x
+				float64 y
+				float64 z
+			tobas_kdl_msgs/Vector angular
+				float64 x
+				float64 y
+				float64 z
+	tobas_eigen_msgs/Matrix3d position_covariance     # [m^2]
 		float64[9] data
-tobas_kdl_msgs/Twist twist  # The 6D twist expressed in the body frame
-	tobas_kdl_msgs/Vector linear
-		float64 x
-		float64 y
-		float64 z
-	tobas_kdl_msgs/Vector angular
-		float64 x
-		float64 y
-		float64 z
-tobas_kdl_msgs/Accel accel  # The 6D accel expressed in the body frame
-	tobas_kdl_msgs/Vector linear
-		float64 x
-		float64 y
-		float64 z
-	tobas_kdl_msgs/Vector angular
-		float64 x
-		float64 y
-		float64 z
+	tobas_eigen_msgs/Matrix3d orientation_covariance  # [rad^2]
+		float64[9] data
+	tobas_eigen_msgs/Matrix3d velocity_covariance     # [m^2/s^2]
+		float64[9] data
+	tobas_eigen_msgs/Matrix3d gyro_covariance         # [rad^2/s^2]
+		float64[9] data
+```
 
-tobas_eigen_msgs/Matrix3d position_covariance     # [m^2]
-	float64[9] data
-tobas_eigen_msgs/Matrix3d orientation_covariance  # [rad^2]
-	float64[9] data
-tobas_eigen_msgs/Matrix3d velocity_covariance     # [m^2/s^2]
-	float64[9] data
-tobas_eigen_msgs/Matrix3d gyro_covariance         # [rad^2/s^2]
-	float64[9] data
+#### trajectory_setpoint (tobas_msgs/OdometryStamped)
+
+制御器の現在の設定値．
+制御されていない値（例: 姿勢制御モードにおける位置速度）には NaN が入る．
+
+```txt
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+tobas_msgs/Odometry odom
+	tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the body frame
+		tobas_kdl_msgs/Vector trans
+			float64 x
+			float64 y
+			float64 z
+		tobas_kdl_msgs/Rotation rot
+			float64[9] data
+	tobas_kdl_msgs/Twist twist  # The 6D twist expressed in the body frame
+		tobas_kdl_msgs/Vector linear
+			float64 x
+			float64 y
+			float64 z
+		tobas_kdl_msgs/Vector angular
+			float64 x
+			float64 y
+			float64 z
+	tobas_kdl_msgs/Accel accel  # The 6D accel expressed in the body frame
+		tobas_kdl_msgs/Vector linear
+			float64 x
+			float64 y
+			float64 z
+		tobas_kdl_msgs/Vector angular
+			float64 x
+			float64 y
+			float64 z
 ```
 
 #### arming (tobas_msgs/Arming)
@@ -308,7 +347,7 @@ std_msgs/Header header
 bool data
 ```
 
-### コマンド
+### Command
 
 ユーザは FC 内部からこれらのトピックを発行することでドローンを操作することができます．
 受け付けるコマンドは機体フレームの型と飛行モードによって決まるため，ROS 2 の CLI でご確認ください．
@@ -655,6 +694,8 @@ tobas_msgs/JointCommand[] commands
 
 ### Gazebo
 
+Gazeboシミュレーション時にのみ使用されるトピックです．
+
 #### gazebo/ground_truth/battery (tobas_msgs/Battery)
 
 バッテリーの状態の真値．
@@ -669,7 +710,7 @@ float64 voltage  # [V]
 float64 current  # [A]
 ```
 
-#### gazebo/ground_truth/odom (tobas_msgs/Odometry)
+#### gazebo/ground_truth/odom (tobas_msgs/OdometryWithCovarianceStamped)
 
 起動位置に対する位置，速度，加速度の真値．
 
@@ -679,41 +720,41 @@ std_msgs/Header header
 		int32 sec
 		uint32 nanosec
 	string frame_id
-
-tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the body frame
-	tobas_kdl_msgs/Vector trans
-		float64 x
-		float64 y
-		float64 z
-	tobas_kdl_msgs/Rotation rot
+tobas_msgs/OdometryWithCovariance odom
+	tobas_msgs/Odometry odom
+		tobas_kdl_msgs/Frame frame  # The transformation from the global frame to the body frame
+			tobas_kdl_msgs/Vector trans
+				float64 x
+				float64 y
+				float64 z
+			tobas_kdl_msgs/Rotation rot
+				float64[9] data
+		tobas_kdl_msgs/Twist twist  # The 6D twist expressed in the body frame
+			tobas_kdl_msgs/Vector linear
+				float64 x
+				float64 y
+				float64 z
+			tobas_kdl_msgs/Vector angular
+				float64 x
+				float64 y
+				float64 z
+		tobas_kdl_msgs/Accel accel  # The 6D accel expressed in the body frame
+			tobas_kdl_msgs/Vector linear
+				float64 x
+				float64 y
+				float64 z
+			tobas_kdl_msgs/Vector angular
+				float64 x
+				float64 y
+				float64 z
+	tobas_eigen_msgs/Matrix3d position_covariance     # [m^2]
 		float64[9] data
-tobas_kdl_msgs/Twist twist  # The 6D twist expressed in the body frame
-	tobas_kdl_msgs/Vector linear
-		float64 x
-		float64 y
-		float64 z
-	tobas_kdl_msgs/Vector angular
-		float64 x
-		float64 y
-		float64 z
-tobas_kdl_msgs/Accel accel  # The 6D accel expressed in the body frame
-	tobas_kdl_msgs/Vector linear
-		float64 x
-		float64 y
-		float64 z
-	tobas_kdl_msgs/Vector angular
-		float64 x
-		float64 y
-		float64 z
-
-tobas_eigen_msgs/Matrix3d position_covariance     # [m^2]
-	float64[9] data
-tobas_eigen_msgs/Matrix3d orientation_covariance  # [rad^2]
-	float64[9] data
-tobas_eigen_msgs/Matrix3d velocity_covariance     # [m^2/s^2]
-	float64[9] data
-tobas_eigen_msgs/Matrix3d gyro_covariance         # [rad^2/s^2]
-	float64[9] data
+	tobas_eigen_msgs/Matrix3d orientation_covariance  # [rad^2]
+		float64[9] data
+	tobas_eigen_msgs/Matrix3d velocity_covariance     # [m^2/s^2]
+		float64[9] data
+	tobas_eigen_msgs/Matrix3d gyro_covariance         # [rad^2/s^2]
+		float64[9] data
 ```
 
 #### gazebo/ground_truth/wind (tobas_msgs/Wind)
@@ -738,6 +779,8 @@ tobas_kdl_msgs/Vector vel  # [m/s]
 
 ### Common
 
+実機，シミュレーション両方で使用できるサービスです．
+
 #### set_arm (tobas_msgs/SetArm)
 
 全てのロータのアーム状態を変更する．
@@ -750,6 +793,8 @@ string message
 ```
 
 ### Gazebo
+
+Gazeboシミュレーション時にのみ使用されるサービスです．
 
 #### gazebo/charge_battery (std_srvs/Empty)
 
@@ -864,6 +909,10 @@ string message # informational, e.g. for error messages
 ## アクション
 
 ---
+
+### Common
+
+実機，シミュレーション両方で使用できるアクションです．
 
 #### execute_mission (tobas_mission_msgs/ExecuteMission)
 
