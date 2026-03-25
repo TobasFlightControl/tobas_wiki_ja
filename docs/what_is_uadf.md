@@ -57,7 +57,7 @@ URDF の`revolute`がベースになっています．
 
 ここでは，チュートリアルで用いた典型的なクアッドコプターである DJI F450 の UADF を作成します．
 
-![f450](resources/what_is_uadf/f450.png)
+![f450](assets/what_is_uadf/f450.png)
 
 URDF には視覚化のためにメッシュファイルやテクスチャファイルを取り込む機能があり，
 URDF そのものに加えてそれらのファイルも一緒に配布されることが多いため，
@@ -543,7 +543,7 @@ XACRO を用いることで XML をより短く，わかりやすく書くこと
 8 つの`thrust`ジョイントをもつオクタコプターです．
 ただし，それぞれのプロペラは立方体の頂点から外側を向くように配置されています．
 
-![toc8_pt001](resources/what_is_uadf/toc8_pt001.png)
+![toc8_pt001](assets/what_is_uadf/toc8_pt001.png)
 
 <details><summary>XACRO 展開前</summary>
 
@@ -1227,7 +1227,7 @@ XACRO を用いることで XML をより短く，わかりやすく書くこと
 
 `thrust`ジョイントと`tilt`ジョイントのペアを 6 つもつヘキサコプターです．
 
-![voliro_like_pt003](resources/what_is_uadf/voliro_like_pt003.png)
+![voliro_like_pt003](assets/what_is_uadf/voliro_like_pt003.png)
 
 <details><summary>XACRO 展開前</summary>
 
@@ -1963,7 +1963,7 @@ XACRO を用いることで XML をより短く，わかりやすく書くこと
 4 つの`thrust`ジョイントに加え，3 つの`revolute`ジョイントをもつクアッドコプターです．
 `revolute`ジョイントへの指令値はユーザが自由に与えることができます．
 
-![hydrus](resources/what_is_uadf/hydrus.png)
+![hydrus](assets/what_is_uadf/hydrus.png)
 
 <details><summary>XACRO 展開前</summary>
 

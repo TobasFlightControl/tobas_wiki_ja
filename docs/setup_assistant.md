@@ -37,7 +37,7 @@ UADF の詳細については[What is UADF](./what_is_uadf.md)をご参照くだ
 $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 ```
 
-![start](resources/setup_assistant/start.png)
+![start](assets/setup_assistant/start.png)
 
 ## UADF の読み込み
 
@@ -46,7 +46,7 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 `New`をクリックし，ファイルダイアログで`/opt/tobas/share/tobas_description/urdf/f450.uadf`を選択して`Open`をクリックします．
 すると，モデルビューに機体が表示され，各設定ページが有効になります．
 
-![load](resources/setup_assistant/load.png)
+![load](assets/setup_assistant/load.png)
 
 ## Propulsion System
 
@@ -60,7 +60,7 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 バッテリーの設定を行います．
 バッテリーの仕様を確認し，各項目に適切な値を入力してください．
 
-![battery](resources/setup_assistant/propulsion/battery.png)
+![battery](assets/setup_assistant/propulsion/battery.png)
 
 ### Propulsion Units
 
@@ -75,17 +75,17 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
     画面左上の`Frame Tree`からリンク名をクリックすることでモデルビューにハイライトされます．
 <!-- prettier-ignore-end -->
 
-![propulsion/esc](resources/setup_assistant/propulsion/esc.png)
+![propulsion/esc](assets/setup_assistant/propulsion/esc.png)
 
-![propulsion/motor](resources/setup_assistant/propulsion/motor.png)
+![propulsion/motor](assets/setup_assistant/propulsion/motor.png)
 
-![propulsion/propeller](resources/setup_assistant/propulsion/propeller.png)
+![propulsion/propeller](assets/setup_assistant/propulsion/propeller.png)
 
 `Aerodynamics`ではプロペラの空力特性の設定を行います．
 複数の設定方法から選ぶことができますが，今回使用するプロペラである DJI 9450 は予めモデルが用意されているので，それを使います．
 最初の選択リストから`Select Propeller Model`を選択し，その下の選択リストで`dji_9450`を選択してください．
 
-![propulsion/aerodynamics](resources/setup_assistant/propulsion/aerodynamics.png)
+![propulsion/aerodynamics](assets/setup_assistant/propulsion/aerodynamics.png)
 
 この機体の 4 つの推進ユニットは全て同一なため，`Copy To All`をクリックし，`propeller_0`の設定を他の 3 つにコピーします．
 `propeller_0`の設定が他のタブにも反映されていることを確認してください．
@@ -98,7 +98,7 @@ $ ros2 launch tobas_setup_assistant setup_assistant.launch.py
 `Tobas FC1xx`が選択されていることを確認し，
 4 つの推進ユニットそれぞれについて，適切に DShot チャンネルを設定してください．
 
-![hardware_interface](resources/setup_assistant/hardware_interface.png)
+![hardware_interface](assets/setup_assistant/hardware_interface.png)
 
 <!-- prettier-ignore-start -->
 !!! note
@@ -127,13 +127,13 @@ GCSがLAN内でFCを識別するためのアドレスの設定を行います．
 FCのIPを固定していればそれを直接使用することもできますが，今回は手軽なホスト名を使用することにします．
 `Hostname`を選択し，[Boot Device Configuration](./bootmedia_config.md)で設定したFCのホスト名を入力してください．
 
-![remote_connection](resources/setup_assistant/remote_connection.png)
+![remote_connection](assets/setup_assistant/remote_connection.png)
 
 ## プロジェクトの保存
 
 `Save`をクリックし，ファイルダイアログで`~/.local/share/tobas/colcon_ws/src/`以下に`tobas_f450.TBS`として保存します．
 
-![save](resources/setup_assistant/save.png)
+![save](assets/setup_assistant/save.png)
 
 ## 次の手順へ
 

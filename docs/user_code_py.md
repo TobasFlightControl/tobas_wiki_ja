@@ -85,6 +85,6 @@ def generate_launch_description():
 
 GCS からシミュレーションを起動すると，`Control System`のコンソールにメッセージが表示されます．
 
-![console](resources/user_code_py/console.png)
+![console](assets/user_code_py/console.png)
 
 API の詳細については[ROS API](./ros_api.md)をご覧ください．

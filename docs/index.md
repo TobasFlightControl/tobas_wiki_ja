@@ -64,7 +64,7 @@ Tobas では機体の構造は[UADF (Universal Aircraft Description Format)](./w
 
 ### Tobas FC101
 
-<img src="./resources/introduction/fc101_1.png" alt="fc101_1" width="49%"> <img src="./resources/introduction/fc101_2.png" alt="fc101_2" width="49%"> <!-- index.mdだけは参照パスがcwdから -->
+<img src="./assets/introduction/fc101_1.png" alt="fc101_1" width="49%"> <img src="./assets/introduction/fc101_2.png" alt="fc101_2" width="49%"> <!-- index.mdだけは参照パスがcwdから -->
 
 #### Sensors & Processors
 

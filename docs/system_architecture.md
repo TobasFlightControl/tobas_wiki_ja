@@ -15,7 +15,7 @@ CPU0 では遠隔通信のためのインターフェースノードがフライ
 地上局などリモートからフライトコントローラにアクセスする際は必ずこのノードを通過します．
 このように通信に関する処理のプロセスとコアを分離しているのは，フライトコードのリアルタイム性を確保し，予期せぬ動作を防ぐためです．
 
-![hardware_architecture](resources/system_architecture/hardware_architecture.png)
+![hardware_architecture](assets/system_architecture/hardware_architecture.png)
 
 ## ソフトウェア構成
 
@@ -30,4 +30,4 @@ CPU0 では遠隔通信のためのインターフェースノードがフライ
 実機の場合，目標回転数から MCU 上のモータ制御器でモータへの印加電圧が計算され，ESC に送信されます．
 飛行制御器やモータ制御器に必要な機体の物理モデルは，[Setup Assistant](./setup_assistant.md)で作成した Tobas プロジェクトから取得します．
 
-![software_architecture](resources/system_architecture/software_architecture.png)
+![software_architecture](assets/system_architecture/software_architecture.png)
