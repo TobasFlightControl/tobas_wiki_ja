@@ -3,22 +3,22 @@ theme: readthedocs # cf. https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes
 nav:
   - Introduction: index.md # Required
   - Getting Started:
-      - Installation: installation.md
-      - Boot Device Configuration: bootmedia_config.md
-      - Setup Assistant: setup_assistant.md
-      - Hardware Setup: hardware_setup.md
-      - Flight Test: flight_test.md
-      - Simulation: simulation.md
+      - Installation: getting_started/installation.md
+      - Boot Device Configuration: getting_started/bootmedia_config.md
+      - Setup Assistant: getting_started/setup_assistant.md
+      - Hardware Setup: getting_started/hardware_setup.md
+      - Flight Test: getting_started/flight_test.md
+      - Simulation: getting_started/simulation.md
   - For Developers:
-      - ROS API: ros_api.md
-      - User Code (Python): user_code_py.md
-      - User Code (C++): user_code_cpp.md
+      - ROS API: for_developers/ros_api.md
+      - User Code (Python): for_developers/user_code_py.md
+      - User Code (C++): for_developers/user_code_cpp.md
   - Additional Information:
-      - What is UADF: what_is_uadf.md
-      - Inertia Moment: inertia_moment.md
-      - 3D Models: cad_models.md
-      - System Architecture: system_architecture.md
-      - Trouble Shooting: trouble_shooting.md
+      - What is UADF: additional_information/what_is_uadf.md
+      - Inertia Moment: additional_information/inertia_moment.md
+      - 3D Models: additional_information/cad_models.md
+      - System Architecture: additional_information/system_architecture.md
+      - Trouble Shooting: additional_information/trouble_shooting.md
 markdown_extensions:
   - admonition # Required for "note"
   - pymdownx.arithmatex: # Required for writing equations

@@ -17,7 +17,7 @@
 1. スロットルレバーを下，ヨーレバーを右に傾けた状態で 1 秒間維持するとアームします．
 1. アームしたらヨーレバーを戻し，スロットルレバーを少しずつ上げます．
 
-![start](assets/flight_test/start.png)
+![start](../assets/flight_test/start.png)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sHoA8yKJPs4?si=CCOEPsu6z9hd7zOb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>
@@ -43,7 +43,7 @@
 
 `Control System`は，ドローンの状態監視とミッション計画を行うためのツールです．
 
-![control_system](assets/flight_test/control_system.png)
+![control_system](../assets/flight_test/control_system.png)
 
 ### 状態監視機能
 
@@ -58,7 +58,7 @@
 - ステータス: Pre-Arm Check，Post-Arm Check，その他
 - 各ノードからのメッセージ
 
-![state_viewer](assets/flight_test/state_viewer.png)
+![state_viewer](../assets/flight_test/state_viewer.png)
 
 ### ミッション計画機能
 
@@ -75,7 +75,7 @@
     プロポの`Enable`スイッチがオンだとプロポからの指令が優先されるため，必ずオフにした状態で実行してください．
 <!-- prettier-ignore-end -->
 
-![mission_planner](assets/flight_test/mission_planner.png)
+![mission_planner](../assets/flight_test/mission_planner.png)
 
 ## Param Tuning
 
@@ -83,7 +83,7 @@
 
 `Param Tuning`は，飛行に関するパラメータをオンラインで調整するためのツールです．
 
-![param_tuning](assets/flight_test/param_tuning.png)
+![param_tuning](../assets/flight_test/param_tuning.png)
 
 ### 手順
 
@@ -142,7 +142,7 @@
 
 `Flight Log`は，飛行中の状態の記録，再生を行うためのツールです．
 
-![flight_log](assets/flight_test/flight_log.png)
+![flight_log](../assets/flight_test/flight_log.png)
 
 ### 飛行ログの記録
 

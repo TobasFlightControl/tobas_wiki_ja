@@ -10,8 +10,9 @@ Setup Assistant で設定したとおりに実機を作成します．
 <!-- cf. https://docs.emlid.com/navio2/hardware-setup/ -->
 <!-- cf. https://docs.emlid.com/navio2/ardupilot/typical-setup-schemes/ -->
 
-<img src="../assets/hardware_setup/f450_1.png" alt="f450_1" width="49%"/>
-<img src="../assets/hardware_setup/f450_2.png" alt="f450_2" width="49%"/>
+<!-- HTMLではパスはページ生成後の相対URLとして解決されることに注意 -->
+<img src="../../assets/hardware_setup/f450_1.png" alt="f450_1" width="49%"/>
+<img src="../../assets/hardware_setup/f450_2.png" alt="f450_2" width="49%"/>
 
 <!-- prettier-ignore-start -->
 !!! note
@@ -103,7 +104,7 @@ $ ros2 launch tobas_gcs gcs.launch.py
 `Load Project`をクリックし，Setup Assistant で作成した`tobas_f450.TBS`をダブルクリックして読み込みます．
 `Write Project`をクリックすると，プロジェクトが FC に送信された後にビルドされます．これには数分かかります．
 
-![load_and_write](assets/hardware_setup/load_and_write.png)
+![load_and_write](../assets/hardware_setup/load_and_write.png)
 
 ## Sensor Calibration
 
@@ -118,7 +119,7 @@ $ ros2 launch tobas_gcs gcs.launch.py
 機体を水平面上に置き，`Start`をクリックしてください．
 数秒でキャリブレーションが完了し，しばらくするとタブが赤色から緑色に変化します．
 
-![accel_calibration](assets/hardware_setup/accel_calibration.png)
+![accel_calibration](../assets/hardware_setup/accel_calibration.png)
 
 ### Magnetometer Calibration
 
@@ -132,8 +133,8 @@ $ ros2 launch tobas_gcs gcs.launch.py
 1. 完了したら`Finish`をクリックしてください．推定された楕円体が青色，歪み補正後の点群が緑色で表示されます．
    青色の楕円体が白色の点群に重なっており，緑色の点群が原点周りに球を描いていれば成功です．
 
-<img src="../assets/hardware_setup/mag_calibration_1.png" alt="mag_calibration_1" width="49%"/>
-<img src="../assets/hardware_setup/mag_calibration_2.png" alt="mag_calibration_2" width="49%"/>
+<img src="../../assets/hardware_setup/mag_calibration_1.png" alt="mag_calibration_1" width="49%"/>
+<img src="../../assets/hardware_setup/mag_calibration_2.png" alt="mag_calibration_2" width="49%"/>
 
 ### Radio Calibration
 
@@ -144,7 +145,7 @@ $ ros2 launch tobas_gcs gcs.launch.py
    レバーと GUI のバーの動作が反対方向の場合は，プロポ側の設定を適切に変更してください．
 1. 完了したら`Finish`をクリックしてください．
 
-![radio_calibration](assets/hardware_setup/radio_calibration.png)
+![radio_calibration](../assets/hardware_setup/radio_calibration.png)
 
 ## Actuator Test
 
@@ -157,7 +158,7 @@ $ ros2 launch tobas_gcs gcs.launch.py
 
 <span style="color: red;"><strong>警告: この操作ではモータが回転します．プロペラを取り付けて実行する場合は十分に注意してください．</strong></span>
 
-![rotor_test](assets/hardware_setup/rotor_test.png)
+![rotor_test](../assets/hardware_setup/rotor_test.png)
 
 1. `Start`をクリックすると，全てのモータが回転できる状態になります．
 1. それぞれのモータについて，レバーを動かして回転数を指令し，接続と回転方向が正しいことを確認してください．
@@ -185,7 +186,7 @@ $ ros2 launch tobas_gcs gcs.launch.py
 1. 画面右上にある赤色の電源ボタンを押すと FC をシャットダウンされます．
 1. ラズパイの電源ボタンが緑色から赤色に変化したことを確認して電源を抜いてください．
 
-![power_off](assets/hardware_setup/power_off.png)
+![power_off](../assets/hardware_setup/power_off.png)
 
 ## 次の手順へ
 
