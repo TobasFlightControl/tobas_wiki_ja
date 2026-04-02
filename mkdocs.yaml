@@ -1,5 +1,63 @@
 site_name: Tobas
-theme: readthedocs # cf. https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes
+site_description: Tobasは，モデルベース設計とLinuxを基盤とした，ドローン・ロボット航空機向けフライトコントローラです．
+
+# https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes
+theme:
+  # Material for MkDocs:
+  #   https://squidfunk.github.io/mkdocs-material
+  #   https://github.com/squidfunk/mkdocs-material/tree/master/docs
+  # FastAPI:
+  #   https://fastapi.tiangolo.com/
+  #   https://github.com/fastapi/fastapi/blob/master/docs/en/mkdocs.yml
+  name: material
+  # custom_dir: overrides # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#announcement-bar
+  palette: # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: ダークモードに切り替え
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: ライトモードに切り替え
+  font: # https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/
+    text: Roboto
+    code: Roboto Mono
+  language: ja # https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/
+  logo: assets/icon_white.png # https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo
+  favicon: assets/icon_black.png # https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#favicon
+  icon: # https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#site-icons
+    repo: fontawesome/brands/github # https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#repository-icon
+  features:
+    - navigation.instant # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-loading
+    - navigation.instant.prefetch # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-prefetching
+    - navigation.instant.progress # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#progress-indicator
+    - navigation.tracking # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-tracking
+    - navigation.tabs # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-tabs
+    - navigation.tabs.sticky # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#sticky-navigation-tabs
+    - navigation.path # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-path
+    - navigation.top # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#back-to-top-button
+    - navigation.footer # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#navigation
+    - toc.follow # https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-following
+    - search.suggest # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-suggestions
+    - search.highlight # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-highlighting
+    - search.share # https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-sharing
+    - content.code.copy # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-copy-button
+    - content.code.annotate # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-annotations
+    - content.tabs.link # https://squidfunk.github.io/mkdocs-material/reference/content-tabs/?h=content#linked-content-tabs
+    - content.footnote.tooltips # https://squidfunk.github.io/mkdocs-material/reference/footnotes/#footnote-tooltips
+    - content.tooltips # https://squidfunk.github.io/mkdocs-material/reference/tooltips/#improved-tooltips
+
+# https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#repository
+repo_url: https://github.com/TobasFlightControl/tobas
+repo_name: TobasFlightControl/tobas
+
 nav:
   - Introduction: index.md # Required
   - Getting Started:
@@ -22,12 +80,28 @@ nav:
   - Release:
       - Releases: releases/releases.md
       - Process: releases/process.md
+
+# https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/
 markdown_extensions:
   - admonition # Required for "note"
   - pymdownx.arithmatex: # Required for writing equations
       generic: true
   - toc: # Required for adding links for each heading
       permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/dronewotobas
+      name: Tobas on X
+  alternate:
+    - name: 日本語
+      link: /
+      lang: ja
+    - name: English
+      link: /en/
+      lang: en
+
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
