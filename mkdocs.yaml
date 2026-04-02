@@ -101,6 +101,8 @@ extra:
     - name: English
       link: /en/
       lang: en
+  version: # https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/?h=version
+    provider: mike
 
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
