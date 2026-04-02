@@ -10,7 +10,7 @@ theme:
   #   https://fastapi.tiangolo.com/
   #   https://github.com/fastapi/fastapi/blob/master/docs/en/mkdocs.yml
   name: material
-  # custom_dir: overrides # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#announcement-bar
+  custom_dir: overrides # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#announcement-bar
   palette: # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -90,20 +90,25 @@ markdown_extensions:
       permalink: true
 
 extra:
-  social:
+  social: # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#social-links
     - icon: fontawesome/brands/x-twitter
       link: https://x.com/dronewotobas
       name: Tobas on X
-  alternate:
+  alternate: # https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language-selector
     - name: 日本語
       link: /
       lang: ja
     - name: English
       link: /en/
       lang: en
-  version: # https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/?h=version
+  version: # https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/
     provider: mike
 
+# https://squidfunk.github.io/mkdocs-material/customization/?h=css#additional-css
+extra_css:
+  - stylesheets/extra.css
+
+# https://squidfunk.github.io/mkdocs-material/customization/?h=css#additional-javascript
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
