@@ -1,29 +1,17 @@
 # tobas_wiki_ja
 
-## セットアップ (Ubuntu 24.04 LTS)
+## Setup (Ubuntu 24.04 LTS)
 
 ```bash
 $ sudo apt install -y mkdocs mkdocs-material
 ```
 
-## ローカルでの実行
+## Run locally
 
-1. MkDocs のサーバを起動
+1. Start the MkDocs server.
 
 ```bash
-$ cd tobas_wiki_ja/
 $ mkdocs serve
 ```
 
-2. [ローカル上のウェブサービス](http://127.0.0.1:8000/)を開く
-
-## メモ
-
-- 画像等は`docs/`以下に配置する必要がある
-
-## 参考
-
-### PX4 Autopilot User Guide
-
-- [Web Page](https://docs.px4.io/main/en/)
-- [GitHub](https://github.com/PX4/PX4-Autopilot/tree/main/docs)
+2. Then open http://127.0.0.1:8000/ in your browser.
