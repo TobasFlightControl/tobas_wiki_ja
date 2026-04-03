@@ -89,6 +89,7 @@ markdown_extensions:
       generic: true
   - toc: # Required for adding links for each heading
       permalink: true
+  - pymdownx.superfences # Required for highlighting code blocks
 
 extra:
   social: # https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#social-links

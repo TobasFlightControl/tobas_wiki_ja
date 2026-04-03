@@ -14,7 +14,7 @@ $ pip install mkdocs mkdocs-material mike
 1. Start the MkDocs server.
 
 ```bash
-$ mkdocs serve
+$ mkdocs serve --livereload
 ```
 
 2. Then open http://127.0.0.1:8000/ in your browser.
