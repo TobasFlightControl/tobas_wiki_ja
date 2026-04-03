@@ -73,7 +73,7 @@ plugins:
           name: English
           build: true
           nav_translations:
-            はじめに: Introduction
+            スタートガイド: Getting Started
             インストール: Installation
             ブートデバイスの設定: Boot Device Configuration
             機体構成の設定: Airframe Configuration
@@ -95,7 +95,7 @@ plugins:
 
 nav:
   - Tobas: index.md # Required
-  - はじめに:
+  - スタートガイド:
       - インストール: getting_started/installation.md
       - ブートデバイスの設定: getting_started/bootmedia_config.md
       - 機体構成の設定: getting_started/airframe_config.md
