@@ -6,7 +6,7 @@
 $ python -m venv .venv
 $ source .venv/bin/activate
 $ pip install --upgrade pip
-$ pip install mkdocs mkdocs-material mike
+$ pip install -r requirements.txt
 ```
 
 ## Test locally

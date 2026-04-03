@@ -11,7 +11,7 @@
 `Settings / System / About / System Details`
 から，ディスプレイサーバが X11 になっていることを確認してください．
 
-![trouble_shooting/system_details](../assets/trouble_shooting/system_details.png)
+![troubleshooting/system_details](../../assets/troubleshooting/system_details.png)
 
 もしも X11 でない場合，例えば Wayland と表示されている場合は，
 Ubuntu の起動画面でユーザ名を選択した際に画面右下に現れる歯車から，ディスプレイサーバを以下のように選択してください．

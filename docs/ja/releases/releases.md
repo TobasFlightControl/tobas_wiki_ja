@@ -1,4 +1,4 @@
-# Releases
+# リリース一覧
 
 <!-- cf. PX4 Releases: https://docs.px4.io/main/en/releases/ -->
 
