@@ -19,6 +19,26 @@ $ mkdocs serve --livereload
 
 2. Then open http://127.0.0.1:8000/ in your browser.
 
+## Translate Japanese to English
+
+1. Install openai
+
+```bash
+$ pip install openai
+```
+
+2. Set OpenAI API key
+
+```bash
+$ export OPENAI_API_KEY="your_api_key_here"
+```
+
+3. Run the translation script
+
+```bash
+$ python translate_docs.py  # Try -h to see the available options.
+```
+
 ## Deploy
 
 TODO
