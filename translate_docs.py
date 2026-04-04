@@ -19,7 +19,6 @@ from typing import Dict, List, Tuple
 
 from openai import OpenAI
 
-
 FRONT_MATTER_RE = re.compile(r"\A(---\n.*?\n---\n?)", re.DOTALL)
 FENCED_CODE_RE = re.compile(
     r"(^```[^\n]*\n.*?^```[ \t]*$|^~~~[^\n]*\n.*?^~~~[ \t]*$)",
