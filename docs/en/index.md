@@ -64,8 +64,8 @@ The following factors, which greatly affect flight, can be simulated easily:
 
 ### Tobas FC101
 
-<img src="./assets/introduction/fc101_1.png" alt="fc101_1" width="49%">
-<img src="./assets/introduction/fc101_2.png" alt="fc101_2" width="49%">
+<img src="../assets/introduction/fc101_1.png" alt="fc101_1" width="49%">
+<img src="../assets/introduction/fc101_2.png" alt="fc101_2" width="49%">
 
 #### Sensors & Processors
 
@@ -131,12 +131,12 @@ it can keep its position and attitude within a certain range even when the arm i
 
 The following requirements must be met.
 
-| Requirement | Required                      | Recommended        | Notes                      |
-| :---------- | :---------------------------- | ------------------ | -------------------------- |
+| Requirement | Required                       | Recommended        | Notes                          |
+| :---------- | :----------------------------- | ------------------ | ------------------------------ |
 | OS          | Ubuntu 24.04 LTS (ROS 2 Jazzy) |                    | Native environment recommended |
-| RAM         | 8GB                           | 16GB               |                            |
-| CPU         | AMD64 (x86-64)                |                    |                            |
-| GPU         |                               | NVIDIA GeForce RTX |                            |
+| RAM         | 8GB                            | 16GB               |                                |
+| CPU         | AMD64 (x86-64)                 |                    |                                |
+| GPU         |                                | NVIDIA GeForce RTX |                                |
 
 <br>
 
