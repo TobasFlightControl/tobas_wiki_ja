@@ -66,16 +66,23 @@ Configure SSH key authentication.
 In Tobas, some SSH key authentication is used to operate the flight controller (FC) from the ground station,
 so the public key of the PC used as the ground station must be registered on the FC.
 
-Click `Read` to list the currently registered public keys and enable the other buttons.
-At first, no public keys are registered, so the list will remain empty.
-Click `Add`, then enter the public key of the PC to be used as the ground station in the dialog that appears.
-Click `OK` to add the public key to the list and write it to the SD card at the same time.
+First, create an SSH key.
+Launch `Passwords and Keys` from the application menu,
+then click the `+` button in the upper-left corner and select `Secure Shell Key`.
+In the dialog that appears, enter an appropriate identifier in Description (such as `<username>@<hostname>`),
+then click `Generate`.
+In the next dialog, click `OK` to generate the SSH public and private keys. It is fine to leave the password field blank.
+Then click `OpenSSH keys` to confirm that the created key is listed.
+Double-click the key, note down the `Public key` shown in the dialog, and then close `Passwords and Keys`.
 
-<!-- prettier-ignore-start -->
-!!! note
-    If no SSH public key (~/.ssh/*.pub) exists, open a terminal and create one with `$ ssh-keygen`.
-    Several messages will appear during the process asking for input, but it is fine to press Enter without typing anything.
-<!-- prettier-ignore-end -->
+<img src="../../../assets/bootmedia_config/ssh_key_1.png" alt="ssh_key_1" width="49%"/>
+<img src="../../../assets/bootmedia_config/ssh_key_2.png" alt="ssh_key_2" width="49%"/>
+
+Return to `Tobas Bootmedia Config` and click `Read`.
+The currently registered public keys will be listed, and the other buttons will become enabled.
+At first, no public keys are registered, so the list will remain empty.
+Click `Add`, then copy and paste the public key you noted earlier into the dialog that appears.
+Click `OK`, and the public key will be added to the list and written to the SD card at the same time.
 
 ![ssh_keys](../../assets/bootmedia_config/ssh_keys.png)
 
