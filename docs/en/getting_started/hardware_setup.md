@@ -10,7 +10,6 @@ Build the actual vehicle according to the settings configured in Setup Assistant
 <!-- cf. https://docs.emlid.com/navio2/hardware-setup/ -->
 <!-- cf. https://docs.emlid.com/navio2/ardupilot/typical-setup-schemes/ -->
 
-<!-- HTMLではパスはページ生成後の相対URLとして解決されることに注意 -->
 <img src="../../../assets/hardware_setup/f450_1.png" alt="f450_1" width="49%"/>
 <img src="../../../assets/hardware_setup/f450_2.png" alt="f450_2" width="49%"/>
 
