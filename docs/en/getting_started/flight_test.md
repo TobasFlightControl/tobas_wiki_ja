@@ -128,7 +128,7 @@ This is the cutoff frequency of the gyroscope sensor’s low-pass filter.
 A lower value suppresses gyroscope noise more strongly,
 but if it is too low, the signal delay may destabilize angular rate control.
 Check the flight log, described later.
-If the motor RPM target oscillates with an amplitude of 10% or more of the hovering RPM,
+If **the motor RPM target oscillates with an amplitude of 10% or more of the hovering RPM**,
 consider the post-filter angular rate oscillation to be too large and reduce this value.
 This time, we left it at the default value.
 
