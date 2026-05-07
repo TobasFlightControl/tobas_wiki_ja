@@ -7,7 +7,7 @@
 ### Procedure (from the desktop)
 
 Please download
-<a href=https://drive.google.com/file/d/1BVtOWmo6aHrxy5Fax1PpkeR_EMCMBDwH/view target="_blank">tobas_2.13.0_amd64.deb</a>.
+<a href=https://drive.google.com/file/d/1nH_jZujDL_apP0uTWPIftbURmE6LqPQ8/view target="_blank">tobas_2.14.0_amd64.deb</a>.
 
 Open the file explorer and double-click the downloaded deb package to launch App Center.
 Click `Install` to start the installation. This may take a few minutes.
@@ -34,13 +34,13 @@ Press Enter to close the terminal.
 ### Procedure (from the terminal)
 
 Download
-<a href=https://drive.google.com/file/d/1BVtOWmo6aHrxy5Fax1PpkeR_EMCMBDwH/view target="_blank">tobas_2.13.0_amd64.deb</a>.
+<a href=https://drive.google.com/file/d/1nH_jZujDL_apP0uTWPIftbURmE6LqPQ8/view target="_blank">tobas_2.14.0_amd64.deb</a>.
 
 ```bash
 $ sudo apt install -y python3-pip
 $ sudo pip install gdown --break-system-packages
 $ cd ~/Download
-$ gdown --fuzzy 'https://drive.google.com/file/d/1BVtOWmo6aHrxy5Fax1PpkeR_EMCMBDwH/view'
+$ gdown --fuzzy 'https://drive.google.com/file/d/1nH_jZujDL_apP0uTWPIftbURmE6LqPQ8/view'
 ```
 
 If Tobas is already installed and you want to update it, first uninstall the old package.
@@ -52,7 +52,7 @@ $ sudo dpkg -r tobas
 Install Tobas.
 
 ```bash
-$ sudo dpkg -i tobas_2.13.0_amd64.deb
+$ sudo dpkg -i tobas_2.14.0_amd64.deb
 ```
 
 Install the dependent packages.
@@ -78,7 +78,7 @@ $ tobas_install_prereqs
 ### Procedure (from the desktop)
 
 Please download
-<a href=https://drive.google.com/file/d/1etk2XPJz1U5ZHVq6YdjSPrK0U3GHJ6Ju/view target="_blank">tobas_2.13.0_arm64.img.gz</a>.
+<a href=https://drive.google.com/file/d/1rY3bRWFkQObM9NEoeVO0XCzzGwWz04am/view target="_blank">tobas_2.14.0_arm64.img.gz</a>.
 
 Install any suitable image flasher. For example, the following can be used:
 
@@ -97,20 +97,20 @@ When it finishes successfully, remove the SD card from the PC.
 ### Procedure (from the terminal)
 
 Download
-<a href=https://drive.google.com/file/d/1etk2XPJz1U5ZHVq6YdjSPrK0U3GHJ6Ju/view target="_blank">tobas_2.13.0_arm64.img.gz</a>.
+<a href=https://drive.google.com/file/d/1rY3bRWFkQObM9NEoeVO0XCzzGwWz04am/view target="_blank">tobas_2.14.0_arm64.img.gz</a>.
 
 ```bash
 $ sudo apt install -y python3-pip
 $ sudo pip install gdown --break-system-packages
 $ cd ~/Download
-$ gdown --fuzzy 'https://drive.google.com/file/d/1etk2XPJz1U5ZHVq6YdjSPrK0U3GHJ6Ju/view'
+$ gdown --fuzzy 'https://drive.google.com/file/d/1rY3bRWFkQObM9NEoeVO0XCzzGwWz04am/view'
 ```
 
 Extract the downloaded file.
 
 ```bash
 $ sudo apt install -y gzip
-$ gunzip tobas_2.13.0_arm64.img.gz
+$ gunzip tobas_2.14.0_arm64.img.gz
 ```
 
 Connect the SD card to the PC using the card reader.
@@ -119,7 +119,7 @@ Write the image to the SD card.
 Replace `/dev/sdx` with the actual path.
 
 ```bash
-$ sudo dd if=tobas_2.13.0_arm64.img of=/dev/sdx bs=4M conv=fsync status=progress
+$ sudo dd if=tobas_2.14.0_arm64.img of=/dev/sdx bs=4M conv=fsync status=progress
 ```
 
 When it finishes successfully, remove the SD card from the PC.
