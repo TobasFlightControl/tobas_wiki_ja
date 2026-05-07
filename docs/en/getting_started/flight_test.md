@@ -103,38 +103,34 @@ For this airframe, it could be increased up to 25rad/s.
 
 #### heading_natural_frequency
 
-This parameter relates to the responsiveness of attitude control.
+This parameter relates to the responsiveness of heading control.
 A larger value makes the response to the target heading faster, but if it is too large, heading control becomes unstable.
 Increase the value gradually while confirming that no oscillation occurs.
-This time, the default value was used.
+This time, we left it at the default value.
 
 #### horizontal_natural_frequency
 
 This parameter relates to the responsiveness of horizontal position control.
 A larger value makes the response to the target position faster, but if it is too large, position control becomes unstable.
 Increase the value gradually while confirming that no oscillation occurs.
-This time, the default value was used.
+This time, we left it at the default value.
 
 #### vertical_natural_frequency
 
 This parameter relates to the responsiveness of vertical position control.
 A larger value makes the response to the target altitude faster, but if it is too large, altitude control becomes unstable.
 Increase the value gradually while confirming that no oscillation occurs.
-This time, the default value was used.
-
-#### accel_lowpass_cutoff
-
-This is the cutoff frequency of the first-order low-pass filter for the accelerometer.
-It does not affect attitude estimation and is used only for control.
-Check the flight logs, and if the filtered acceleration noise is too strong, lower this value.
-This time, the default value was used.
+This time, we left it at the default value.
 
 #### gyro_lowpass_cutoff
 
-This is the cutoff frequency of the first-order low-pass filter for the gyro sensor.
-It does not affect attitude estimation and is used only for control.
-Check the flight logs, and if the filtered gyro noise is too strong, lower this value.
-This time, the default value was used.
+This is the cutoff frequency of the gyroscope sensor’s low-pass filter.
+A lower value suppresses gyroscope noise more strongly,
+but if it is too low, the signal delay may destabilize angular rate control.
+Check the flight log, described later.
+If the motor RPM target oscillates with an amplitude of 10% or more of the hovering RPM,
+consider the post-filter angular rate oscillation to be too large and reduce this value.
+This time, we left it at the default value.
 
 ## Flight Log
 
